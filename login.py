@@ -21,5 +21,4 @@ while correcto == False:
         print("Vuelva a intentar")
         
         
-"""Estamos modificando un archivo para ver la cuestión de las ramas"""
-        
+"""Estamos modificando un archivo para ver la cuestión de las ramas"""        
