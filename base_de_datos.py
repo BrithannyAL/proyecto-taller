@@ -1,3 +1,5 @@
+import hashlib
+
 cursos = [
     {
         'curso' : "Fundamentos de organización de computadores",
@@ -10,5 +12,14 @@ usuarios = [
     {
         'usuario': "barguello",
         'contra': (123456789)
+    },
+    {
+        'nombre':'Steven Chacón',
+        'tipo' : 'admin',
+        'autenticacion':
+        {
+            'usuario':tuple(("shcacon",)),
+            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
+        }
     }
 ]
