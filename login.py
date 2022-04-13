@@ -1,5 +1,6 @@
 from base_de_datos import usuarios
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
+import hashlib
 
 def login():
     correcto = False
