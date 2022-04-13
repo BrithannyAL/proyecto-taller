@@ -7,9 +7,6 @@ def cifrar (entrada):
     resultado = hashlib.md5(entrada_c)
     return (resultado.hexdigest())
 
-
 def obtener_calve(mensaje):
     pswd = getpass.getpass(mensaje+": ")
     return (pswd)
-
-

@@ -1,6 +1,5 @@
 import hashlib
 
-
 carreras = [
     {
         'carrera' : 'Ingenieraia en computacion',
