@@ -1,151 +1,138 @@
 import hashlib
+from re import X
 
 
 carreras = [
     {
         'carrera' : 'Ingenieraia en computacion',
         'semestres' : (8),
-        'cursos' : {}
-    },
-    {
-        'carrera' : 'Administracion de empresas',
-        'semestres' : (10),
-    },
-    {
-        'carrera' : 'Administracion electronica',
-        'semestres' : (10),
+        'cursos' : tuple(1,2,3,4,5,6,7)
     },
     {
         'carrera' : 'Ingenieria en agronomia',
         'semestres' : (8),
+        'cursos' : tuple(1,2,3,4,8,9,10)
+    },
+    {
+        'carrera' : 'Administracion de empresas',
+        'semestres' : (10),
+        'cursos' : tuple(1,2,3,4,11,12,13)
     },
     {
         'carrera' : 'Ingenieria en procuccion industrial',
         'semestres' : (12),
+        'cursos' : tuple(1,2,3,4,14,15)
+    },
+    {
+        'carrera' : 'Ingenieria electronica',
+        'semestres' : (10),
+        'cursos' : tuple(1,2,3,4,16,17)
     }
         ]
 
 cursos = [
     {
         'curso' : "Matematica general",
-        'creditos' : (2),
+        'creditos' : (3),
         'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
         'código' : (1)
     },
     {
         'curso' : "Comunicacion escrita",
-        'creditos' : (4),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'creditos' : (2),
+        'Profesor' : "",
         'código' : (2)
     }, 
     {
         'curso' : "Ingles 1",
-        'creditos' : (6),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'creditos' : (2),
+        'Profesor' : "",
         'código' : (3)
     },
     {
-        'curso' : "Matematica general",
+        'curso' : "Introduccion a la programacion",
         'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'Profesor' : "",
         'código' : (4)
     },
     {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'curso' : "Taller de programacion",
+        'creditos' : (3),
+        'Profesor' : "",
         'código' : (5)
     },
     {
-        'curso' : "Matematica general",
+        'curso' : "Fundamentos de organizacion de computadoras",
         'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'Profesor' : "",
         'código' : (6)
     },
     {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'curso' : "Matematica discreta",
+        'creditos' : (3),
+        'Profesor' : "",
         'código' : (7)
     },
     {
-        'curso' : "Matematica general",
+        'curso' : "Introduccion a la agronomia",
         'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'Profesor' : "",
         'código' : (8)
     },
     {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'curso' : "Agromatica",
+        'creditos' : (3),
+        'Profesor' : "",
         'código' : (9)
     },
     {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'curso' : "Biologia general",
+        'creditos' : (3),
+        'Profesor' : "",
         'código' : (10)
     },
     {
-        'curso' : "Matematica general",
+        'curso' : "Introduccion a la administracion de empresas",
         'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'Profesor' : "",
         'código' : (11)
     },
     {
-        'curso' : "Matematica general",
+        'curso' : "Computacion para administracion",
         'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'Profesor' : "",
         'código' : (12)
     },
     {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'curso' : "Matematica para administracion",
+        'creditos' : (3),
+        'Profesor' : "",
         'código' : (13)
     },
-    {
-        'curso' : "Matematica general",
+       {
+        'curso' : "Dibujo tecnico",
         'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'Profesor' : "",
         'código' : (14)
     },
-    {
-        'curso' : "Matematica general",
+       {
+        'curso' : "Quimica basica",
         'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+        'Profesor' : "",
         'código' : (15)
     },
-    {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+       {
+        'curso' : "Introduccion a la ingenieria",
+        'creditos' : (3),
+        'Profesor' : "",
         'código' : (16)
     },
-    {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
+       {
+        'curso' : "Calculo diferencial e integral ",
+        'creditos' : (4),
+        'Profesor' : "",
         'código' : (17)
     },
-    {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
-        'código' : (18)
-    },
-    {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
-        'código' : (19)
-    },
-    {
-        'curso' : "Matematica general",
-        'creditos' : (2),
-        'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
-        'código' : (20)
-    }
 ]
 
 usuarios = [
@@ -168,3 +155,4 @@ usuarios = [
         }
     }
 ]
+
