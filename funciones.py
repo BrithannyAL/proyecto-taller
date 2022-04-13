@@ -4,3 +4,5 @@ def funcion(n):
     return n
 
 print(funcion(5))
+
+print ("hola")
