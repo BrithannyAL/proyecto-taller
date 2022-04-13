@@ -27,7 +27,8 @@ def menu(tipo):
             4: Modificar carreras
             """.format(tipo))
         
-        funciones_admin(input("¿Qué acción desea realizar? "))
+        opcion = int(input("¿Qué acción desea realizar? "))
+        funciones_admin(opcion)
 
 def funciones_admin(opcion):
     if opcion == 1:
