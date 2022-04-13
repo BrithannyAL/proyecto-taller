@@ -1,3 +1,3 @@
-from login import login, menu
+from login import login
 
 login()

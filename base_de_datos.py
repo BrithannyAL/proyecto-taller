@@ -1,6 +1,4 @@
 import hashlib
-from re import X
-
 
 carreras = [
     {

@@ -16,14 +16,17 @@ def login():
             print("Vuelva a intentar")
             
 def menu(tipo):
-    print("""
-        ********************************* Bienvenido usuario {} *********************************
-        Menu de opciones:
-        1: Agregar cursos
-        2: Modificar cursos
-        3: Agregar carreras
-        4: Modificar carreras
-          """.format(tipo))
-    
-    opcion = input("¿Qué acción desea realizar? ")
-    return opcion
+    if tipo == "admin":
+        print("""
+            ********************************* Bienvenido usuario {} *********************************
+            Menu de opciones:
+            1: Agregar cursos
+            2: Modificar cursos
+            3: Agregar carreras
+            4: Modificar carreras
+            """.format(tipo))
+        
+        funciones_admin(input("¿Qué acción desea realizar? "))
+
+def funciones_admin(opcion):
+    print(opcion)
