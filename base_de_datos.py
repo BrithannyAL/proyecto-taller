@@ -156,3 +156,25 @@ usuarios = [
     }
 ]
 
+estudiantes = [
+    {
+        'nombre':'Estudiante 1',
+        'tipo' : 'estudiante',
+        'autenticacion':
+        {
+            'usuario':tuple(("e1",)),
+            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
+        }
+    },
+    {
+        'nombre':'Estudiente 2',
+        'tipo' : 'estudiante',
+        'autenticacion':
+        {
+            'usuario':tuple(("e2",)),
+            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
+        }
+    }
+
+
+              ]
