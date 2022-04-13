@@ -10,8 +10,13 @@ cursos = [
 
 usuarios = [
     {
-        'usuario': "barguello",
-        'contra': (123456789)
+        'nombre':'Brithanny Arguello',
+        'tipo' : 'admin',
+        'autenticacion':
+        {
+            'usuario':tuple(("barguello",)),
+            'contraseña':hashlib.md5('98765'.encode('ascii')).hexdigest()
+        }
     },
     {
         'nombre':'Steven Chacón',
