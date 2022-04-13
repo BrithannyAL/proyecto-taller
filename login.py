@@ -1,18 +1,23 @@
-import hashlib
 from base_de_datos import usuarios
 
 correcto = False
 
+nameU = "barguello"
+passw = "123456789"
+    
 while correcto == False:
     print("Digite el usuario y contraseña para ingresar")
 
     usuario = input("Usuario: ")
-    contra = hashlib.md5(input("Contraseña: ").encode('ascii')).hexdigest()
+    contra = input("Contraseña: ")
 
-    for item in usuarios:
-        if (usuario in item['autenticacion']['usuario']) and (contra in item['autenticacion']['contraseña']):
-            correcto = True
-            print("Ha ingresado como", item['tipo'])
+    #BUSCAR LA CONTRASEÑA Y USUARIO CORRECTO
+
+    if (usuario in nameU) and (contra in passw):
+        correcto = True
+        print("Ha ingresado")
     
     if correcto == False:
         print("Vuelva a intentar")
+
+    print("Quiero cambiar de pareja")

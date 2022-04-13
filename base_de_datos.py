@@ -1,5 +1,4 @@
 import hashlib
-from re import X
 
 
 carreras = [
@@ -160,6 +159,11 @@ estudiantes = [
     {
         'nombre':'Estudiante 1',
         'tipo' : 'estudiante',
+        'estudios' : 
+        {
+            'carreras' : (),
+            'cursos'   : ()
+        },
         'autenticacion':
         {
             'usuario':tuple(("e1",)),
@@ -169,12 +173,15 @@ estudiantes = [
     {
         'nombre':'Estudiente 2',
         'tipo' : 'estudiante',
+        'estudios' : 
+        {
+            'carreras' : (),
+            'cursos'   : ()
+        },
         'autenticacion':
         {
             'usuario':tuple(("e2",)),
             'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
         }
     }
-
-
               ]
