@@ -1,4 +1,14 @@
-def funcion(n):
-    for x in range(0, n):
-        n = n + 1
-    return n
+import hashlib
+import getpass
+import time
+
+def cifrar (entrada):
+    entrada_c=entrada.encode('ascii')
+    resultado = hashlib.md5(entrada_c)
+    return (resultado.hexdigest())
+
+
+def obtener_calve(mensaje):
+    pswd = getpass.getpass(mensaje+": ")
+    return (pswd)
+
