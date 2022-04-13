@@ -4,27 +4,27 @@ carreras = [
     {
         'carrera' : 'Ingenieraia en computacion',
         'semestres' : (8),
-        'cursos' : tuple(1,2,3,4,5,6,7)
+        'cursos' : tuple((1,2,3,4,5,6,7,))
     },
     {
         'carrera' : 'Ingenieria en agronomia',
         'semestres' : (8),
-        'cursos' : tuple(1,2,3,4,8,9,10)
+        'cursos' : tuple((1,2,3,4,8,9,10,))
     },
     {
         'carrera' : 'Administracion de empresas',
         'semestres' : (10),
-        'cursos' : tuple(1,2,3,4,11,12,13)
+        'cursos' : tuple((1,2,3,4,11,12,13,))
     },
     {
         'carrera' : 'Ingenieria en procuccion industrial',
         'semestres' : (12),
-        'cursos' : tuple(1,2,3,4,14,15)
+        'cursos' : tuple((1,2,3,4,14,15,))
     },
     {
         'carrera' : 'Ingenieria electronica',
         'semestres' : (10),
-        'cursos' : tuple(1,2,3,4,16,17)
+        'cursos' : tuple((1,2,3,4,16,17,))
     }
         ]
 
