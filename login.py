@@ -19,3 +19,5 @@ while correcto == False:
     
     if correcto == False:
         print("Vuelva a intentar")
+
+    print("Quiero cambiar de pareja")

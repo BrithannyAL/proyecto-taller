@@ -12,3 +12,4 @@ def obtener_calve(mensaje):
     pswd = getpass.getpass(mensaje+": ")
     return (pswd)
 
+
