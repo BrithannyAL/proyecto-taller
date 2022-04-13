@@ -1,3 +1,3 @@
-from funciones import funcion
+from login import login, menu
 
-print(funcion(5))
+login()
