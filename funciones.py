@@ -6,3 +6,4 @@ def funcion(n):
 print(funcion(5))
 
 print ("hola")
+print("hola también")

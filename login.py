@@ -13,14 +13,9 @@ while correcto == False:
 
     #BUSCAR LA CONTRASEÑA Y USUARIO CORRECTO
 
-    if (usuario in x) and (contra in x):
+    if (usuario in nameU) and (contra in passw):
         correcto = True
         print("Ha ingresado")
     
     if correcto == False:
         print("Vuelva a intentar")
-        
-        
-"""Estamos modificando un archivo para ver la cuestión de las ramas"""
-
-#ESTO ES PARA VERLO EN EL REMOTO (PRUEBA)   
