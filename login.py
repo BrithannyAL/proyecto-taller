@@ -1,5 +1,6 @@
 import hashlib
 from base_de_datos import usuarios
+from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
 
 def login():
     correcto = False
@@ -29,4 +30,11 @@ def menu(tipo):
         funciones_admin(input("¿Qué acción desea realizar? "))
 
 def funciones_admin(opcion):
-    print(opcion)
+    if opcion == 1:
+        agregar_curso()
+    elif opcion == 2:
+        modificar_curso()
+    elif opcion == 3:
+        agregar_carrera()
+    elif opcion == 4:
+        modificar_carrera()
