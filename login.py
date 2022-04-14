@@ -2,7 +2,7 @@
 from base_de_datos import usuarios
 from base_de_datos import estudiantes
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
-from funciones_estudiante import matricular_carrera, matricular_curso, tbd, tbd2
+from funciones_estudiante import tbd
 import hashlib
 
 def login():
@@ -22,13 +22,13 @@ def login():
                 correcto = True
                 print("Ha ingresado como ", item['tipo'])
                 while 1 > 0:
-                    menu(item2['tipo'])
+                    menu(item2['tipo'], usuario)
         if correcto == False:
             print("Vuelva a intentar")
             
 #Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
 
-def menu(tipo):
+def menu(tipo, usuario):
     if tipo == "admin":
         print("""********************************* Bienvenido usuario {} *********************************
             Menu de opciones:
@@ -37,7 +37,7 @@ def menu(tipo):
             3: Agregar carreras
             4: Modificar carreras
             5: Salir
-            """.format(tipo))
+            """.format(usuario))
         opcion = int(input("¿Qué acción desea realizar? "))
         funciones_admin(opcion)
     elif tipo == "estudiante":
@@ -49,9 +49,9 @@ def menu(tipo):
             3: tbd
             4: tbd
             5: Salir
-            """.format(tipo))
+            """.format(usuario))
         opcion = int(input("¿Qué acción desea realizar? "))
-        funciones_estudiante(opcion)
+        funciones_estudiante(opcion, usuario)
 
 
 def funciones_admin(opcion):
@@ -66,9 +66,9 @@ def funciones_admin(opcion):
     elif opcion == 5:
         quit()
 
-def funciones_estudiante(opcion):
+def funciones_estudiante(opcion, usuario):
     if opcion == 1:
-        matricular_carrera()
+        matricular_carrera(usuario)
     elif opcion == 2:
         matricular_curso()
     elif opcion == 3:
