@@ -16,7 +16,7 @@ def login():
                 correcto = True
                 print("Ha ingresado como", item['tipo'])
                 while 1 > 0:
-                    menu(item['tipo'])
+                    menu(item['tipo'], usuario)
         for item2 in estudiantes:
             if(usuario in item2['autenticacion']['usuario'] and (contra in item2['autenticacion']['contraseña'])):
                 correcto = True
