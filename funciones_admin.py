@@ -1,6 +1,5 @@
 from base_de_datos import carreras
 from base_de_datos import cursos
-from login import m
 
 def agregar_curso():
     last_code = cursos[-1]['código']
@@ -8,7 +7,7 @@ def agregar_curso():
     creditos = input("Ingrese la cantidad de creditos del curso: ")
     profesor = input("Ingrese el nombre del profesor del curso: ")
     codigo   = last_code + 1
-    nuevo_curso = {'curso' : curso, 'creditos' : creditos, 'Profesor' : profesor, 'código' : codigo}
+    nuevo_curso = {'curso' : curso, 'creditos' : creditos, 'Profesor' : profesor, 'codigo' : codigo}
     cursos.append(nuevo_curso)
     print("""
           El nuevo curso es:
@@ -16,7 +15,8 @@ def agregar_curso():
     #menu("admin")
     
 def modificar_curso():
-    print("Función que modifica curso")
+    imprimir_cursos()
+        
     
 def agregar_carrera():
     carrera_cursos = []
@@ -37,3 +37,8 @@ def agregar_carrera():
     
 def modificar_carrera():
     print("Función que modifica carrera")
+
+def imprimir_cursos():
+    print("*** Lista de cursos ***")
+    for item in cursos:
+        print("Código {}, curso {}".format(item['codigo']), item['curso'])

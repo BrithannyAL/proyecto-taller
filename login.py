@@ -30,8 +30,7 @@ def login():
 
 def menu(tipo):
     if tipo == "admin":
-        print("""*********************************
-             Bienvenido usuario {} *********************************
+        print("""********************************* Bienvenido usuario {} *********************************
             Menu de opciones:
             1: Agregar cursos
             2: Modificar cursos
@@ -74,5 +73,5 @@ def funciones_estudiante(opcion):
         matricular_curso()
     elif opcion == 3:
         tbd()
-    elif opcion == 4:
+    elif opcion == 5:
         quit()
