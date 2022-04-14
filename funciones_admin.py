@@ -1,8 +1,16 @@
 from pickle import TRUE
 from base_de_datos import carreras
+from base_de_datos import cursos
 
 def agregar_curso():
-    print("Función que agrega curso")
+    last_code = cursos[-1]['código']
+    salir = False
+    curso = input("Ingrese el nombre del curso que desea agregar: ")
+    creditos = input("Ingrese la cantidad de creditos del curso: ")
+    profesor = input("Ingrese el nombre del profesor del curso: ")
+    codigo   = last_code + 1
+    cursos.append({'curso' : curso, 'creditos' : creditos, 'Profesor' : profesor, 'código' : codigo})
+    print(cursos)
     
 def modificar_curso():
     print("Función que modifica curso")
