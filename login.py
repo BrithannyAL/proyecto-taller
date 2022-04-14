@@ -2,7 +2,7 @@
 from base_de_datos import usuarios
 from base_de_datos import estudiantes
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
-from funciones_estudiante import tbd
+from funciones_estudiante import matricular_carrera, matricular_curso, tbd
 import hashlib
 
 def login():
