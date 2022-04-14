@@ -1,5 +1,9 @@
 from base_de_datos import carreras
 from base_de_datos import cursos
+<<<<<<< HEAD
+=======
+from login import menu_login
+>>>>>>> menu
 
 def agregar_curso():
     last_code = cursos[-1]['código']
