@@ -165,7 +165,7 @@ estudiantes = [
         },
         'autenticacion':
         {
-            'usuario':tuple(("e1",)),
+            'usuario': 'e1',
             'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
         }
     },
@@ -179,7 +179,7 @@ estudiantes = [
         },
         'autenticacion':
         {
-            'usuario':tuple(("e2",)),
+            'usuario': "e2",
             'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
         }
     }
