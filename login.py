@@ -15,12 +15,14 @@ def login():
             if (usuario in item['autenticacion']['usuario']) and (contra in item['autenticacion']['contraseña']):
                 correcto = True
                 print("Ha ingresado como", item['tipo'])
-                menu(item['tipo'])
+                while 1 > 0:
+                    menu(item['tipo'])
         for item2 in estudiantes:
             if(usuario in item2['autenticacion']['usuario'] and (contra in item2['autenticacion']['contraseña'])):
                 correcto = True
                 print("Ha ingresado como ", item['tipo'])
-                menu(item2['tipo'])
+                while 1 > 0:
+                    menu(item2['tipo'])
         if correcto == False:
             print("Vuelva a intentar")
             
@@ -60,6 +62,8 @@ def funciones_admin(opcion):
         agregar_carrera()
     elif opcion == 4:
         modificar_carrera()
+    elif opcion == 5:
+        quit()
 
 def funciones_estudiante(opcion):
     if opcion == 1:
@@ -69,4 +73,4 @@ def funciones_estudiante(opcion):
     elif opcion == 3:
         tbd()
     elif opcion == 4:
-        tbd2()
+        quit()

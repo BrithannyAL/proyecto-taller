@@ -1,5 +1,9 @@
+from base_de_datos import carreras
+from base_de_datos import cursos
+
 def matricular_carrera():
-    print("Matricular carrera")
+    carrera_m = input("Ingrese el nombre de la carrera que desea matricular: ")
+    
 
 def matricular_curso():
     print("Matricular curso")
