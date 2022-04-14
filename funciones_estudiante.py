@@ -6,13 +6,28 @@ def matricular_carrera(usuario):
     carrera_m = input("Ingrese el nombre de la carrera que desea matricular: ")
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
-            i['carrera'] = carrera_m
-        print(i)
+            for x in carreras:
+                if x['carrera'] == carrera_m:
+                    i['carrera'] = carrera_m
+                    print(i)
+                    break
+            else:
+                print("La carrera ingresada no existe")
+        
 
 
 
-def matricular_curso():
-    print("Matricular curso")
+def matricular_curso(usuario):
+    curso_m = input("Ingrese el nombre del curso que desea matricular: ")
+    for i in estudiantes:
+        if i['autenticacion']['usuario'] == usuario:
+            for x in cursos:
+                if x['curso'] == curso_m:
+                    i['curso'] = curso_m
+                    print(i)
+                    break
+            else:
+                print("El curso ingresado no existe")
 
 def tbd():
     print("tbd")

@@ -71,7 +71,7 @@ def funciones_estudiante(opcion, usuario):
     if opcion == 1:
         matricular_carrera(usuario)
     elif opcion == 2:
-        matricular_curso()
+        matricular_curso(usuario)
     elif opcion == 3:
         tbd()
     elif opcion == 4:

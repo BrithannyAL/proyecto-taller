@@ -2,7 +2,7 @@ import hashlib
 
 carreras = [
     {
-        'carrera' : 'Ingenieraia en computacion',
+        'carrera' : 'Ingenieria en computacion',
         'semestres' : (8),
         'cursos' : (1,2,3,4,5,6,7)
     },
