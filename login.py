@@ -15,18 +15,17 @@ def login():
             if (usuario in item['autenticacion']['usuario']) and (contra in item['autenticacion']['contraseña']):
                 correcto = True
                 print("Ha ingresado como", item['tipo'])
-                menu(item['tipo'])
-        for item2 in estudiantes:
-            if(usuario in item2['autenticacion']['usuario'] and (contra in item2['autenticacion']['contraseña'])):
+                menu_login(item['tipo'])
+        for item in estudiantes:
+            if(usuario in item['autenticacion']['usuario'] and (contra in item['autenticacion']['contraseña'])):
                 correcto = True
                 print("Ha ingresado como ", item['tipo'])
-                menu(item2['tipo'])
+                menu_login(item['tipo'])
         if correcto == False:
             print("Vuelva a intentar")
             
 #Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
-
-def menu(tipo):
+def menu_login(tipo):
     if tipo == "admin":
         print("""*********************************
              Bienvenido usuario {} *********************************
