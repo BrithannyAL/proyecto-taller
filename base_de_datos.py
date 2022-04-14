@@ -33,103 +33,103 @@ cursos = [
         'curso' : "Matematica general",
         'creditos' : (3),
         'Profesor' : "Rocio De Los Angeles Quiros Oviedo",
-        'código' : (1)
+        'codigo' : (1)
     },
     {
         'curso' : "Comunicacion escrita",
         'creditos' : (2),
         'Profesor' : "",
-        'código' : (2)
+        'codigo' : (2)
     }, 
     {
         'curso' : "Ingles 1",
         'creditos' : (2),
         'Profesor' : "",
-        'código' : (3)
+        'codigo' : (3)
     },
     {
         'curso' : "Introduccion a la programacion",
         'creditos' : (2),
         'Profesor' : "",
-        'código' : (4)
+        'codigo' : (4)
     },
     {
         'curso' : "Taller de programacion",
         'creditos' : (3),
         'Profesor' : "",
-        'código' : (5)
+        'codigo' : (5)
     },
     {
         'curso' : "Fundamentos de organizacion de computadoras",
         'creditos' : (2),
         'Profesor' : "",
-        'código' : (6)
+        'codigo' : (6)
     },
     {
         'curso' : "Matematica discreta",
         'creditos' : (3),
         'Profesor' : "",
-        'código' : (7)
+        'codigo' : (7)
     },
     {
         'curso' : "Introduccion a la agronomia",
         'creditos' : (2),
         'Profesor' : "",
-        'código' : (8)
+        'codigo' : (8)
     },
     {
         'curso' : "Agromatica",
         'creditos' : (3),
         'Profesor' : "",
-        'código' : (9)
+        'codigo' : (9)
     },
     {
         'curso' : "Biologia general",
         'creditos' : (3),
         'Profesor' : "",
-        'código' : (10)
+        'codigo' : (10)
     },
     {
         'curso' : "Introduccion a la administracion de empresas",
         'creditos' : (2),
         'Profesor' : "",
-        'código' : (11)
+        'codigo' : (11)
     },
     {
         'curso' : "Computacion para administracion",
         'creditos' : (2),
         'Profesor' : "",
-        'código' : (12)
+        'codigo' : (12)
     },
     {
         'curso' : "Matematica para administracion",
         'creditos' : (3),
         'Profesor' : "",
-        'código' : (13)
+        'codigo' : (13)
     },
        {
         'curso' : "Dibujo tecnico",
         'creditos' : (2),
         'Profesor' : "",
-        'código' : (14)
+        'codigo' : (14)
     },
        {
         'curso' : "Quimica basica",
         'creditos' : (2),
         'Profesor' : "",
-        'código' : (15)
+        'codigo' : (15)
     },
        {
         'curso' : "Introduccion a la ingenieria",
         'creditos' : (3),
         'Profesor' : "",
-        'código' : (16)
+        'codigo' : (16)
     },
        {
         'curso' : "Calculo diferencial e integral ",
         'creditos' : (4),
         'Profesor' : "",
-        'código' : (17)
+        'codigo' : (17)
     },
 ]
 

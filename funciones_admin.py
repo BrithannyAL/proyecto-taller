@@ -1,6 +1,6 @@
 from base_de_datos import carreras
 from base_de_datos import cursos
-from login import m
+
 
 def agregar_curso():
     last_code = cursos[-1]['código']
