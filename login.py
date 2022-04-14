@@ -16,11 +16,11 @@ def login():
                 correcto = True
                 print("Ha ingresado como", item['tipo'])
                 menu(item['tipo'])
-            for item2 in estudiantes:
-                if(usuario in item2['autenticacion']['usuario'] and (contra in item2['autenticacion']['contraseña'])):
-                    correcto = True
-                    print("Ha ingresado como ", item['tipo'])
-                    menu(item2['tipo'])
+        for item2 in estudiantes:
+            if(usuario in item2['autenticacion']['usuario'] and (contra in item2['autenticacion']['contraseña'])):
+                correcto = True
+                print("Ha ingresado como ", item['tipo'])
+                menu(item2['tipo'])
         if correcto == False:
             print("Vuelva a intentar")
             
