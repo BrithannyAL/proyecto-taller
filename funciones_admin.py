@@ -1,9 +1,5 @@
 from base_de_datos import carreras
 from base_de_datos import cursos
-<<<<<<< HEAD
-=======
-from login import menu_login
->>>>>>> menu
 
 def agregar_curso():
     last_code = cursos[-1]['código']
@@ -20,6 +16,20 @@ def agregar_curso():
     
 def modificar_curso():
     imprimir_cursos()
+    curso_a_modificar = int(input("Escriba el código del curso que desea modificar: "))
+    nombre_curso = input("""
+                         El título del curso es {}
+                         ¿Desea modificar el nombre del curso? (y/n) """
+                         .format(cursos[curso_a_modificar]['curso']))
+    profe = input("""
+                  El nombre del profesor del curso es {}
+                  ¿Desea modificar el profesor que imparte el curso? (y/n) """
+                  .format(cursos[curso_a_modificar]['Profesor']))
+    if nombre_curso == "y":
+        cursos[curso_a_modificar]['curso'] = input("Nuevo título para el curso: ")
+    if profe == "y":
+        cursos[curso_a_modificar]['Profesor'] = input("Nuevo profesor para el curso: ")
+    print("""El curso ha sido modificado: {}""".format(cursos[curso_a_modificar]))
         
     
 def agregar_carrera():
@@ -43,6 +53,6 @@ def modificar_carrera():
     print("Función que modifica carrera")
 
 def imprimir_cursos():
-    print("*** Lista de cursos ***")
+    print("***** Lista de cursos *****")
     for item in cursos:
-        print("Código {}, curso {}".format(item['codigo']), item['curso'])
+        print("Código {}, curso {}".format(item['codigo'], item['curso']))
