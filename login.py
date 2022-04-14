@@ -1,3 +1,4 @@
+#Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
 from base_de_datos import usuarios
 from base_de_datos import estudiantes
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
@@ -23,6 +24,8 @@ def login():
         if correcto == False:
             print("Vuelva a intentar")
             
+#Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
+
 def menu(tipo):
     if tipo == "admin":
         print("""
