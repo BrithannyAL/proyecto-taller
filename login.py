@@ -9,7 +9,7 @@ def login():
     correcto = False
     while correcto == False:
         print("Digite el usuario y contraseña para ingresar")
-        print("Presione x para salir")
+        print("Presione 'x' para cerrar el software")
         usuario = input("Usuario: ")
         if usuario == "x":
             quit()
@@ -40,7 +40,7 @@ def menu(tipo, usuario, nombre):
             2: Modificar cursos
             3: Agregar carreras
             4: Modificar carreras
-            5: Salir
+            5: Salir del usuario
             """.format(nombre))
         opcion = int(input("¿Qué acción desea realizar? "))
         funciones_admin(opcion)
@@ -52,7 +52,7 @@ def menu(tipo, usuario, nombre):
             2: Matricular un curso
             3: Ver mi horario
             4: tbd
-            5: Salir
+            5: Salir del usuario
             """.format(usuario))
         opcion = int(input("¿Qué acción desea realizar? "))
         funciones_estudiante(opcion, usuario)
