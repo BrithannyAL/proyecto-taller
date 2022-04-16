@@ -1,6 +1,5 @@
 #Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
-from base_de_datos import usuarios
-from base_de_datos import estudiantes
+from base_de_datos import usuarios, estudiantes
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
 from funciones_estudiante import matricular_carrera, matricular_curso, ver_horario
 import hashlib
