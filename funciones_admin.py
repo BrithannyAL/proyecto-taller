@@ -26,7 +26,7 @@ def agregar_curso():
     
 def modificar_curso():
     imprimir_cursos(0)
-    lista_cursos = list(cursos)
+    lista_cursos = [*cursos]
     curso_a_modificar = int(input("Escriba el código del curso que desea modificar: "))
     nombre_curso = input("""
                          El título del curso es {}

@@ -20,9 +20,6 @@ def matricular_carrera(usuario):
             else:
                 print("La carrera ingresada no existe")
         
-
-
-
 def matricular_curso(usuario):
     curso_m = input("Ingrese el nombre del curso que desea matricular: ")
     for i in estudiantes:
@@ -40,10 +37,6 @@ def matricular_curso(usuario):
                     break
             else:
                 print("El curso ingresado no existe")
-
-
-
-
 
 
 def ver_horario(usuario):
