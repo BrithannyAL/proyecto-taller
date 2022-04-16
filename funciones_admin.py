@@ -31,11 +31,11 @@ def modificar_curso():
     nombre_curso = input("""
                          El título del curso es {}
                          ¿Desea modificar el nombre del curso? (y/n) """
-                         .format(cursos[curso_a_modificar]['curso']))
+                         .format(lista_cursos[curso_a_modificar]['curso']))
     horas_lectivas = input("""
                            La cantidad de horas del curso es {}
                            ¿Desea modificar la cantidad de horas que imparte el curso? (y/n) """
-                           .format(cursos[curso_a_modificar]['horas_lectivas']))
+                           .format(lista_cursos[curso_a_modificar]['horas_lectivas']))
     if nombre_curso == "y":
         lista_cursos[curso_a_modificar]['curso'] = input("Nuevo título para el curso: ")
     if horas_lectivas == "y":
