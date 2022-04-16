@@ -31,13 +31,16 @@ def matricular_curso(usuario):
                 if x['curso'] == curso_m:
                     i['curso'] = curso_m
                     print(i)
+                for y in estudiantes:
+                    if x['horario_de_clases'][0] in y['horario']:
+                       
+                        print("Dia encontrado")
+                    else:
+                        print("Dia no encontrado")
                     break
             else:
                 print("El curso ingresado no existe")
-    for x in cursos:
-        for y in estudiantes:
-            if x['horario_de_clases'][0] == y['horario']:
-                print("")
+
 
 
 
