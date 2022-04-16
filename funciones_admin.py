@@ -1,13 +1,25 @@
 from base_de_datos import carreras
 from base_de_datos import cursos
 
+
+    #credito = tres horas
+    #Tenemos las horas lectivas que se restan a dichas horas
+def calcular_horas():
+    for i in cursos:
+        horas = cursos['creditos']
+        horas_lectivas = cursos['horas_lectivas']
+        horas = horas * 3
+        horas = horas - horas_lectivas
+
+
+
 def agregar_curso():
-    last_code = cursos[-1]['código']
+    last_code = cursos[-1]['codigo']
     curso = input("Ingrese el nombre del curso que desea agregar: ")
     creditos = input("Ingrese la cantidad de creditos del curso: ")
-    profesor = input("Ingrese el nombre del profesor del curso: ")
+    horas_l = input("Ingrese la cantidad de horas lectivas del curso: ")
     codigo   = last_code + 1
-    nuevo_curso = {'curso' : curso, 'creditos' : creditos, 'Profesor' : profesor, 'codigo' : codigo}
+    nuevo_curso = {'curso' : curso, 'creditos' : creditos, 'horas lectivas' : horas_l, 'codigo' : codigo}
     cursos.append(nuevo_curso)
     print("""
           El nuevo curso es:
@@ -21,14 +33,14 @@ def modificar_curso():
                          El título del curso es {}
                          ¿Desea modificar el nombre del curso? (y/n) """
                          .format(cursos[curso_a_modificar]['curso']))
-    profe = input("""
-                  El nombre del profesor del curso es {}
-                  ¿Desea modificar el profesor que imparte el curso? (y/n) """
-                  .format(cursos[curso_a_modificar]['Profesor']))
+    horas_lectivas = input("""
+                  La cantidad de horas del curso es {}
+                  ¿Desea modificar la cantidad de horas que imparte el curso? (y/n) """
+                  .format(cursos[curso_a_modificar]['horas lectivas']))
     if nombre_curso == "y":
         cursos[curso_a_modificar]['curso'] = input("Nuevo título para el curso: ")
-    if profe == "y":
-        cursos[curso_a_modificar]['Profesor'] = input("Nuevo profesor para el curso: ")
+    if horas_lectivas == "y":
+        cursos[curso_a_modificar]['horas lectivas'] = input("Nuevo horas_l para el curso: ")
     print("""El curso ha sido modificado: {}""".format(cursos[curso_a_modificar]))
         
     
@@ -56,3 +68,4 @@ def imprimir_cursos():
     print("***** Lista de cursos *****")
     for item in cursos:
         print("Código {}, curso {}".format(item['codigo'], item['curso']))
+    

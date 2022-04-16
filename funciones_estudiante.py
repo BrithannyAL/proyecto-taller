@@ -3,6 +3,12 @@ from base_de_datos import cursos
 from base_de_datos import estudiantes
 
 def matricular_carrera(usuario):
+    print("")
+    print("Las carreras disponibles son: ")
+    print("")
+    for i in carreras:
+        print(i['carrera'])
+        print("")
     carrera_m = input("Ingrese el nombre de la carrera que desea matricular: ")
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
@@ -28,9 +34,21 @@ def matricular_curso(usuario):
                     break
             else:
                 print("El curso ingresado no existe")
+    for x in cursos:
+        for y in estudiantes:
+            if x['horario_de_clases'][0] == y['horario']:
+                print("")
 
-def tbd():
-    print("tbd")
+
+
+
+
+def ver_horario(usuario):
+    
+    for i in estudiantes:
+        if i['autenticacion']['usuario'] == usuario:
+            print (i['horario'])
+            print("")
 
 def tbd2():
     print("tbd")

@@ -2,14 +2,17 @@
 from base_de_datos import usuarios
 from base_de_datos import estudiantes
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
-from funciones_estudiante import matricular_carrera, matricular_curso, tbd
+from funciones_estudiante import matricular_carrera, matricular_curso, ver_horario
 import hashlib
 
 def login():
     correcto = False
     while correcto == False:
         print("Digite el usuario y contraseña para ingresar")
+        print("Presione x para salir")
         usuario = input("Usuario: ")
+        if usuario == "x":
+            quit()
         contra = hashlib.md5(input("Contraseña: ").encode('ascii')).hexdigest()
         for item in usuarios:
             if (usuario in item['autenticacion']['usuario']) and (contra in item['autenticacion']['contraseña']):
@@ -22,9 +25,10 @@ def login():
                 correcto = True
                 print("Ha ingresado como ", item['tipo'])
                 while 1 > 0:
-                    menu(item['tipo'], usuario,)
+                    menu(item['tipo'], usuario, item['nombre'])
         if correcto == False:
             print("Vuelva a intentar")
+
             
 #Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
 
@@ -46,7 +50,7 @@ def menu(tipo, usuario, nombre):
             Menu de opciones:
             1: Matricular una carrera
             2: Matricular un curso
-            3: tbd
+            3: Ver mi horario
             4: tbd
             5: Salir
             """.format(usuario))
@@ -64,7 +68,7 @@ def funciones_admin(opcion):
     elif opcion == 4:
         modificar_carrera()
     elif opcion == 5:
-        quit()
+        login()
 
 def funciones_estudiante(opcion, usuario):
     if opcion == 1:
@@ -72,6 +76,6 @@ def funciones_estudiante(opcion, usuario):
     elif opcion == 2:
         matricular_curso(usuario)
     elif opcion == 3:
-        tbd()
+        ver_horario(usuario)
     elif opcion == 5:
-        quit()
+        login()
