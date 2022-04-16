@@ -33,8 +33,12 @@ def matricular_curso(usuario):
                     print(i)
                 for y in estudiantes:
                     if x['horario_de_clases'][0] in y['horario']:
-                       
-                        print("Dia encontrado")
+                        dia = y['horario']
+                        print(x['horario_de_clases'][1])
+                        print(dia)
+                        if x['horario_de_clases'][1]  in dia:
+                            print("Dia encontrado")
+                            break
                     else:
                         print("Dia no encontrado")
                     break
