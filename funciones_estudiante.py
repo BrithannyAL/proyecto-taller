@@ -1,6 +1,7 @@
 from base_de_datos import carreras
 from base_de_datos import cursos
 from base_de_datos import estudiantes
+import pprint
 
 def matricular_carrera(usuario):
     print("")
@@ -32,13 +33,24 @@ def matricular_curso(usuario):
                     i['curso'] = curso_m
                     print(i)
                 for y in estudiantes:
-                    if x['horario_de_clases'][0] in y['horario']:
-                        dia = y['horario']
-                        print(x['horario_de_clases'][1])
+                    if x['horario_de_clases'][0] in y['horario']: #Entra al horario y recorre los dias, por lo tanto el dia ya es el mismo
+                        llaves_dias = list
+                        llaves_dias = y['horario'].keys()
+                        for a in llaves_dias:
+                           if x['horario_de_clases'][0] == a:
+                                dia = a
+                                llaves_horas = list
+                                llaves_horas = y['horario'][dia].keys()
+                                for b in llaves_horas:
+                                    if x['horario_de_clases'][1] == b:
+                                        hora = b
+                                        print(y['horario'][dia][hora] )
+                                        print(x['horario_de_clases'][2])
+                                        y['horario'][dia][hora] = curso_m
+                                        pprint.pprint(y['horario'])
+                                        quit()
+                                break
                         print(dia)
-                        if x['horario_de_clases'][1]  in dia:
-                            print("Dia encontrado")
-                            break
                     else:
                         print("Dia no encontrado")
                     break
