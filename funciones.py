@@ -3,6 +3,7 @@ import getpass
 import time
 from base_de_datos import cursos
 
+
 def cifrar (entrada):
     entrada_c=entrada.encode('ascii')
     resultado = hashlib.md5(entrada_c)
@@ -17,4 +18,3 @@ def calcular_horas():
         horas = cursos['creditos']
         horas_lectivas = cursos['horas_lectivas']
         horas = horas * 3
-        horas = horas - horas_lectivas
