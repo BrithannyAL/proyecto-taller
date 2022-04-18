@@ -1,5 +1,5 @@
 #Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
-from base_de_datos import usuarios, estudiantes
+from base_de_datos import usuarios, estudiantes, carreras, cursos
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
 from funciones_estudiante import matricular_carrera, matricular_curso, ver_horario
 import hashlib
@@ -58,12 +58,13 @@ def menu(tipo, usuario, nombre):
 
 
 def funciones_admin(opcion):
+    global carreras
     if opcion == 1:
         agregar_curso()
     elif opcion == 2:
         modificar_curso()
     elif opcion == 3:
-        agregar_carrera()
+        carreras = agregar_carrera(list(carreras))
     elif opcion == 4:
         modificar_carrera()
     elif opcion == 5:

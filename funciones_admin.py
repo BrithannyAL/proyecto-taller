@@ -1,6 +1,3 @@
-from base_de_datos import carreras
-from base_de_datos import cursos
-
 def agregar_curso():
     last_code = cursos[-1]['codigo']
     curso = input("Ingrese el nombre del curso que desea agregar: ")
@@ -30,10 +27,10 @@ def modificar_curso():
         cursos[curso_a_modificar -1]['horas_lectivas'] = input("Nuevo horas lectivas para el curso: ")
     print("""El curso ha sido modificado: {}""".format(cursos[curso_a_modificar -1]))
     
-def agregar_carrera():
+def agregar_carrera(lista_carrera):
     salir = False
     carrera_cursos = []
-    codigo = (carreras[-1]['codigo']) + 1
+    codigo = (lista_carrera[-1]['codigo']) + 1
     carrera_name = input("Ingrese el nombre de la carrera que desea agregar: ")
     carrera_semestres = input("Ingrese la cantidad de semestres de la carrera: ")
     imprimir(0)
@@ -45,8 +42,9 @@ def agregar_carrera():
                 del carrera_cursos[-1]  
                 salir = True
     nueva_carrera = {'carrera' : carrera_name, 'semestres' : carrera_semestres, 'cursos' : carrera_cursos, 'codigo': codigo}
-    carreras.append(nueva_carrera)
+    lista_carrera.append(nueva_carrera)
     print(nueva_carrera)
+    return tuple(lista_carrera)
     
 def modificar_carrera():
     imprimir(1)

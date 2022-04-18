@@ -1,6 +1,6 @@
 import hashlib
 
-carreras = [
+carreras = (
     {
         'carrera': 'Ingenieria en computacion',
         'semestres': 8,
@@ -31,7 +31,7 @@ carreras = [
         'cursos': [1, 2, 3, 4, 16, 17],
         'codigo': 5
     }
-]
+)
 
 cursos = [
     {
