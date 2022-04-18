@@ -35,157 +35,157 @@ carreras = (
 
 cursos = [
     {
-        'curso' : "Matematica general",
-        'creditos' : [3],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['lunes' , 9 , 12],
-        'codigo' : [1]
+        'curso': "Matematica general",
+        'creditos': 3,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['lunes', 9, 12],
+        'codigo': 1
     },
     {
-        'curso' : "Comunicacion escrita",
-        'creditos' : [2],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['martes' , 9 , 12],
-        'codigo' : [2]
-    }, 
-    {
-        'curso' : "Ingles 1",
-        'creditos' : [2],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['miercoles' , 9 , 12],
-        'codigo' : [3]
+        'curso': "Comunicacion escrita",
+        'creditos': 2,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['martes', 9, 12],
+        'codigo': 2
     },
     {
-        'curso' : "Introduccion a la programacion",
-        'creditos' : [2],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['martes' , 7 , 8],
-        'codigo' : [4]
+        'curso': "Ingles 1",
+        'creditos': 2,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['miercoles', 9, 12],
+        'codigo': 3
     },
     {
-        'curso' : "Taller de programacion",
-        'creditos' : [3],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['jueves' , 9 , 12],
-        'codigo' : [5]
+        'curso': "Introduccion a la programacion",
+        'creditos': 2,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['martes', 7, 8],
+        'codigo': 4
     },
     {
-        'curso' : "Fundamentos de organizacion de computadoras",
-        'creditos' : [2],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['viernes' , 9 , 12],
-        'codigo' : [6]
+        'curso': "Taller de programacion",
+        'creditos': 3,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['jueves', 9, 12],
+        'codigo': 5
     },
     {
-        'curso' : "Matematica discreta",
-        'creditos' : [3],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['lunes' , 13 , 14],
-        'codigo' : [7]
+        'curso': "Fundamentos de organizacion de computadoras",
+        'creditos': 2,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['viernes', 9, 12],
+        'codigo': 6
     },
     {
-        'curso' : "Introduccion a la agronomia",
-        'creditos' : [2],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['martes' , 13 , 14],
-        'codigo' : [8]
+        'curso': "Matematica discreta",
+        'creditos': 3,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['lunes', 13, 14],
+        'codigo': 7
     },
     {
-        'curso' : "Agromatica",
-        'creditos' : [3],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['miercoles' , 14 , 15],
-        'codigo' : [9]
+        'curso': "Introduccion a la agronomia",
+        'creditos': 2,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['martes', 13, 14],
+        'codigo': 8
     },
     {
-        'curso' : "Biologia general",
-        'creditos' : [3],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['jueves' , 16 , 17],
-        'codigo' : [10]
+        'curso': "Agromatica",
+        'creditos': 3,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['miercoles', 14, 15],
+        'codigo': 9
     },
     {
-        'curso' : "Introduccion a la administracion de empresas",
-        'creditos' : [2],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['viernes' , 18 , 19],
-        'codigo' : [11]
+        'curso': "Biologia general",
+        'creditos': 3,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['jueves', 16, 17],
+        'codigo': 10
     },
     {
-        'curso' : "Computacion para administracion",
-        'creditos' : [2],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['lunes' , 18 , 19],
-        'codigo' : [12]
+        'curso': "Introduccion a la administracion de empresas",
+        'creditos': 2,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['viernes', 18, 19],
+        'codigo': 11
     },
     {
-        'curso' : "Matematica para administracion",
-        'creditos' : [3],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['martes' , 15 , 14],
-        'codigo' : [13]
+        'curso': "Computacion para administracion",
+        'creditos': 2,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['lunes', 18, 19],
+        'codigo': 12
     },
-       {
-        'curso' : "Dibujo tecnico",
-        'creditos' : [2],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['miercoles' , 19 , 19],
-        'codigo' : [14]
+    {
+        'curso': "Matematica para administracion",
+        'creditos': 3,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['martes', 15, 14],
+        'codigo': 13
     },
-       {
-        'curso' : "Quimica basica",
-        'creditos' : [2],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['martes' , 9 , 12],
-        'codigo' : [15]
+    {
+        'curso': "Dibujo tecnico",
+        'creditos': 2,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['miercoles', 19, 19],
+        'codigo': 14
     },
-       {
-        'curso' : "Introduccion a la ingenieria",
-        'creditos' : [3],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['martes' , 13 , 14],
-        'codigo' : [16]
+    {
+        'curso': "Quimica basica",
+        'creditos': 2,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['martes', 9, 12],
+        'codigo': 15
     },
-       {
-        'curso' : "Calculo diferencial e integral ",
-        'creditos' : [4],
-        'horas_lectivas' : 3,
-        'fecha_inicio' : int,
-        'fecha_final' : int,
-        'horario_de_clases' : ['miercoles' , 18 , 19],
-        'codigo' : [17]
+    {
+        'curso': "Introduccion a la ingenieria",
+        'creditos': 3,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['martes', 13, 14],
+        'codigo': 16
+    },
+    {
+        'curso': "Calculo diferencial e integral ",
+        'creditos': 4,
+        'horas_lectivas': 3,
+        'fecha_inicio': int,
+        'fecha_final': int,
+        'horario_de_clases': ['miercoles', 18, 19],
+        'codigo': 17
     },
     {
         'curso': "Calculo diferencial e integral ",
@@ -205,7 +205,7 @@ usuarios = [
         'autenticacion':
         {
             'usuario': 'barguello',
-            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
+            'contraseña': hashlib.md5('12345'.encode('ascii')).hexdigest()
         }
     },
     {
@@ -214,38 +214,38 @@ usuarios = [
         'autenticacion':
         {
             'usuario': 'shcacon',
-            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
+            'contraseña': hashlib.md5('12345'.encode('ascii')).hexdigest()
         }
     }
 ]
 
 
-estudiantes = (
+estudiantes = [
     {
         'nombre': 'Estudiante 1',
         'tipo': 'estudiante',
         'tiempo': int,
         'estudios':
         {
-            'carreras' :[],
-            'cursos'   :[]
+            'carreras': [],
+            'cursos':[]
         },
         'autenticacion':
         {
             'usuario': 'e1',
-            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
+            'contraseña': hashlib.md5('12345'.encode('ascii')).hexdigest()
         },
         'horario':
-                    {
-            'lunes' :      {7 : [], 8:  [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'martes' :     {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'miercoles' :  {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'jueves' :     {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'viernes' :    {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'sabado' :     {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'domingo' :    {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-                        
-                    }
+        {
+            'lunes':      {7: [], 8:  [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'martes':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'miercoles':  {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'jueves':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'viernes':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'sabado':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'domingo':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+
+        }
 
     },
     {
@@ -254,24 +254,24 @@ estudiantes = (
         'tiempo': int,
         'estudios':
         {
-            'carreras' :[],
-            'cursos'   :[]
+            'carreras': [],
+            'cursos':[]
         },
         'autenticacion':
         {
             'usuario': "e2",
-            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
+            'contraseña': hashlib.md5('12345'.encode('ascii')).hexdigest()
         },
         'horario':
-                    {
-            'lunes' :      {7 : [], 8:  [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'martes' :     {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'miercoles' :  {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'jueves' :     {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'viernes' :    {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'sabado' :     {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-            'domingo' :    {7 : [], 8 : [], 9 : [], 10 :[], 11 :[], 12 :[], 13 :[],14 :[], 15 :[], 16 :[],17 :[],18 :[],19 :[],},
-                        
-                    }
+        {
+            'lunes':      {7: [], 8:  [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'martes':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'miercoles':  {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'jueves':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'viernes':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'sabado':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'domingo':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+
+        }
     }
-)
+]
