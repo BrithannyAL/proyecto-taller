@@ -1,14 +1,15 @@
-def agregar_curso():
-    last_code = cursos[-1]['codigo']
+def agregar_curso(lista_cursos):
+    last_code = lista_cursos[-1]['codigo']
     curso = input("Ingrese el nombre del curso que desea agregar: ")
     creditos = input("Ingrese la cantidad de creditos del curso: ")
     horas_l = input("Ingrese la cantidad de horas lectivas del curso: ")
     codigo   = last_code + 1
     nuevo_curso = {'curso' : curso, 'creditos' : creditos, 'horas_lectivas' : horas_l, 'codigo' : codigo}
-    cursos.append(nuevo_curso)
+    lista_cursos.append(nuevo_curso)
     print("""
           El nuevo curso es:
           {}""".format(nuevo_curso))
+    return tuple(lista_cursos)
     
 
 def modificar_curso():

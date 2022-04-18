@@ -59,10 +59,11 @@ def menu(tipo, usuario, nombre):
 
 def funciones_admin(opcion):
     global carreras
+    global cursos
     if opcion == 1:
-        agregar_curso()
+       cursos = agregar_curso(list(cursos))
     elif opcion == 2:
-        modificar_curso()
+        cursos = modificar_curso(list(cursos))
     elif opcion == 3:
         carreras = agregar_carrera(list(carreras), cursos)
     elif opcion == 4:
