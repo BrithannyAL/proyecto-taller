@@ -66,7 +66,7 @@ def funciones_admin(opcion):
     elif opcion == 3:
         carreras = agregar_carrera(list(carreras), cursos)
     elif opcion == 4:
-        modificar_carrera()
+        carreras = modificar_carrera(list(carreras), cursos)
     elif opcion == 5:
         login()
 
