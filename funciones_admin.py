@@ -11,6 +11,7 @@ def calcular_horas():
         horas = horas * 3
         horas = horas - horas_lectivas
 
+
 def agregar_curso():
     last_code = cursos[-1]['codigo']
     curso = input("Ingrese el nombre del curso que desea agregar: ")
@@ -24,6 +25,7 @@ def agregar_curso():
           {}""".format(nuevo_curso))
     #menu("admin")
     
+
 def modificar_curso():
     imprimir_cursos(0)
     lista_cursos = list(cursos)
@@ -60,8 +62,10 @@ def agregar_carrera():
     carreras.append(nueva_carrera)
     print(nueva_carrera)
     
+
 def modificar_carrera():
     return
+
 
 def imprimir_cursos(num):
     lista = [cursos, carreras]

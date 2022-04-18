@@ -5,6 +5,7 @@ from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, mod
 from funciones_estudiante import matricular_carrera, matricular_curso, ver_horario
 import hashlib
 
+
 def login():
     correcto = False
     while correcto == False:
@@ -31,7 +32,6 @@ def login():
 
             
 #Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
-
 def menu(tipo, usuario, nombre):
     if tipo == "admin":
         print("""********************************* Bienvenido {} *********************************
@@ -69,6 +69,7 @@ def funciones_admin(opcion):
         modificar_carrera()
     elif opcion == 5:
         login()
+
 
 def funciones_estudiante(opcion, usuario):
     if opcion == 1:

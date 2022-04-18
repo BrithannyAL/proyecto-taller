@@ -1,7 +1,6 @@
 import hashlib
 import getpass
 import time
-from base_de_datos import cursos
 
 
 def cifrar (entrada):

@@ -1,6 +1,3 @@
-from base_de_datos import carreras
-from base_de_datos import cursos
-from base_de_datos import estudiantes
 
 
 def matricular_carrera(usuario):
@@ -92,10 +89,6 @@ def matricular_curso(usuario):
                     print("El curso ingresado no existe")
 
 
-
-
-
-
 def ver_horario(usuario):
     
     for i in estudiantes:
@@ -109,7 +102,8 @@ def ver_horario(usuario):
             print ('Domingo: ' , i['horario']['viernes'])
             print("")
 
-def tbd2():
+
+def registro_actividades():
     print("tbd")
 
 
