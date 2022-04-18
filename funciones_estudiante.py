@@ -14,8 +14,8 @@ def matricular_carrera(usuario):
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
             for x in carreras:
-                if x['carrera'] == carrera_m:
-                    i['carrera'] = carrera_m
+                if  x['carrera'] == carrera_m:
+                    i['estudios']['carreras'] = carrera_m
                     print(i)
                     break
             else:
@@ -33,6 +33,10 @@ def matricular_curso(usuario):
     curso_m = input("Ingrese el nombre del curso que desea matricular: ")
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
+            print(i['estudios']['carreras'])
+            if i['estudios']['carreras'] == ():
+                print("Primero ingrese una carrera")
+                break
             for x in cursos:
                 if flag == True:
                     break
@@ -81,7 +85,13 @@ def ver_horario(usuario):
     
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
-            print (i['horario'])
+            print ('Lunes: ' , i['horario']['lunes'])
+            print ('Martes: ' , i['horario']['martes'])
+            print ('Miercoles: ' , i['horario']['miercoles'])
+            print ('Jueves: ' , i['horario']['jueves'])
+            print ('Viernes: ' , i['horario']['viernes'])
+            print ('Sabado: ' , i['horario']['sabado'])
+            print ('Domingo: ' , i['horario']['viernes'])
             print("")
 
 def tbd2():
