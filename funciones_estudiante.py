@@ -1,9 +1,4 @@
-from base_de_datos import carreras
-from base_de_datos import cursos
-from base_de_datos import estudiantes
-
-
-def matricular_carrera(usuario):
+def matricular_carrera(usuario, carreras, estudiantes):
     print("")
     print("Las carreras disponibles son: ")
     print("")
@@ -27,7 +22,7 @@ def matricular_carrera(usuario):
     #Si el código está en el estudiante pero no en la carrera tampoco
     
 
-def matricular_curso(usuario):
+def matricular_curso(usuario, carreras, cursos, estudiantes):
     flag = False
     print("Estos son los cursos disponibles: ")
     
@@ -75,12 +70,16 @@ def matricular_curso(usuario):
                                                             hora_inicio = x['horario_de_clases'][1]
                                                             hora_final  = x['horario_de_clases'][2]
                                                             cantidad_horas = hora_final - hora_inicio
-
                                                             for contador in range(cantidad_horas):
                                                                 contador = 1
-                                                                y['horario'][dia][hora] = curso_m
-                                                                hora = hora + contador
-                                                                contador =+ 1
+                                                                if y['horario'][dia][hora] == ():
+                                                                    y['horario'][dia][hora] = curso_m
+                                                                    hora = hora + contador
+                                                                    contador =+ 1
+                                                                else:
+                                                                    print("Usted tiene un choque de horarios")
+                                                                    flag = True
+                                                                    break 
                                                             print(y['horario'][dia])
                                                             flag = True
                                                             break 
@@ -92,7 +91,7 @@ def matricular_curso(usuario):
                     print("El curso ingresado no existe")
 
 
-def ver_horario(usuario):
+def ver_horario(usuario, estudiantes):
     
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
@@ -105,5 +104,12 @@ def ver_horario(usuario):
             print ('Domingo: ' , i['horario']['viernes'])
             print("")
 
-def tbd2():
+
+def registro_actividades():
     print("tbd")
+
+
+
+
+
+    

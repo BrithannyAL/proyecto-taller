@@ -1,8 +1,9 @@
 #Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
-from base_de_datos import usuarios, estudiantes
+from base_de_datos import usuarios, estudiantes, carreras, cursos
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
 from funciones_estudiante import matricular_carrera, matricular_curso, ver_horario
 import hashlib
+
 
 def login():
     correcto = False
@@ -30,7 +31,6 @@ def login():
 
             
 #Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
-
 def menu(tipo, usuario, nombre):
     if tipo == "admin":
         print("""********************************* Bienvenido {} *********************************
@@ -54,7 +54,7 @@ def menu(tipo, usuario, nombre):
             5: Salir del usuario
             """.format(usuario))
         opcion = int(input("¿Qué acción desea realizar? "))
-        funciones_estudiante(opcion, usuario)
+        funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes)
 
 
 def funciones_admin(opcion):
@@ -69,12 +69,13 @@ def funciones_admin(opcion):
     elif opcion == 5:
         login()
 
-def funciones_estudiante(opcion, usuario):
+
+def funciones_estudiante(opcion, usuario, carreras, cursos):
     if opcion == 1:
-        matricular_carrera(usuario)
+        matricular_carrera(usuario, carreras, cursos, estudiantes)
     elif opcion == 2:
-        matricular_curso(usuario)
+        matricular_curso(usuario, carreras, cursos, estudiantes)
     elif opcion == 3:
-        ver_horario(usuario)
+        ver_horario(usuario, carreras, cursos, estudiantes)
     elif opcion == 5:
         login()

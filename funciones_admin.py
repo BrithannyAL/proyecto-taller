@@ -3,13 +3,13 @@ from base_de_datos import cursos
 
 #credito = tres horas
 #Tenemos las horas lectivas que se restan a dichas horas
-
 def calcular_horas():
     for i in cursos:
         horas = cursos['creditos']
         horas_lectivas = cursos['horas_lectivas']
         horas = horas * 3
         horas = horas - horas_lectivas
+
 
 def agregar_curso():
     last_code = cursos[-1]['codigo']
@@ -24,6 +24,7 @@ def agregar_curso():
           {}""".format(nuevo_curso))
     #menu("admin")
     
+
 def modificar_curso():
     imprimir_cursos(0)
     lista_cursos = [*cursos]
@@ -60,8 +61,10 @@ def agregar_carrera():
     carreras.append(nueva_carrera)
     print(nueva_carrera)
     
+
 def modificar_carrera():
     return
+
 
 def imprimir_cursos(num):
     lista = [cursos, carreras]
