@@ -204,8 +204,8 @@ usuarios = [
         'tipo': 'admin',
         'autenticacion':
         {
-            'usuario':["barguello"],
-            'contraseña':hashlib.md5('12345'.encode('ascii').hexdigest())
+            'usuario': 'barguello',
+            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
         }
     },
     {
@@ -213,8 +213,8 @@ usuarios = [
         'tipo': 'admin',
         'autenticacion':
         {
-            'usuario': ["shcacon"],
-            'contraseña':hashlib.md5('12345'.encode('ascii').hexdigest())
+            'usuario': 'shcacon',
+            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
         }
     }
 ]
