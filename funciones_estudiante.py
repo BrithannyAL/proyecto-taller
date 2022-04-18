@@ -1,4 +1,4 @@
-def matricular_carrera(usuario, carreras, estudiantes):
+def matricular_carrera(usuario, carreras, cursos, estudiantes):
     print("")
     print("Las carreras disponibles son: ")
     print("")
@@ -68,7 +68,7 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                                                             cantidad_horas = hora_final - hora_inicio
                                                             for contador in range(cantidad_horas):
                                                                 contador = 1
-                                                                if y['horario'][dia][hora] == ():
+                                                                if y['horario'][dia][hora] == []:
                                                                     y['horario'][dia][hora] = curso_m
                                                                     hora = hora + contador
                                                                     contador =+ 1
@@ -87,7 +87,7 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                     print("El curso ingresado no existe")
 
 
-def ver_horario(usuario, estudiantes):
+def ver_horario(usuario, carreras, cursos, estudiantes):
     
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:

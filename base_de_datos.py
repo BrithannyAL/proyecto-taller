@@ -31,156 +31,156 @@ carreras = (
 cursos = (
     {
         'curso' : "Matematica general",
-        'creditos' : [3],
+        'creditos' : 3,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['lunes' , 9 , 12],
-        'codigo' : [1]
+        'codigo' : 1
     },
     {
         'curso' : "Comunicacion escrita",
-        'creditos' : [2],
+        'creditos' : 2,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['martes' , 9 , 12],
-        'codigo' : [2]
+        'codigo' : 2
     }, 
     {
         'curso' : "Ingles 1",
-        'creditos' : [2],
+        'creditos' : 2,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['miercoles' , 9 , 12],
-        'codigo' : [3]
+        'codigo' : 3
     },
     {
         'curso' : "Introduccion a la programacion",
-        'creditos' : [2],
+        'creditos' : 2,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['martes' , 7 , 8],
-        'codigo' : [4]
+        'codigo' : 4
     },
     {
         'curso' : "Taller de programacion",
-        'creditos' : [3],
+        'creditos' : 3,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['jueves' , 9 , 12],
-        'codigo' : [5]
+        'codigo' : 5
     },
     {
         'curso' : "Fundamentos de organizacion de computadoras",
-        'creditos' : [2],
+        'creditos' : 2,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['viernes' , 9 , 12],
-        'codigo' : [6]
+        'codigo' : 6
     },
     {
         'curso' : "Matematica discreta",
-        'creditos' : [3],
+        'creditos' : 3,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['lunes' , 13 , 14],
-        'codigo' : [7]
+        'codigo' : 7
     },
     {
         'curso' : "Introduccion a la agronomia",
-        'creditos' : [2],
+        'creditos' : 2,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['martes' , 13 , 14],
-        'codigo' : [8]
+        'codigo' : 8
     },
     {
         'curso' : "Agromatica",
-        'creditos' : [3],
+        'creditos' : 3,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['miercoles' , 14 , 15],
-        'codigo' : [9]
+        'codigo' : 9
     },
     {
         'curso' : "Biologia general",
-        'creditos' : [3],
+        'creditos' : 3,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['jueves' , 16 , 17],
-        'codigo' : [10]
+        'codigo' : 10
     },
     {
         'curso' : "Introduccion a la administracion de empresas",
-        'creditos' : [2],
+        'creditos' : 2,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['viernes' , 18 , 19],
-        'codigo' : [11]
+        'codigo' : 11
     },
     {
         'curso' : "Computacion para administracion",
-        'creditos' : [2],
+        'creditos' : 2,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['lunes' , 18 , 19],
-        'codigo' : [12]
+        'codigo' : 12
     },
     {
         'curso' : "Matematica para administracion",
-        'creditos' : [3],
+        'creditos' : 3,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['martes' , 15 , 14],
-        'codigo' : [13]
+        'codigo' : 13
     },
        {
         'curso' : "Dibujo tecnico",
-        'creditos' : [2],
+        'creditos' : 2,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['miercoles' , 19 , 19],
-        'codigo' : [14]
+        'codigo' : 14
     },
        {
         'curso' : "Quimica basica",
-        'creditos' : [2],
+        'creditos' : 2,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['martes' , 9 , 12],
-        'codigo' : [15]
+        'codigo' : 15
     },
        {
         'curso' : "Introduccion a la ingenieria",
-        'creditos' : [3],
+        'creditos' : 3,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['martes' , 13 , 14],
-        'codigo' : [16]
+        'codigo' : 16
     },
        {
         'curso' : "Calculo diferencial e integral ",
-        'creditos' : [4],
+        'creditos' : 4,
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
         'horario_de_clases' : ['miercoles' , 18 , 19],
-        'codigo' : [17]
+        'codigo' : 17
     },
 )
 
@@ -191,7 +191,7 @@ usuarios = [
         'autenticacion':
         {
             'usuario':["barguello"],
-            'contraseña':hashlib.md5('12345'.encode('ascii').hexdigest())
+            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
         }
     },
     {
@@ -200,13 +200,13 @@ usuarios = [
         'autenticacion':
         {
             'usuario': ["shcacon"],
-            'contraseña':hashlib.md5('12345'.encode('ascii').hexdigest())
+            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
         }
     }
 ]
 
 
-estudiantes = (
+estudiantes = [
     {
         'nombre':'Estudiante 1',
         'tipo' : 'estudiante',
@@ -219,7 +219,7 @@ estudiantes = (
         'autenticacion':
         {
             'usuario': 'e1',
-            'contraseña':hashlib.md5('12345'.encode('ascii').hexdigest())
+            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
         },
         'horario':
                     {
@@ -246,7 +246,7 @@ estudiantes = (
         'autenticacion':
         {
             'usuario': "e2",
-            'contraseña':hashlib.md5('12345'.encode('ascii').hexdigest())
+            'contraseña':hashlib.md5('12345'.encode('ascii')).hexdigest()
         },
         'horario':
                     {
@@ -260,4 +260,4 @@ estudiantes = (
                         
                     }
     }
-)
+]

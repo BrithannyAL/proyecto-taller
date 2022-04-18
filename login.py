@@ -73,7 +73,7 @@ def funciones_admin(opcion):
         login()
 
 
-def funciones_estudiante(opcion, usuario, carreras, cursos):
+def funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes):
     if opcion == 1:
         matricular_carrera(usuario, carreras, cursos, estudiantes)
     elif opcion == 2:
