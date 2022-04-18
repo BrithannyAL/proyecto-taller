@@ -2,29 +2,34 @@ import hashlib
 
 carreras = (
     {
-        'carrera' : 'Ingenieria en computacion',
-        'semestres' : [8],
-        'cursos' : [1,2,3,4,5,6,7]
+        'carrera': 'Ingenieria en computacion',
+        'semestres': 8,
+        'cursos': [1, 2, 3, 4, 5, 6, 7],
+        'codigo': 1
     },
     {
-        'carrera' : 'Ingenieria en agronomia',
-        'semestres' : [8],
-        'cursos' : [1,2,3,4,8,9,10]
+        'carrera': 'Ingenieria en agronomia',
+        'semestres': 8,
+        'cursos': [1, 2, 3, 4, 8, 9, 10],
+        'codigo': 2
     },
     {
-        'carrera' : 'Administracion de empresas',
-        'semestres' : [10],
-        'cursos' : [1,2,3,4,11,12,13]
+        'carrera': 'Administracion de empresas',
+        'semestres': 10,
+        'cursos': [1, 2, 3, 4, 11, 12, 13],
+        'codigo': 3
     },
     {
-        'carrera' : 'Ingenieria en procuccion industrial',
-        'semestres' : [12],
-        'cursos' : [1,2,3,4,14,15]
+        'carrera': 'Ingenieria en procuccion industrial',
+        'semestres': 12,
+        'cursos': [1, 2, 3, 4, 14, 15],
+        'codigo': 4
     },
     {
-        'carrera' : 'Ingenieria electronica',
-        'semestres' : [10],
-        'cursos' : [1,2,3,4,16,17]
+        'carrera': 'Ingenieria electronica',
+        'semestres': 10,
+        'cursos': [1, 2, 3, 4, 16, 17],
+        'codigo': 5
     }
 )
 
