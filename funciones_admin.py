@@ -28,13 +28,13 @@ def modificar_curso():
         cursos[curso_a_modificar -1]['horas_lectivas'] = input("Nuevo horas lectivas para el curso: ")
     print("""El curso ha sido modificado: {}""".format(cursos[curso_a_modificar -1]))
     
-def agregar_carrera(lista_carrera):
+def agregar_carrera(lista_carrera, cursos):
     salir = False
     carrera_cursos = []
     codigo = (lista_carrera[-1]['codigo']) + 1
     carrera_name = input("Ingrese el nombre de la carrera que desea agregar: ")
     carrera_semestres = input("Ingrese la cantidad de semestres de la carrera: ")
-    imprimir(0)
+    imprimir(0, cursos)
     print("Presione x cuando haya terminado de agregar cursos.")
     while salir == False:
         carrera_cursos.append(input("Ingrese los códigos de los cursos de dicha carrera: "))
@@ -93,14 +93,12 @@ def modificar_codigos_en_carreras():
                 salir = True
     return nuevos_cursos
 
-def imprimir(num):
-    lista = [cursos, carreras]
-    lis = lista[num]
+def imprimir(num, lista):
     if num == 0:
         print("***** Lista de cursos *****")
-        for item in lis:
+        for item in lista:
             print("Código {}: {}".format(item['codigo'], item['curso']))
     elif num == 1:
         print("***** Lista de carreras *****")
-        for item in lis:
+        for item in lista:
             print("Código {}: {}".format(item['codigo'], item['carrera']))
