@@ -1,6 +1,4 @@
-
-
-def matricular_carrera(usuario):
+def matricular_carrera(usuario, carreras, estudiantes):
     print("")
     print("Las carreras disponibles son: ")
     print("")
@@ -25,7 +23,7 @@ def matricular_carrera(usuario):
     #Si el código está en el estudiante pero no en la carrera tampoco
     
 
-def matricular_curso(usuario):
+def matricular_curso(usuario, carreras, cursos, estudiantes):
     flag = False
     print("Estos son los cursos disponibles: ")
     for o in cursos:    
@@ -89,7 +87,7 @@ def matricular_curso(usuario):
                     print("El curso ingresado no existe")
 
 
-def ver_horario(usuario):
+def ver_horario(usuario, estudiantes):
     
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:

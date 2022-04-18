@@ -3,7 +3,6 @@ from base_de_datos import cursos
 
 #credito = tres horas
 #Tenemos las horas lectivas que se restan a dichas horas
-
 def calcular_horas():
     for i in cursos:
         horas = cursos['creditos']
