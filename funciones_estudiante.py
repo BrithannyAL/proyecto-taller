@@ -71,12 +71,16 @@ def matricular_curso(usuario):
                                                             hora_inicio = x['horario_de_clases'][1]
                                                             hora_final  = x['horario_de_clases'][2]
                                                             cantidad_horas = hora_final - hora_inicio
-
                                                             for contador in range(cantidad_horas):
                                                                 contador = 1
-                                                                y['horario'][dia][hora] = curso_m
-                                                                hora = hora + contador
-                                                                contador =+ 1
+                                                                if y['horario'][dia][hora] == ():
+                                                                    y['horario'][dia][hora] = curso_m
+                                                                    hora = hora + contador
+                                                                    contador =+ 1
+                                                                else:
+                                                                    print("Usted tiene un choque de horarios")
+                                                                    flag = True
+                                                                    break 
                                                             print(y['horario'][dia])
                                                             flag = True
                                                             break 

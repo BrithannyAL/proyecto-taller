@@ -44,7 +44,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('martes' , 9 , 12),
         'codigo' : (2)
     }, 
     {
@@ -53,7 +53,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('miercoles' , 9 , 12),
         'codigo' : (3)
     },
     {
@@ -62,7 +62,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('martes' , 7 , 8),
         'codigo' : (4)
     },
     {
@@ -71,7 +71,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('jueves' , 9 , 12),
         'codigo' : (5)
     },
     {
@@ -80,7 +80,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('viernes' , 9 , 12),
         'codigo' : (6)
     },
     {
@@ -89,7 +89,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('lunes' , 13 , 14),
         'codigo' : (7)
     },
     {
@@ -98,7 +98,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('martes' , 13 , 14),
         'codigo' : (8)
     },
     {
@@ -107,7 +107,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('miercoles' , 14 , 15),
         'codigo' : (9)
     },
     {
@@ -116,7 +116,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('jueves' , 16 , 17),
         'codigo' : (10)
     },
     {
@@ -125,7 +125,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('viernes' , 18 , 19),
         'codigo' : (11)
     },
     {
@@ -134,7 +134,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('lunes' , 18 , 19),
         'codigo' : (12)
     },
     {
@@ -143,7 +143,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('martes' , 15 , 14),
         'codigo' : (13)
     },
        {
@@ -152,7 +152,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('miercoles' , 19 , 19),
         'codigo' : (14)
     },
        {
@@ -161,7 +161,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('martes' , 9 , 12),
         'codigo' : (15)
     },
        {
@@ -170,7 +170,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('martes' , 13 , 14),
         'codigo' : (16)
     },
        {
@@ -179,7 +179,7 @@ cursos = (
         'horas_lectivas' : 3,
         'fecha_inicio' : int,
         'fecha_final' : int,
-        'horario_de_clases' : (),
+        'horario_de_clases' : ('miercoles' , 18 , 19),
         'codigo' : (17)
     },
 )
