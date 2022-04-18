@@ -107,9 +107,3 @@ def ver_horario(usuario):
 
 def tbd2():
     print("tbd")
-
-
-
-
-
-    
