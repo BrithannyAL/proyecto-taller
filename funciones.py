@@ -17,3 +17,4 @@ def calcular_horas():
         horas = cursos['creditos']
         horas_lectivas = cursos['horas_lectivas']
         horas = horas * 3
+        horas = horas - horas_lectivas
