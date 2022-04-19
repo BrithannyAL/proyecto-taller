@@ -1,14 +1,15 @@
-def agregar_curso():
-    last_code = cursos[-1]['codigo']
+def agregar_curso(lista_cursos):
+    last_code = lista_cursos[-1]['codigo']
     curso = input("Ingrese el nombre del curso que desea agregar: ")
     creditos = input("Ingrese la cantidad de creditos del curso: ")
     horas_l = input("Ingrese la cantidad de horas lectivas del curso: ")
     codigo   = last_code + 1
     nuevo_curso = {'curso' : curso, 'creditos' : creditos, 'horas_lectivas' : horas_l, 'codigo' : codigo}
-    cursos.append(nuevo_curso)
+    lista_cursos.append(nuevo_curso)
     print("""
           El nuevo curso es:
           {}""".format(nuevo_curso))
+    return tuple(lista_cursos)
     
 
 def modificar_curso():
@@ -48,38 +49,40 @@ def agregar_carrera(lista_carrera, cursos):
     return tuple(lista_carrera)
     
 
-def modificar_carrera():
-    imprimir(1)
+def modificar_carrera(lista_carreras, cursos):
+    imprimir(1, lista_carreras)
+    
     carrera_a_modificar = int(input("Escriba el código del curso que desea modificar: "))
     name_carrera = input("""
                          El título de la carrera es {}
                          ¿Desea modificar el nombre de la carrera? (y/n) """
-                         .format(carreras[carrera_a_modificar - 1]['carrera']))
+                         .format(lista_carreras[carrera_a_modificar - 1]['carrera']))
     seme_carrera = input("""
                          La cantidad de semestres en la carrera son {}
                          ¿Desea modificar la cantidad de semestres de la carrera? (y/n) """
-                         .format(carreras[carrera_a_modificar]['semestres']))
-    imprimir_codigos_cursos_en_carreras(carrera_a_modificar)
+                         .format(lista_carreras[carrera_a_modificar]['semestres']))
+    imprimir_codigos_cursos_en_carreras(carrera_a_modificar, lista_carreras)
     curs_carrera = input("¿Desea modificar los cursos dentro de la carrera? (y/n) ")
     if name_carrera == "y":
-        carreras[carrera_a_modificar - 1]['carrera'] = input("Escriba el nuevo nombre de la carrera: ")
+        lista_carreras[carrera_a_modificar - 1]['carrera'] = input("Escriba el nuevo nombre de la carrera: ")
     if seme_carrera == "y":
-        carreras[carrera_a_modificar - 1]['semestres'] = input("Escriba la cantidad de semestres de la carrera: ")
+        lista_carreras[carrera_a_modificar - 1]['semestres'] = input("Escriba la cantidad de semestres de la carrera: ")
     if curs_carrera == "y":
-        imprimir(0)
+        imprimir(0, cursos)
         nuevos_cursos = modificar_codigos_en_carreras()
-        carreras[carrera_a_modificar - 1]['cursos'] = nuevos_cursos
-    print(carreras)
+        lista_carreras[carrera_a_modificar - 1]['cursos'] = nuevos_cursos
+    print(lista_carreras)
+    return tuple(lista_carreras)
     
-def imprimir_codigos_cursos_en_carreras(codigo):
+def imprimir_codigos_cursos_en_carreras(codigo, lista):
     carrera = int
-    for item in carreras:
+    for item in lista:
         if codigo == item['codigo']:
             carrera = item['carrera']
             break
     print("""
           Los cursos dentro de la carrera son:
-          {}""".format(carreras[codigo - 1]['cursos']))
+          {}""".format(lista[codigo - 1]['cursos']))
     
 def modificar_codigos_en_carreras():
     nuevos_cursos = []
