@@ -5,6 +5,19 @@ from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, mod
 from funciones_estudiante import matricular_carrera, matricular_curso, ver_horario
 import hashlib
 
+def inicio():
+    opcion = input("""
+Digite 1 si desea iniciar sesión 
+Digite 2 si desea registrarse
+Digite x si desea cerrar el software
+""")
+    if opcion == '1':
+        login()
+    elif opcion == '2':
+        registrar()
+    elif opcion == 'x':
+        quit()
+
 def login():
     correcto = False
     while correcto == False:
@@ -30,6 +43,7 @@ def login():
             print("Vuelva a intentar")
 
 def registrar():
+
     nombre = input("Ingrese el nombre del usuario a registrar: ")
     tipo = input("Ingrese el tipo de usuario a registrar: ")
     telefono = input("Ingrese el numero de telefono del usuario: ")
@@ -40,12 +54,55 @@ def registrar():
         for i in usuarios:
             if i['autenticacion']['usuario'] == usuario:
                 print('El nombre de usuario no se encuentra disponible')
-            else:
-                pass
+        else:
+            usuarios.append({
+            'nombre' : nombre,
+            'tipo' : tipo,
+            'telefono' : telefono,
+            'autenticacion' :{
+                'usuario' : usuario,
+                'contraseña' : hashlib.md5(contraseña.encode('ascii')).hexdigest()
+                                } 
+                                })
+        print("""El administrador se ha ingresado correctamente
+        """)
+        inicio()
     elif tipo == 'estudiante':
-        pass
+        for i in estudiantes:
+            if i['autenticacion']['usuario'] == usuario:
+                print('El nombre de usuario no se encuentra disponible')
+        else:
+            estudiantes.append({
+            'nombre' : nombre,
+            'tipo' : tipo,
+            'tiempo' : int,
+            'estudios':
+                {
+                'carreras': [],
+                'cursos': [],
+                },
+            'autenticacion' :{
+                'usuario' : usuario,
+                'contraseña' : hashlib.md5(contraseña.encode('ascii')).hexdigest()
+                             },
+                'horario':
+                            {
+            'lunes':      {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'martes':     {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'miercoles':  {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'jueves':     {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'viernes':    {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'sabado':     {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'domingo':    {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+
+                            }
+                                })
+        print("""El estudiante se ha ingresado correctamente
+        """)
+        inicio()
     else:
         print("Este tipo de usuario no es válido")
+        inicio()
     
     
     return 
@@ -89,6 +146,8 @@ def funciones_admin(opcion):
         carreras = modificar_carrera(list(carreras), cursos)
     elif opcion == 5:
         login()
+    elif opcion == 'x':
+        quit()
 
 def funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes):
     if opcion == 1:
