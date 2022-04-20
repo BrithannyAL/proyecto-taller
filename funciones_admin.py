@@ -96,6 +96,7 @@ def modificar_codigos_en_carreras():
                 salir = True
     return nuevos_cursos
 
+
 def imprimir(num, lista):
     if num == 0:
         print("***** Lista de cursos *****")

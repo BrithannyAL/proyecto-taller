@@ -1,4 +1,5 @@
 #Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
+from tkinter import E
 from base_de_datos import usuarios, estudiantes, carreras, cursos
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
 from funciones_estudiante import matricular_carrera, matricular_curso, ver_horario
@@ -29,6 +30,26 @@ def login():
         if correcto == False:
             print("Vuelva a intentar")
 
+def registrar():
+    nombre = input("Ingrese el nombre del usuario a registrar: ")
+    tipo = input("Ingrese el tipo de usuario a registrar: ")
+    telefono = input("Ingrese el numero de telefono del usuario: ")
+    usuario = input("Ingrese el usuario a registrar: ")
+    contraseña = input("Ingrese la contraseña del usuario a registrar: ")
+
+    if tipo == 'admin':
+        for i in usuarios:
+            if i['autenticacion']['usuario'] == usuario:
+                print('El nombre de usuario no se encuentra disponible')
+            else:
+                pass
+    elif tipo == 'estudiante':
+        pass
+    else:
+        print("Este tipo de usuario no es válido")
+    
+    
+    return 
             
 #Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
 def menu(tipo, usuario, nombre):
