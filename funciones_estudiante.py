@@ -1,7 +1,6 @@
 def matricular_carrera(usuario, carreras, cursos, estudiantes):
     print("")
     print("Las carreras disponibles son: ")
-    print("")
     for i in carreras:
         print(i['carrera'])
         print("")
@@ -16,11 +15,12 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
             else:
                 print("La carrera ingresada no existe")
 
-
     # buscar si el codigo del curso esta en los codigos de la carrera y la carrera del estudiante
     # si el codigo del curso esta en la carrera entonces puede matricularlo pero hay que verificar que el estudiante esté en esa carrera
     # Si el código está en el estudiante pero no en la carrera no debería poder
     # Si el código está en el estudiante pero no en la carrera tampoco
+
+
 def matricular_curso(usuario, carreras, cursos, estudiantes):
     flag = False
     print("Estos son los cursos disponibles: ")
@@ -42,7 +42,7 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                         codigo_curso = x['codigo']
                         for l in carreras:
                             # Entro a la carrera del estudiante
-                            if l['carrera'] in carreras_en_curso :   #AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+                            if l['carrera'] in carreras_en_curso:
                                 if codigo_curso in l['cursos']:
                                     if flag == True:
                                         break
@@ -70,10 +70,11 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                                                             for contador in range(cantidad_horas):
                                                                 contador = 1
                                                                 if y['horario'][dia][hora] == []:
-                                                                    y['horario'][dia][hora] = curso_m 
+                                                                    y['horario'][dia][hora] = curso_m
                                                                     hora = hora + contador
                                                                     contador = + 1
-                                                                    i['estudios']['cursos'].append({'curso' : curso_m, 'estado' : 'cursando'})
+                                                                    i['estudios']['cursos'].append(
+                                                                        {'curso': curso_m, 'estado': 'cursando'})
                                                                 else:
                                                                     print(
                                                                         "Usted tiene un choque de horarios")
@@ -93,7 +94,7 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
 
 
 def ver_horario(usuario, carreras, cursos, estudiantes):
-    
+
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
             print('Lunes: ', i['horario']['lunes'])
