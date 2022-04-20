@@ -4,7 +4,6 @@ from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, mod
 from funciones_estudiante import matricular_carrera, matricular_curso, ver_horario
 import hashlib
 
-
 def login():
     correcto = False
     while correcto == False:
@@ -29,7 +28,6 @@ def login():
         if correcto == False:
             print("Vuelva a intentar")
 
-            
 #Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
 def menu(tipo, usuario, nombre):
     if tipo == "admin":
@@ -56,7 +54,6 @@ def menu(tipo, usuario, nombre):
         opcion = int(input("¿Qué acción desea realizar? "))
         funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes)
 
-
 def funciones_admin(opcion):
     global carreras
     global cursos
@@ -70,7 +67,6 @@ def funciones_admin(opcion):
         carreras = modificar_carrera(list(carreras), cursos)
     elif opcion == 5:
         login()
-
 
 def funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes):
     if opcion == 1:
