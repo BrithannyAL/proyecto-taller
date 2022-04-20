@@ -186,16 +186,7 @@ cursos = [
         'fecha_final': int,
         'horario_de_clases': ['miercoles', 18, 19],
         'codigo': 17
-    },
-    {
-        'curso': "Calculo diferencial e integral ",
-        'creditos': (4),
-        'horas_lectivas': 3,
-        'fecha_inicio': int,
-        'fecha_final': int,
-        'horario_de_clases': (),
-        'codigo': (17)
-    },
+    }
 ]
 
 usuarios = [

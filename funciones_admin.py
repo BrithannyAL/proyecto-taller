@@ -12,22 +12,22 @@ def agregar_curso(lista_cursos):
     return tuple(lista_cursos)
     
 
-def modificar_curso():
-    imprimir(0)
+def modificar_curso(lista_cursos):
+    imprimir(0, lista_cursos)
     curso_a_modificar = int(input("Escriba el código del curso que desea modificar: "))
     nombre_curso = input("""
                          El título del curso es {}
                          ¿Desea modificar el nombre del curso? (y/n) """
-                         .format(cursos[curso_a_modificar -1]['curso']))
+                         .format(lista_cursos[curso_a_modificar -1]['curso']))
     horas_lectivas = input("""
                            La cantidad de horas del curso es {}
                            ¿Desea modificar la cantidad de horas que imparte el curso? (y/n) """
-                           .format(cursos[curso_a_modificar -1]['horas_lectivas']))
+                           .format(lista_cursos[curso_a_modificar -1]['horas_lectivas']))
     if nombre_curso == "y":
-        cursos[curso_a_modificar -1]['curso'] = input("Nuevo título para el curso: ")
+        lista_cursos[curso_a_modificar -1]['curso'] = input("Nuevo título para el curso: ")
     if horas_lectivas == "y":
-        cursos[curso_a_modificar -1]['horas_lectivas'] = input("Nuevo horas lectivas para el curso: ")
-    print("""El curso ha sido modificado: {}""".format(cursos[curso_a_modificar -1]))
+        lista_cursos[curso_a_modificar -1]['horas_lectivas'] = input("Nuevo horas lectivas para el curso: ")
+    print("""El curso ha sido modificado: {}""".format(lista_cursos[curso_a_modificar -1]))
     
 def agregar_carrera(lista_carrera, cursos):
     salir = False
@@ -60,7 +60,7 @@ def modificar_carrera(lista_carreras, cursos):
     seme_carrera = input("""
                          La cantidad de semestres en la carrera son {}
                          ¿Desea modificar la cantidad de semestres de la carrera? (y/n) """
-                         .format(lista_carreras[carrera_a_modificar]['semestres']))
+                         .format(lista_carreras[carrera_a_modificar -1]['semestres']))
     imprimir_codigos_cursos_en_carreras(carrera_a_modificar, lista_carreras)
     curs_carrera = input("¿Desea modificar los cursos dentro de la carrera? (y/n) ")
     if name_carrera == "y":
