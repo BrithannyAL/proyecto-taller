@@ -2,7 +2,7 @@
 from tkinter import E
 from base_de_datos import usuarios, estudiantes, carreras, cursos
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
-from funciones_estudiante import matricular_carrera, matricular_curso, ver_horario
+from funciones_estudiante import generar_reporte, matricular_carrera, matricular_curso, generar_reporte, registro_actividades
 import hashlib
 
 def inicio():
@@ -17,6 +17,10 @@ Digite x si desea cerrar el software
         registrar()
     elif opcion == 'x':
         quit()
+    else: 
+        print("")
+        print("Por favor ingrese una opcion valida")
+        inicio()
 
 def login():
     correcto = False
@@ -95,7 +99,17 @@ def registrar():
             'sabado':     {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
             'domingo':    {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
 
-                            }
+                            },
+                'reporte' : 
+                {
+                    'lunes':      {7: {}, 8: {}, 9: {}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}, 20:{}, 21:{}, 22:{}, 23:{}, 24:{} },
+                    'martes':     {7: {}, 8: {}, 9: {}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}, 20:{}, 21:{}, 22:{}, 23:{}, 24:{}},
+                    'miercoles':  {7: {}, 8: {}, 9: {}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}, 20:{}, 21:{}, 22:{}, 23:{}, 24:{} },
+                    'jueves':     {7: {}, 8: {}, 9: {}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}, 20:{}, 21:{}, 22:{}, 23:{}, 24:{}},
+                    'viernes':    {7: {}, 8: {}, 9: {}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}, 20:{}, 21:{}, 22:{}, 23:{}, 24:{}},
+                    'sabado':     {7: {}, 8: {}, 9: {}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}, 20:{}, 21:{}, 22:{}, 23:{}, 24:{}},
+                    'domingo':    {7: {}, 8: {}, 9: {}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}, 20:{}, 21:{}, 22:{}, 23:{}, 24:{}},
+                }
                                 })
         print("""El estudiante se ha ingresado correctamente
         """)
@@ -126,8 +140,8 @@ def menu(tipo, usuario, nombre):
             Menu de opciones:
             1: Matricular una carrera
             2: Matricular un curso
-            3: Ver mi horario
-            4: tbd
+            3: Generar reporte
+            4: Registrar una actividad
             5: Salir del usuario
             """.format(usuario))
         opcion = int(input("¿Qué acción desea realizar? "))
@@ -155,6 +169,8 @@ def funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes):
     elif opcion == 2:
         matricular_curso(usuario, carreras, cursos, estudiantes)
     elif opcion == 3:
-        ver_horario(usuario, carreras, cursos, estudiantes)
+        generar_reporte(usuario, carreras, cursos, estudiantes)
+    elif opcion == 4:
+        registro_actividades(usuario, carreras, cursos, estudiantes)
     elif opcion == 5:
         login()
