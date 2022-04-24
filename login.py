@@ -26,7 +26,6 @@ def login():
     correcto = False
     while correcto == False:
         print("Digite el usuario y contraseña para ingresar")
-        print("Presione 'x' para cerrar el software")
         usuario = input("Usuario: ")
         if usuario == "x":
             quit()
