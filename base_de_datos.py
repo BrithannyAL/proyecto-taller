@@ -210,7 +210,6 @@ usuarios = [
     }
 ]
 
-
 estudiantes = [
     {
         'nombre': 'Estudiante 1',
