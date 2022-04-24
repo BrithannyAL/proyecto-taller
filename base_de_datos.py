@@ -193,6 +193,7 @@ usuarios = [
     {
         'nombre': 'Brithanny Arguello',
         'tipo': 'admin',
+        'telefono' : 12345678,
         'autenticacion':
         {
             'usuario': 'barguello',
@@ -202,6 +203,7 @@ usuarios = [
     {
         'nombre': 'Steven Chacón',
         'tipo': 'admin',
+        'telefono' : 12345678,
         'autenticacion':
         {
             'usuario': 'shcacon',
@@ -227,14 +229,24 @@ estudiantes = [
         },
         'horario':
         {
-            'lunes':      {7: [], 8:[], 9:"Matematica general", 10:"Matematica general", 11:"Matematica general", 12:"Matematica general", 13:"Matematica discreta", 14:"Matematica discreta", 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'martes':     {7: "Introduccion a la programacion", 8:"Introduccion a la programacion", 9:"Comunicacion escrita", 10:"Comunicacion escrita", 11:"Comunicacion escrita", 12:"Comunicacion escrita", 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'miercoles':  {7: [], 8:[], 9:"Ingles 1", 10:"Ingles 1", 11:"Ingles 1", 12:"Ingles 1", 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'jueves':     {7: [], 8:[], 9:"Taller de programacion", 10:"Taller de programacion", 11:"Taller de programacion", 12:"Taller de programacion", 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'viernes':    {7: [], 8:[], 9:"Fundamentos de organizacion de computadoras", 10:"Fundamentos de organizacion de computadoras", 11:"Fundamentos de organizacion de computadoras", 12:"Fundamentos de organizacion de computadoras", 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'sabado':     {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'domingo':    {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'lunes':      {7: [], 8:[], 9:["Matematica general"], 10:["Matematica general"], 11:["Matematica general"], 12:["Matematica general"], 13:["Matematica discreta"], 14:["Matematica discreta"], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'martes':     {7: ["Introduccion a la programacion"], 8:["Introduccion a la programacion"], 9:["Comunicacion escrita"], 10:["Comunicacion escrita"], 11:["Comunicacion escrita"], 12:["Comunicacion escrita"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'miercoles':  {7: [], 8:[], 9:["Ingles 1"], 10:["Ingles 1"], 11:["Ingles 1"], 12:["Ingles 1"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:['a'], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'jueves':     {7: [], 8:[], 9:["Taller de programacion"], 10:["Taller de programacion"], 11:["Taller de programacion"], 12:["Taller de programacion"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'viernes':    {7: [], 8:[], 9:["Fundamentos de organizacion de computadoras"], 10:["Fundamentos de organizacion de computadoras"], 11:["Fundamentos de organizacion de computadoras"], 12:["Fundamentos de organizacion de computadoras"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'sabado':     {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'domingo':    {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
 
+        },
+        'reporte' : 
+        {
+            'lunes':      [],
+            'martes':     [],
+            'miercoles':  [],
+            'jueves':     [],
+            'viernes':    [],
+            'sabado':     [],
+            'domingo':    [],
         }
 
     },
@@ -254,13 +266,59 @@ estudiantes = [
         },
         'horario':
         {
-            'lunes':      {7: [], 8: [], 9: "Matematica general", 10:"Matematica general", 11:"Matematica general", 12:"Matematica general", 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'martes':     {7: "Introduccion a la programacion", 8: "Introduccion a la programacion", 9: "Comunicacion escrita", 10:"Comunicacion escrita", 11:"Comunicacion escrita", 12:"Comunicacion escrita", 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'miercoles':  {7: [], 8: [], 9: "Ingles 1", 10:"Ingles 1", 11:"Ingles 1", 12:"Ingles 1", 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:"Dibujo tecnico", },
-            'jueves':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'viernes':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'sabado':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
-            'domingo':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], },
+            'lunes':      {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'martes':     {7: ["Introduccion a la programacion"], 8: ["Introduccion a la programacion"], 9: ["Comunicacion escrita"], 10:["Comunicacion escrita"], 11:["Comunicacion escrita"], 12:["Comunicacion escrita"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+            'miercoles':  {7: [], 8: [], 9: ["Ingles 1"], 10:["Ingles 1"], 11:["Ingles 1"], 12:["Ingles 1"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'jueves':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+            'viernes':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+            'sabado':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+            'domingo':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+        },
+        'reporte' : 
+        {
+            'lunes':      [],
+            'martes':     [],
+            'miercoles':  [],
+            'jueves':     [],
+            'viernes':    [],
+            'sabado':     [],
+            'domingo':    [],
+        }
+    },
+        {
+        'nombre': 'Estudiente 3',
+        'tipo': 'estudiante',
+        'tiempo': int,
+        'estudios':
+        {
+            'carreras': [],
+            'cursos': []
+        },
+        'autenticacion':
+        {
+            'usuario': "e3",
+            'contraseña': hashlib.md5('12345'.encode('ascii')).hexdigest()
+        },
+        'horario':
+        {
+            'lunes':      {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'martes':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+            'miercoles':  {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
+            'jueves':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+            'viernes':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+            'sabado':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+            'domingo':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
+        },
+        'reporte' : 
+        {
+            'lunes':      [],
+            'martes':     [],
+            'miercoles':  [],
+            'jueves':     [],
+            'viernes':    [],
+            'sabado':     [],
+            'domingo':    [],
         }
     }
 ]
+
