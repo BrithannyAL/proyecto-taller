@@ -168,6 +168,11 @@ def menu(tipo, nombre):
 
 
 def funciones_admin(opcion):
+    """
+        Esta función es la que llama a las funciones de los administradores, según la opción que ellos hayan escogido en el menú. Para esto se usan los condicionales, los cuales comparan la respuesta del usuario con las opciones del menú para saber cuál es la función que se desea invocar.
+        
+        Los parametros de esta función son:
+        opcion: int = esta es la respuesta del usuario que es comparada con las opciones del menú. Para mayor facilidad se hizo con números."""
     global carreras
     global cursos
     if opcion == 1:
@@ -186,6 +191,11 @@ def funciones_admin(opcion):
 
 
 def funciones_estudiante(opcion):
+    """
+        Esta función es la que llama a las funciones de los estudiantes, según la opción que ellos hayan escogido en el menú. Para esto se usan los condicionales, los cuales comparan la respuesta del usuario con las opciones del menú para saber cuál es la función que se desea invocar.
+        
+        Los parametros de esta función son:
+        opcion: int = esta es la respuesta del usuario que es comparada con las opciones del menú. Para mayor facilidad se hizo con números."""
     global carreras
     global cursos
     global estudiantes
