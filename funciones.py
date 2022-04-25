@@ -47,8 +47,6 @@ def horas_horario(usuario, estudiantes, dia):
         return contador
 
 
-
-
 def verificar_curso(usuario, carreras, cursos, estudiantes, r_curso):
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:

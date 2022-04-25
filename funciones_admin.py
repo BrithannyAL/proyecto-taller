@@ -11,7 +11,6 @@ def agregar_curso(lista_cursos):
           {}""".format(nuevo_curso))
     return tuple(lista_cursos)
     
-
 def modificar_curso(lista_cursos):
     imprimir(0, lista_cursos)
     curso_a_modificar = int(input("Escriba el código del curso que desea modificar: "))
@@ -48,7 +47,6 @@ def agregar_carrera(lista_carrera, cursos):
     print(nueva_carrera)
     return tuple(lista_carrera)
     
-
 def modificar_carrera(lista_carreras, cursos):
     imprimir(1, lista_carreras)
     
@@ -95,7 +93,6 @@ def modificar_codigos_en_carreras():
                 del nuevos_cursos[-1]
                 salir = True
     return nuevos_cursos
-
 
 def imprimir(num, lista):
     if num == 0:

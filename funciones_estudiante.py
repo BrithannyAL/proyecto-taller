@@ -31,7 +31,6 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
     # Si el código está en el estudiante pero no en la carrera no debería poder
     # Si el código está en el estudiante pero no en la carrera tampoco
 
-
 def matricular_curso(usuario, carreras, cursos, estudiantes):
     flag = False
     print("Estos son los cursos disponibles: ")
@@ -119,7 +118,6 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
         i['reporte'][dia].append([curso_m,'curso',cantidad_horas, carreras_en_curso,])
 
 
-
 def generar_reporte(usuario, carreras, cursos, estudiantes):
     horas_d = 0
     dia = input('''Ingrese el día del que quiere generar el reporte: 
@@ -185,15 +183,10 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
     else:
         print('El dato ingresado no es valido')
 
-
 def registro_actividades(usuario, carreras, cursos, estudiantes):
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
-            relacion_curso = input("Está su actividad relacionada con un curso? ")
-            
-            
-            
-            
+            relacion_curso = input("Está su actividad relacionada con un curso? ")          
             if relacion_curso == 'si' or relacion_curso == 'Si':
                 r_curso = input("A que curso está relacionada esta actividad? ")
                 comp = verificar_curso(usuario, carreras, cursos, estudiantes, r_curso)
@@ -248,3 +241,12 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
             else:
                 print("Esa opcion no es válida")
                 home()
+                
+def aprobado_noAprobado(usuario, estudiantes):
+    cursos_del_estudiante = []
+    for x in estudiantes:
+        if x['autenticacion']['usuario'] == usuario:
+            cursos_del_estudiante = x['estudios']['cursos']
+    print("Los cursos en los que está matrículado son:")
+    
+    print(cursos_del_estudiante)

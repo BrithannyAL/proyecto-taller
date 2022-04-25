@@ -2,7 +2,7 @@
 from tkinter import E
 from base_de_datos import usuarios, estudiantes, carreras, cursos
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
-from funciones_estudiante import generar_reporte, matricular_carrera, matricular_curso, generar_reporte, registro_actividades
+from funciones_estudiante import generar_reporte, matricular_carrera, matricular_curso, generar_reporte, registro_actividades, aprobado_noAprobado
 import hashlib
 
 def inicio():
@@ -26,7 +26,6 @@ def login():
     correcto = False
     while correcto == False:
         print("Digite el usuario y contraseña para ingresar")
-        print("Presione 'x' para cerrar el software")
         usuario = input("Usuario: ")
         if usuario == "x":
             quit()
@@ -116,10 +115,7 @@ def registrar():
         inicio()
     else:
         print("Este tipo de usuario no es válido")
-        inicio()
-    
-    
-    return 
+        inicio() 
             
 #Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
 def menu(tipo, usuario, nombre):
@@ -142,7 +138,8 @@ def menu(tipo, usuario, nombre):
             2: Matricular un curso
             3: Generar reporte
             4: Registrar una actividad
-            5: Salir del usuario
+            5: Deternminar el estado de un curso
+            6: Salir del usuario
             """.format(usuario))
         opcion = int(input("¿Qué acción desea realizar? "))
         funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes)
@@ -159,11 +156,15 @@ def funciones_admin(opcion):
     elif opcion == 4:
         carreras = modificar_carrera(list(carreras), cursos)
     elif opcion == 5:
+        opci = input("¿Desea cerrar la aplicación? (y/n)")
+        if opci == "y":
+            quit()
         login()
-    elif opcion == 'x':
-        quit()
 
-def funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes):
+def funciones_estudiante(opcion, usuario):
+    global carreras
+    global cursos
+    global estudiantes
     if opcion == 1:
         matricular_carrera(usuario, carreras, cursos, estudiantes)
     elif opcion == 2:
@@ -173,4 +174,9 @@ def funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes):
     elif opcion == 4:
         registro_actividades(usuario, carreras, cursos, estudiantes)
     elif opcion == 5:
+       aprobado_noAprobado(usuario, estudiantes)
+    elif opcion == 6:
+        opci = input("¿Desea cerrar la aplicación? (y/n)")
+        if opci == "y":
+            quit()
         login()
