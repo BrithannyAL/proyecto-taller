@@ -243,6 +243,8 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 
 def aprobado_noAprobado(usuario, estudiantes, cursos):
     cursos_del_estudiante = []
+    dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
+    horas = []
     for x in estudiantes:
         if x['autenticacion']['usuario'] == usuario:
             cursos_del_estudiante = x['estudios']['cursos']
@@ -264,6 +266,9 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
                 x['estudios']['aprobados'].append(curso_a_modificar)
                 print("Cursando: {}".format(x['estudios']['cursos']))
                 print("Aprobados: {}".format(x['estudios']['aprobados']))
+                for dia in x['horario']:
+                    for hora in dia:
+                        print(hora)
                 break
     elif estado == "R" or estado == "r":
         for x in estudiantes:
