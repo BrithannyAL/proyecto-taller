@@ -137,7 +137,7 @@ def menu(tipo, usuario, nombre):
             2: Matricular un curso
             3: Generar reporte
             4: Registrar una actividad
-            5: Deternminar el estado de un curso
+            5: Determinar el estado de un curso
             6: Ver horario
             7: Salir del usuario
             """.format(usuario))

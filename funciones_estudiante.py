@@ -24,7 +24,7 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
                     print('La carrera se ha matriculado existosamente')
                     break
             else:
-                print("La carrera ingresada no existe")
+                print("La carrera ingresada no existe o no pertenece a su curso")
     return estudiantes
 
     # buscar si el codigo del curso esta en los codigos de la carrera y la carrera del estudiante
@@ -34,6 +34,7 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
 
 def matricular_curso(usuario, carreras, cursos, estudiantes):
     flag = False
+    con = False
     print("Estos son los cursos disponibles: ")
     for o in cursos:
         print(o['curso'])
