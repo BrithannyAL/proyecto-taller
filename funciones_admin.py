@@ -141,7 +141,7 @@ def imprimir_codigos_cursos_en_carreras(codigo, lista):
         Los parametros para esta función son:
         codigo = int: este dato nos da el código de la carrera que queremos buscar para imprimir sus cursos
         lista = list: es base de datos en forma de lista que contiene todas las carreras, y es la que tenemos que
-        recorrer para comparar su codigo con el de nuestro interes"""
+        recorrer para comparar su codigo con el de nuestro interes."""
     carrera = int
     for item in lista:
         if codigo == item['codigo']:

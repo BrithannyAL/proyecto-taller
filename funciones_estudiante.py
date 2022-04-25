@@ -288,12 +288,12 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
                 x['estudios']['aprobados'].append(curso_a_modificar)
                 print("Cursando: {}".format(x['estudios']['cursos']))
                 print("Aprobados: {}".format(x['estudios']['aprobados']))
-                for h in dias:
-                    for m in range(len(x['horario'][h])):
-                        if (x['horario'][h][m]) == name_curso:
-                            x['horario'][h][m].remove(name_curso)
-                        print(x['horario'][h][m])
-
+                for h in x['horario']:
+                    print(h)
+                    for m in x['horario'][h]:
+                        if name_curso in x['horario'][h][m]:
+                            print(x['horario'][h][m].remove(name_curso))
+                    break
     elif estado == "R" or estado == "r":
         for x in estudiantes:
             if x['autenticacion']['usuario'] == usuario:
@@ -301,6 +301,11 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
                 x['estudios']['reprobados'].append(curso_a_modificar)
                 print("Cursando: {}".format(x['estudios']['cursos']))
                 print("Reprobados: {}".format(x['estudios']['reprobados']))
+                for h in x['horario']:
+                    print(h)
+                    for m in x['horario'][h]:
+                        if name_curso in x['horario'][h][m]:
+                            print(x['horario'][h][m].remove(name_curso))
                 break
 
 def ver_horario(usuario, estudiantes):
