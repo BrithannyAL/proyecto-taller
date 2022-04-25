@@ -176,7 +176,7 @@ def funciones_estudiante(opcion, usuario):
     elif opcion == 5:
        aprobado_noAprobado(usuario, estudiantes, cursos)
     elif opcion == 6:
-        ver_horario(usuario, estudiantes, cursos)
+        ver_horario(usuario, estudiantes)
     elif opcion == 7:
         opci = input("¿Desea cerrar la aplicación? (y/n)")
         if opci == "y":

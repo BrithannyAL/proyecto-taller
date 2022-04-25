@@ -295,7 +295,7 @@ estudiantes = [
         'tiempo': int,
         'estudios':
         {
-            'carreras': ['Ingenieria en computacion'],
+            'carreras': [],
             'cursos': [],
             'aprobados' : [],
             'reprobados' : []
