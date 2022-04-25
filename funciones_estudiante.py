@@ -241,13 +241,38 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 print("Esa opcion no es válida")
                 home()
                 
-def aprobado_noAprobado(usuario, estudiantes):
+def aprobado_noAprobado(usuario, estudiantes, cursos):
     cursos_del_estudiante = []
     for x in estudiantes:
         if x['autenticacion']['usuario'] == usuario:
             cursos_del_estudiante = x['estudios']['cursos']
     print("Los cursos en los que está matrículado son:")
-    print(cursos_del_estudiante)
+    for cod in cursos_del_estudiante:
+        for item in cursos:
+            if item['codigo'] == cod:
+                print("Cursos: {}, Curso: {}".format(item['codigo'], item['curso']))
+    curso_a_modificar = int(input("Escriba al que se le cambiará el estado: "))
+    estado = input("""
+                   A = el curso está aprobado
+                   R = el curso está reprobado
+                   
+                   ¿Cuál es el estado del curso? """)
+    if estado == "A" or estado == "a":
+        for x in estudiantes:
+            if x['autenticacion']['usuario'] == usuario:
+                x['estudios']['cursos'].remove(curso_a_modificar)
+                x['estudios']['aprobados'].append(curso_a_modificar)
+                print("Cursando: {}".format(x['estudios']['cursos']))
+                print("Aprobados: {}".format(x['estudios']['aprobados']))
+                break
+    elif estado == "R" or estado == "r":
+        for x in estudiantes:
+            if x['autenticacion']['usuario'] == usuario:
+                x['estudios']['cursos'].remove(curso_a_modificar)
+                x['estudios']['reprobados'].append(curso_a_modificar)
+                print("Cursando: {}".format(x['estudios']['cursos']))
+                print("Reprobados: {}".format(x['estudios']['reprobados']))
+                break
 
 def ver_horario(usuario, estudiantes):
     dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']

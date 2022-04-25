@@ -33,7 +33,7 @@ carreras = (
     }
 )
 
-cursos = [
+cursos = (
     {
         'curso': "Matematica general",
         'creditos': 3,
@@ -187,7 +187,7 @@ cursos = [
         'horario_de_clases': ['miercoles', 18, 19],
         'codigo': 17
     }
-]
+)
 
 usuarios = [
     {
