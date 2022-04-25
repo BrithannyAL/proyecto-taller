@@ -32,8 +32,11 @@ def modificar_curso(lista_cursos):
         curso, se le pregunta se desea cambiar el nombre del curso y/o la cantidad de horas de las clases.
         A partir de estas respuestas, se le presentarán al admin espacios para que pueda escribir el nuevo nombre
         del curso y la nueva cantidad de horas de clases.
-        Estás respuestas se recolectan y reasignan sobre los campos en donde se almacenaba la vieja información
-        """
+        Estás respuestas se recolectan y reasignan sobre los campos en donde se almacenaba la vieja información.
+        Luego la información es retornada como una tupla.
+        
+        Los parametros de esta función son:
+        lista_cursos = list: Es la base de datos en forma de lista que contiene los cursos con toda su información"""
     imprimir(0, lista_cursos)
     curso_a_modificar = int(input("Escriba el código del curso que desea modificar: "))
     nombre_curso = input("""
