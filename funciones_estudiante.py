@@ -33,12 +33,33 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
     # Si el código está en el estudiante pero no en la carrera tampoco
 
 def matricular_curso(usuario, carreras, cursos, estudiantes):
+    carrera = str
+    cursos_carrera = list
     flag = False
     con = False
-    print("Estos son los cursos disponibles: ")
-    for o in cursos:
-        print(o['curso'])
-        print(" ")
+    
+    for r in estudiantes:
+        if r['autenticacion']['usuario'] == usuario:
+            if r['estudios']['carreras'] != []:
+                carrera = r['estudios']['carreras']
+                for p in carreras:
+                    if carrera == [p['carrera']]:
+                        cursos_carrera = p['cursos']
+            elif r['estudios']['carreras'] == []:
+                print('')
+                print('Primero ingrese una carrera')
+                print('')
+                break
+            else: break
+            print("Estos son los cursos disponibles: ")
+            for o in cursos:
+                if o['codigo']  in cursos_carrera:
+                    
+                    print(o['curso'])
+                    print(" ")
+            break
+
+
     curso_m = input("Ingrese el nombre del curso que desea matricular: ")
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
@@ -52,6 +73,14 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                         break
                     if r_cursos['curso'] == curso_m:
                         codigo_curso = r_cursos['codigo']
+                        if codigo_curso in i['estudios']['aprobados']:
+                            print("Usted no puede matricular este curso porque se encuentra aprobado")
+                            flag = True
+                            break
+                        if codigo_curso in i['estudios']['reprobados']:
+                            print("Usted no puede matricular este curso porque se encuentra reprobado")
+                            flag = True
+                            break
                         for r_carreras in carreras:
                             # Entro a la carrera del estudiante
                             if r_carreras['carrera'] in carreras_en_curso:
@@ -200,12 +229,22 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
     
 
 def registro_actividades(usuario, carreras, cursos, estudiantes):
+    codigo_curso = int
     for i in estudiantes: 
         if i['autenticacion']['usuario'] == usuario:
             relacion_curso = input("Está su actividad relacionada con un curso? ")          
             if relacion_curso == 'si' or relacion_curso == 'Si':
                 r_curso = input("A que curso está relacionada esta actividad? ")
                 comp = verificar_curso(usuario, carreras, cursos, estudiantes, r_curso)
+                for z in cursos:
+                    if z['curso'] == r_curso:
+                        codigo_curso = z['codigo']
+                if codigo_curso in i['estudios']['aprobados']:
+                    print("Usted no puede matricular esta actividad porque el curso se encuentra aprobado")
+                    break
+                if codigo_curso in i['estudios']['reprobados']:
+                    print("Usted no puede matricular esta actividad porque el curso se encuentra reprobado")
+                    break
                 if comp == True:
                     actividad = input("Cuál es el nombre de la actividad? ")
                     dia = input("Ingrese el día que va a realizar la actividad:")
