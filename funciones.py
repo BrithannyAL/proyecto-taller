@@ -1,3 +1,4 @@
+from ast import Return
 import hashlib
 import getpass
 import time
@@ -58,4 +59,5 @@ def verificar_curso(usuario, carreras, cursos, estudiantes, r_curso):
                             return True
                         else:
                             return False
-                else: print("Este curso no existe")
+            else: print("Este curso no existe")
+

@@ -242,7 +242,7 @@ estudiantes = [
         },
         'reporte' : 
         {
-            'lunes':      [['Matematica general' , 'curso' , 3, ['Ingenieria en computacion']],['Matematica discreta' , 'curso' , 2, ['Ingenieria en computacion']], ['Repaso mate' , 'Actividad extracurricular' , 2, 'Matematica general'] , ['descanso', 'ocio', 2]],
+            'lunes':      [['Matematica general' , 'curso' , 3, ['Ingenieria en computacion']],['Matematica discreta' , 'curso' , 2, ['Ingenieria en computacion'], ], ['Repaso mate' , 'Actividad extracurricular' , 2, 'Matematica general','14/2/22','16/2/22'] , ['descanso', 'ocio', 2,'14/2/22','16/2/22']],
             'martes':     [['Introduccion a la programacion' , 'curso' , 2, ['Ingenieria en computacion']],['Comunicacion escrita' , 'curso' , 4, ['Ingenieria en computacion']],],
             'miercoles':  [['Ingles 1' , 'curso' , 4, ['Ingenieria en computacion']],],
             'jueves':     [['Taller de programacion' , 'curso' , 4, ['Ingenieria en computacion']],],
@@ -295,7 +295,7 @@ estudiantes = [
         'tiempo': int,
         'estudios':
         {
-            'carreras': [],
+            'carreras': ['Ingenieria en computacion'],
             'cursos': [],
             'aprobados' : [],
             'reprobados' : []

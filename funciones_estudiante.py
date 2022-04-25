@@ -2,7 +2,6 @@ from cgitb import reset
 from tkinter.tix import Tree
 from turtle import home
 from funciones import horas_horario, verificar_curso
-
 class bcolors:
     green = '\033[92m' #Verde
     yellow = '\033[93m' #Amarillo
@@ -163,6 +162,8 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
                         print(bcolors.green + 'Actividad: '+ str(l[0]) + bcolors.reset)
                         print(bcolors.green + 'Tipo: '+ str(l[1]) + bcolors.reset)
                         print(bcolors.green + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                        print(bcolors.green + 'Fecha inicio: ' + str(l[3]) + bcolors.reset)
+                        print(bcolors.green + 'Horas de final: ' + str(l[4]) + bcolors.reset)
                         porcentaje = l[2] * 100 // 18
                         print(bcolors.green + 'Porcentaje que ocupa en el día: ' + str(porcentaje) + '%' + bcolors.reset)
                         print('')
@@ -178,6 +179,8 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
                         print(bcolors.yellow + 'Actividad: '+ str(l[0]) + bcolors.reset)
                         print(bcolors.yellow + 'Tipo: '+ str(l[1]) + bcolors.reset)
                         print(bcolors.yellow + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                        print(bcolors.yellow + 'Fecha inicio: ' + str(l[4]) + bcolors.reset)
+                        print(bcolors.yellow + 'Fecha final: ' + str(l[5]) + bcolors.reset)
                         porcentaje = l[2] * 100 // 18
                         print(bcolors.yellow + 'Porcentaje que ocupa en el día: ' + str(porcentaje) + '%' + bcolors.reset)
                         print(bcolors.yellow + 'Curso asociado: ' + str(l[3]) + bcolors.reset)
@@ -198,6 +201,8 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
                             print(bcolors.green + 'Actividad: '+ str(l[0]) + bcolors.reset)
                             print(bcolors.green + 'Tipo: '+ str(l[1]) + bcolors.reset)
                             print(bcolors.green + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                            print(bcolors.green + 'Fecha de inicio: ' + str(l[3]) + bcolors.reset)
+                            print(bcolors.green + 'Fecha final: ' + str(l[4]) + bcolors.reset)
                             porcentaje = l[2] * 100 // 126
                             print(bcolors.green + 'Porcentaje que ocupa en la semana: ' + str(porcentaje) + '%' + bcolors.reset)
                             print('')
@@ -213,6 +218,8 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
                             print(bcolors.yellow + 'Actividad: '+ str(l[0]) + bcolors.reset)
                             print(bcolors.yellow + 'Tipo: '+ str(l[1]) + bcolors.reset)
                             print(bcolors.yellow + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                            print(bcolors.yellow + 'Fecha inicio: ' + str(l[4]) + bcolors.reset)
+                            print(bcolors.yellow + 'Fecha final: ' + str(l[5]) + bcolors.reset)
                             porcentaje = l[2] * 100 // 126
                             print(bcolors.yellow + 'Porcentaje que ocupa en la semana: ' + str(porcentaje) + '%' + bcolors.reset)
                             print(bcolors.yellow + 'Curso asociado: ' + str(l[3]) + bcolors.reset)
@@ -229,6 +236,8 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
     
 
 def registro_actividades(usuario, carreras, cursos, estudiantes):
+    insertar = False
+    dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
     codigo_curso = int
     for i in estudiantes: 
         if i['autenticacion']['usuario'] == usuario:
@@ -248,8 +257,17 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 if comp == True:
                     actividad = input("Cuál es el nombre de la actividad? ")
                     dia = input("Ingrese el día que va a realizar la actividad:")
-                    hora_i = int(input("Ingrese la hora de inicio de la actividad: "))
-                    hora_f = int(input("Ingrese la hora final de la actividad: "))
+                    if dia not in dias:
+                        print('Ese dia no existe, los dias deben ser escritos en minuscula')
+                        break
+                    try:
+                        hora_i = int(input("Ingrese la hora de inicio de la actividad: "))
+                        hora_f = int(input("Ingrese la hora final de la actividad: "))
+                    except:
+                        print('Ingrese la hora como un numero del 7 al 18')
+                        break
+                    fecha_i = str(input('Ingrese la fecha de inicio: '))
+                    fecha_f = str(input('Ingrese la fecha de final: '))
                     horas_t = hora_f - hora_i
                     horas_dia = horas_horario(usuario, estudiantes, dia) 
                     horas_semana = horas_horario(usuario, estudiantes, 'semana')
@@ -261,21 +279,31 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                         break
                     for z in range(horas_t):
                         if i['horario'][dia][hora_i] == []:
-                            i['horario'][dia][hora_i] = [actividad]
+                            insertar = True
                             hora_i = hora_i + 1
                         else:
                             print("Estas horas se presentan ocupadas")
+                            insertar = False
                             break
-                    i['reporte'][dia].append([actividad,'Actividad extracurricular',horas_t, r_curso])
+                        if insertar == True:
+                            for a in range(horas_t):
+                                i['horario'][dia][hora_i] = [actividad]
+                                hora_i = hora_i + 1
+                            i['reporte'][dia].append([actividad,'Actividad extracurricular',horas_t, r_curso, fecha_i,fecha_f])
                 if comp == False:
                     print("Usted no está matriculado en este curso")
                     home()     
             elif relacion_curso == 'no' or relacion_curso == 'No':
-                tipo = 'ocio'
                 actividad = input ('Ingrese el nombre de la actividad: ')
                 dia = input("Ingrese el día que va a realizar la actividad:")
+                if dia not in dias:
+                    print('Ese dia no existe')
+                    break
                 hora_i = int(input("Ingrese la hora de inicio de la actividad: "))
+                
                 hora_f = int(input("Ingrese la hora final de la actividad: "))
+                fecha_i = str(input('Ingrese la fecha de inicio: '))
+                fecha_f = str(input('Ingrese la fecha de final: '))
                 horas_t = hora_f - hora_i
                 horas_dia = horas_horario(usuario, estudiantes, dia) 
                 horas_semana = horas_horario(usuario, estudiantes, 'semana')
@@ -285,7 +313,7 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 if horas_t + horas_semana > 72:
                     print("Está excediendo las 72 horas semanales")
                     break
-                i['reporte'][dia].append([actividad,tipo,horas_t])
+                i['reporte'][dia].append([actividad,'ocio',horas_t,fecha_i,fecha_f])
                 for z in range(horas_t):
                     if i['horario'][dia][hora_i] == []:
                        i['horario'][dia][hora_i] = [actividad]
@@ -347,5 +375,6 @@ def ver_horario(usuario, estudiantes):
     for x in estudiantes:
         if x['autenticacion']['usuario'] == usuario:
             for l in dias:
+                print(l)
                 print(x['horario'][l])
                 print("")
