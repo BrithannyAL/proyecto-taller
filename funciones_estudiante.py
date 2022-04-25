@@ -263,5 +263,5 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
 
 
 """
-ESTO ES UNA CAMBIO
+ESTO ES UN CAMBIO
 """
