@@ -152,6 +152,12 @@ def imprimir_codigos_cursos_en_carreras(codigo, lista):
           {}""".format(lista[codigo - 1]['cursos']))
     
 def modificar_codigos_en_carreras():
+    """
+        Esta función permite modificar la lista de cursos que están relacionados a una carrera. Se crea una lista
+        vacía que es donde se insertaran todos los nuevos cursos. Se le pide al usuario que digite la clave unica
+        de cada curso de desee añadir a la lista de forma ilimitada, hasta que el usuario indique que ya ha
+        terminado de agregar, en este caso, con digitando una x.
+        La función retorna la lista llena con las claves de los cursos."""
     nuevos_cursos = []
     salir = False
     print("Presione x cuando haya terminado de agregar cursos.")
