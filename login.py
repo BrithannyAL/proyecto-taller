@@ -6,6 +6,8 @@ from funciones_estudiante import generar_reporte, matricular_carrera, matricular
 import hashlib
 
 def inicio():
+    """
+        Esta es la primera función en la que se trabaja. La primera que llama el sistema cuando empieza a correr. No contiene ningún parámetro. Se le presenta al usuario un menú en donde podrá elegir si inicir seción con una cuenta ya existente, registrar una nueva cuenta en el sistema o cerrar el sistema."""
     opcion = input("""
 Digite 1 si desea iniciar sesión 
 Digite 2 si desea registrarse
