@@ -5,11 +5,6 @@ from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, mod
 from funciones_estudiante import generar_reporte, matricular_carrera, matricular_curso, generar_reporte, registro_actividades, aprobado_noAprobado, ver_horario
 import hashlib
 
-
-
-
-
-
 def inicio():
     opcion = input("""
 Digite 1 si desea iniciar sesión 
@@ -51,7 +46,6 @@ def login():
             print("Vuelva a intentar")
 
 def registrar():
-
     nombre = input("Ingrese el nombre del usuario a registrar: ")
     tipo = input("Ingrese el tipo de usuario a registrar: ")
     telefono = input("Ingrese el numero de telefono del usuario: ")
@@ -182,7 +176,7 @@ def funciones_estudiante(opcion, usuario):
     elif opcion == 5:
        aprobado_noAprobado(usuario, estudiantes, cursos)
     elif opcion == 6:
-        ver_horario(usuario, estudiantes)
+        ver_horario(usuario, estudiantes, cursos)
     elif opcion == 7:
         opci = input("¿Desea cerrar la aplicación? (y/n)")
         if opci == "y":
