@@ -10,6 +10,10 @@ class bcolors:
     red = '\033[91m'  # Rojo
     reset = '\033[0m'  # RESETEAR COLOR
 
+'''
+Esta funcion matricula una carrera en el usuario 
+e imprime las carreras disponibles para matricular
+'''
 
 def matricular_carrera(usuario, carreras, cursos, estudiantes):
     print("")
@@ -26,15 +30,15 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
                     print('La carrera se ha matriculado existosamente')
                     break
             else:
-                print("La carrera ingresada no existe o no pertenece a su curso")
+                print("La carrera ingresada no existe")
     return estudiantes
 
-    # buscar si el codigo del curso esta en los codigos de la carrera y la carrera del estudiante
-    # si el codigo del curso esta en la carrera entonces puede matricularlo pero hay que verificar que el estudiante esté en esa carrera
-    # Si el código está en el estudiante pero no en la carrera no debería poder
-    # Si el código está en el estudiante pero no en la carrera tampoco
-
-
+'''
+Esta funcion matricula un curso y tiene muchas comprobaciones 
+dentro de ella para evitar errores, algunas de estas son;
+el evitar que se matricule un curso sin matricular una carrera antes
+o matricular un curso de una carrera que el usuario no ha matriculado
+'''
 def matricular_curso(usuario, carreras, cursos, estudiantes):
     carrera = str
     cursos_carrera = list
@@ -62,7 +66,6 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                     print(o['curso'])
                     print(" ")
             break
-
     curso_m = input("Ingrese el nombre del curso que desea matricular: ")
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
@@ -163,6 +166,11 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
             [curso_m, 'curso', cantidad_horas, carreras_en_curso, ])
     return estudiantes
 
+'''
+Esta funcion genera los reportes de las actividades matriculadas e
+imprime sus distintos atributos, ademas de esto diferencia por colores
+cada tipo de actividad
+'''
 
 def generar_reporte(usuario, carreras, cursos, estudiantes):
     horas_d = 0
@@ -273,6 +281,11 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
     else:
         print('El dato ingresado no es valido')
 
+'''
+Funcion que registra actividades ya sea que esten asociadas a un curso o no
+Esta funcion realiza gran cantidad de comprobaciones para evitar errores, por ejemplo,
+la actividad tiene que matricularse dentro de las horas disponibles (7-18) 
+'''
 
 def registro_actividades(usuario, carreras, cursos, estudiantes):
     insertar = False
@@ -454,6 +467,7 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
                             print("El curso ha cambiado su estado a 'Reprobado'")
                     break
 
+'''Funcion que recorre e imprime el horario del usuario dia por dia'''
 
 def ver_horario(usuario, estudiantes):
     dias = ['lunes', 'martes', 'miercoles',
