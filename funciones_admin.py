@@ -55,6 +55,22 @@ def modificar_curso(lista_cursos):
     return(tuple(lista_cursos))
     
 def agregar_carrera(lista_carrera, cursos):
+    """
+        Esta función le permite a los adminitradores agregar una nueva carrera en una base de datos. La función
+        primero genera una clave unica para la nueva carrera (codigo). Se le pide al admin que ingrese el nombre
+        y la cantidad de semestre de la carrera. El siguiente dato son los cursos que estarán relacionados en el
+        plan de estudios de la carrera, por lo tanto, al admin, se le imprime una lista con los nombre de los cursos
+        y sus respectivos códigos para que pueda agregarlos por medio de él.
+        Esto último se hace con un ciclo while, de forma que el admin pueda ir agregando los codigos de los cursos
+        que desee dentro de la carrera, y de forma ilimitada hasta que se le indique al app que ya ha acabado de
+        agregar cursos (digitando una x).
+        Luego tomamos todos los datos recolectados y los ordenamos dentro de un diccionario para que este pueda
+        ser agregado a la base de datos de carreras y esta misma, pueda ser devuelta en forma de tupla.
+        
+        Los parametros de esta función son:
+        lista_carrera = list: esta es la base de datos en forma de lista al que agregaremos la nueva carrera.
+        cursos = tuple: la utilizamos para imprimir los cursos que puede elegir el admin para relacionarla con la
+        carrera."""
     salir = False
     carrera_cursos = []
     codigo = (lista_carrera[-1]['codigo']) + 1
