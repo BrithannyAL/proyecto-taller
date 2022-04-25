@@ -90,6 +90,11 @@ def agregar_carrera(lista_carrera, cursos):
     return tuple(lista_carrera)
     
 def modificar_carrera(lista_carreras, cursos):
+    """
+        Esta es la función que le permite a los administradores modificar una carrera existente dentro de la base
+        de datos. Lo primero es presentarle al usuario una lista de carreras con su respectivo codigo para que el
+        admnistrador pueda escoger el curso a modificar por medio de ellos. Lo sieguiente es que se le pregunta al
+        admin si desea modificar el nombre, la cantidad de semestres y los cursos relacionados a esta carrera."""
     imprimir(1, lista_carreras)
     
     carrera_a_modificar = int(input("Escriba el código del curso que desea modificar: "))
