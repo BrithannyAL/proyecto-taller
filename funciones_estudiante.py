@@ -247,7 +247,6 @@ def aprobado_noAprobado(usuario, estudiantes):
         if x['autenticacion']['usuario'] == usuario:
             cursos_del_estudiante = x['estudios']['cursos']
     print("Los cursos en los que está matrículado son:")
-    
     print(cursos_del_estudiante)
 
 def ver_horario(usuario, estudiantes):
@@ -257,3 +256,4 @@ def ver_horario(usuario, estudiantes):
             for l in dias:
                 print(x['horario'][l])
                 print("")
+                print ("cambio")
