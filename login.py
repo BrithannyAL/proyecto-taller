@@ -47,7 +47,7 @@ def login():
 
 def registrar():
     nombre = input("Ingrese el nombre del usuario a registrar: ")
-    tipo = input("Ingrese el tipo de usuario a registrar: ")
+    tipo = input("Ingrese el tipo de usuario a registrar: (admin/estudiante)")
     telefono = input("Ingrese el numero de telefono del usuario: ")
     usuario = input("Ingrese el usuario a registrar: ")
     contraseña = input("Ingrese la contraseña del usuario a registrar: ")
