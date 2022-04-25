@@ -133,7 +133,7 @@ def registrar():
 # Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
 
 
-def menu(tipo, nombre):
+def menu(tipo, usuario, nombre):
     """
         Esta función imprime el menú de opciones para cada tipo de usuarios (admin/estudiante). La función detecta el usuario usuario que le llega y apartir de este geberal el menú de opciones, las cuales son diferentes entre los tipos de usuarios. Para esto se utiliza un condicional. Después de haber impreso el menú de opciones, se le pedirá al usuario que seleccione una, y esta se enviará como parámetro a otra función.
 
