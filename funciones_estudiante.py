@@ -245,11 +245,22 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 print("Esa opcion no es válida")
                 home()
                 
-def aprobado_noAprobado(usuario, estudiantes):
+def aprobado_noAprobado(usuario, estudiantes, cursos):
     cursos_del_estudiante = []
     for x in estudiantes:
         if x['autenticacion']['usuario'] == usuario:
             cursos_del_estudiante = x['estudios']['cursos']
     print("Los cursos en los que está matrículado son:")
-    
-    print(cursos_del_estudiante)
+    for cod in cursos_del_estudiante:
+        for item in cursos:
+            if item['codigo'] == cod:
+                print("Código: {}, Curso: {}".format(item['codigo'], item['curso']))
+    curso_a_manipular =input("Digite el código del curso al que desea modificar el estado: ")
+    estado = input("""
+                   A = El curso está aprobado
+                   B = El curso está reprobado
+                   
+                   Escriba el estado del curso: """)
+    print("El curso está {}".format(estado))
+    if estado == "A" or estado == "a":
+        return

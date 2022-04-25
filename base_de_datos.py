@@ -220,7 +220,9 @@ estudiantes = [
         'estudios':
         {
             'carreras': ['Ingenieria en computacion'],
-            'cursos': [1, 2, 3, 4, 5, 6, 7]
+            'cursos': [1, 2, 3, 4, 5, 6, 7],
+            'aprobados' : [],
+            'reprobados' : []
         },
         'autenticacion':
         {
@@ -257,7 +259,9 @@ estudiantes = [
         'estudios':
         {
             'carreras': ['Ingenieria en procuccion industrial'],
-            'cursos': [1, 2, 3, 4, 14, 15]
+            'cursos': [1, 2, 3, 4, 14, 15],
+            'aprobados' : [],
+            'reprobados' : []
         },
         'autenticacion':
         {
@@ -292,7 +296,9 @@ estudiantes = [
         'estudios':
         {
             'carreras': ['Ingenieria en computacion'],
-            'cursos': []
+            'cursos': [],
+            'aprobados' : [],
+            'reprobados' : []
         },
         'autenticacion':
         {

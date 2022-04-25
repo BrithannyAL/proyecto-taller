@@ -142,7 +142,7 @@ def menu(tipo, usuario, nombre):
             6: Salir del usuario
             """.format(usuario))
         opcion = int(input("¿Qué acción desea realizar? "))
-        funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes)
+        funciones_estudiante(opcion, usuario)
 
 def funciones_admin(opcion):
     global carreras
@@ -174,7 +174,7 @@ def funciones_estudiante(opcion, usuario):
     elif opcion == 4:
         registro_actividades(usuario, carreras, cursos, estudiantes)
     elif opcion == 5:
-       aprobado_noAprobado(usuario, estudiantes)
+       aprobado_noAprobado(usuario, estudiantes, cursos)
     elif opcion == 6:
         opci = input("¿Desea cerrar la aplicación? (y/n)")
         if opci == "y":
