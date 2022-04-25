@@ -137,9 +137,9 @@ def menu(tipo, nombre):
     """
         Esta función imprime el menú de opciones para cada tipo de usuarios (admin/estudiante). La función detecta el usuario usuario que le llega y apartir de este geberal el menú de opciones, las cuales son diferentes entre los tipos de usuarios. Para esto se utiliza un condicional. Después de haber impreso el menú de opciones, se le pedirá al usuario que seleccione una, y esta se enviará como parámetro a otra función.
 
-        Los parametros de esta función son:
-        tipo: str = este es el tipo de cuenta que ha iniciado sesión, lo necesitamos para que el sistema sepa cuál es el menú que debe imprimir.
-        nombre: str = el nombre del usuario de la cuenta, este se usa para imprimir el saludo de bienvenida."""
+        Parámetros:
+        - tipo (str): este es el tipo de cuenta que ha iniciado sesión, lo necesitamos para que el sistema sepa cuál es el menú que debe imprimir.
+        - nombre (str): el nombre del usuario de la cuenta, este se usa para imprimir el saludo de bienvenida."""
     if tipo == "admin":
         print("""********************************* Bienvenido {} *********************************
             Menu de opciones:
@@ -171,8 +171,8 @@ def funciones_admin(opcion):
     """
         Esta función es la que llama a las funciones de los administradores, según la opción que ellos hayan escogido en el menú. Para esto se usan los condicionales, los cuales comparan la respuesta del usuario con las opciones del menú para saber cuál es la función que se desea invocar.
         
-        Los parametros de esta función son:
-        opcion: int = esta es la respuesta del usuario que es comparada con las opciones del menú. Para mayor facilidad se hizo con números."""
+        Parámetros:
+        - opcion (inr): esta es la respuesta del usuario que es comparada con las opciones del menú. Para mayor facilidad se hizo con números."""
     global carreras
     global cursos
     if opcion == 1:
@@ -194,8 +194,8 @@ def funciones_estudiante(opcion):
     """
         Esta función es la que llama a las funciones de los estudiantes, según la opción que ellos hayan escogido en el menú. Para esto se usan los condicionales, los cuales comparan la respuesta del usuario con las opciones del menú para saber cuál es la función que se desea invocar.
         
-        Los parametros de esta función son:
-        opcion: int = esta es la respuesta del usuario que es comparada con las opciones del menú. Para mayor facilidad se hizo con números."""
+        Parámetros:
+        - opcion (int): esta es la respuesta del usuario que es comparada con las opciones del menú. Para mayor facilidad se hizo con números."""
     global carreras
     global cursos
     global estudiantes
