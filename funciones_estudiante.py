@@ -10,6 +10,10 @@ class bcolors:
     red = '\033[91m'  # Rojo
     reset = '\033[0m'  # RESETEAR COLOR
 
+'''
+Esta funcion matricula una carrera en el usuario 
+e imprime las carreras disponibles para matricular
+'''
 
 def matricular_carrera(usuario, carreras, cursos, estudiantes):
     print("")
@@ -26,15 +30,15 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
                     print('La carrera se ha matriculado existosamente')
                     break
             else:
-                print("La carrera ingresada no existe o no pertenece a su curso")
+                print("La carrera ingresada no existe")
     return estudiantes
 
-    # buscar si el codigo del curso esta en los codigos de la carrera y la carrera del estudiante
-    # si el codigo del curso esta en la carrera entonces puede matricularlo pero hay que verificar que el estudiante esté en esa carrera
-    # Si el código está en el estudiante pero no en la carrera no debería poder
-    # Si el código está en el estudiante pero no en la carrera tampoco
-
-
+'''
+Esta funcion matricula un curso y tiene muchas comprobaciones 
+dentro de ella para evitar errores, algunas de estas son;
+el evitar que se matricule un curso sin matricular una carrera antes
+o matricular un curso de una carrera que el usuario no ha matriculado
+'''
 def matricular_curso(usuario, carreras, cursos, estudiantes):
     carrera = str
     cursos_carrera = list
@@ -62,7 +66,6 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                     print(o['curso'])
                     print(" ")
             break
-
     curso_m = input("Ingrese el nombre del curso que desea matricular: ")
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
@@ -163,6 +166,11 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
             [curso_m, 'curso', cantidad_horas, carreras_en_curso, ])
     return estudiantes
 
+'''
+Esta funcion genera los reportes de las actividades matriculadas e
+imprime sus distintos atributos, ademas de esto diferencia por colores
+cada tipo de actividad
+'''
 
 def generar_reporte(usuario, carreras, cursos, estudiantes):
     horas_d = 0
@@ -273,6 +281,11 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
     else:
         print('El dato ingresado no es valido')
 
+'''
+Funcion que registra actividades ya sea que esten asociadas a un curso o no
+Esta funcion realiza gran cantidad de comprobaciones para evitar errores, por ejemplo,
+la actividad tiene que matricularse dentro de las horas disponibles (7-18) 
+'''
 
 def registro_actividades(usuario, carreras, cursos, estudiantes):
     insertar = False
@@ -318,6 +331,8 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                     if hora_i > hora_f:
                         print('Esta operacion no es posible, la actividad esta empezando antes de que termine')
                         break
+                    horas_i1 = hora_i
+                    horas_i2 = hora_i
                     horas_t = hora_f - hora_i
                     horas_dia = horas_horario(usuario, estudiantes, dia)
                     horas_semana = horas_horario(
@@ -329,15 +344,18 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                         print("Está excediendo las 72 horas semanales")
                         break
                     for z in range(horas_t):
-                        if i['horario'][dia][hora_i] == []:
+                        if i['horario'][dia][horas_i2] == []:
                             insertar = True
-                            hora_i = hora_i + 1
-                        else:
+                            horas_i2 = horas_i2 + 1
+                        elif i['horario'][dia][horas_i2] != []:
                             print("Estas horas se presentan ocupadas")
                             insertar = False
                             break
-                    i['reporte'][dia].append(
-                        [actividad, 'Actividad extracurricular', horas_t, r_curso])
+                    if insertar == True:
+                        i['reporte'][dia].append([actividad, 'Actividad extracurricular', horas_t, r_curso])
+                        for p in range(horas_t):
+                            i['horario'][dia][horas_i1] = actividad
+                            horas_i1 = horas_i1 + 1
                 if comp == False:
                     print("Usted no está matriculado en este curso")
                     home()
@@ -355,6 +373,8 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                     break
                 hora_f = int(
                     input("Ingrese la hora final de la actividad: "))
+                horas_i1 = hora_i
+                horas_i2 = hora_i
                 if hora_i < 7 or hora_i > 24:
                     print('Hora no valida, recuerde que el horario disponible es de las 9 a las 24 horas')
                 if hora_i > hora_f:
@@ -371,14 +391,19 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 if horas_t + horas_semana > 72:
                     print("Está excediendo las 72 horas semanales")
                     break
-                i['reporte'][dia].append([actividad, tipo, horas_t])
                 for z in range(horas_t):
-                    if i['horario'][dia][hora_i] == []:
-                        i['horario'][dia][hora_i] = [actividad]
-                        hora_i = hora_i + 1
-                    else:
+                    if i['horario'][dia][horas_i2] == []:
+                        insertar = True
+                        horas_i2 = horas_i2 + 1
+                    elif i['horario'][dia][horas_i2] != []:
                         print("Estas horas se presentan ocupadas")
+                        insertar = False
                         break
+                if insertar == True:
+                    i['reporte'][dia].append([actividad, tipo, horas_t])
+                    for p in range(horas_t):
+                        i['horario'][dia][horas_i1] = actividad
+                        horas_i1 = horas_i1 + 1
             else:
                 print("Esa opcion no es válida")
                 home()
@@ -442,6 +467,7 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
                             print("El curso ha cambiado su estado a 'Reprobado'")
                     break
 
+'''Funcion que recorre e imprime el horario del usuario dia por dia'''
 
 def ver_horario(usuario, estudiantes):
     dias = ['lunes', 'martes', 'miercoles',
