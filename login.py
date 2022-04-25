@@ -137,7 +137,7 @@ def menu(tipo, usuario, nombre):
             2: Matricular un curso
             3: Generar reporte
             4: Registrar una actividad
-            5: Deternminar el estado de un curso
+            5: Determinar el estado de un curso
             6: Ver horario
             7: Salir del usuario
             """.format(usuario))
@@ -166,13 +166,13 @@ def funciones_estudiante(opcion, usuario):
     global cursos
     global estudiantes
     if opcion == 1:
-        matricular_carrera(usuario, carreras, cursos, estudiantes)
+         estudiantes = matricular_carrera(usuario, carreras, cursos, estudiantes)
     elif opcion == 2:
-        matricular_curso(usuario, carreras, cursos, estudiantes)
+        estudiantes = matricular_curso(usuario, carreras, cursos, estudiantes)
     elif opcion == 3:
-        generar_reporte(usuario, carreras, cursos, estudiantes)
+        estudiantes = generar_reporte(usuario, carreras, cursos, estudiantes)
     elif opcion == 4:
-        registro_actividades(usuario, carreras, cursos, estudiantes)
+        estudiantes = registro_actividades(usuario, carreras, cursos, estudiantes)
     elif opcion == 5:
        aprobado_noAprobado(usuario, estudiantes, cursos)
     elif opcion == 6:
