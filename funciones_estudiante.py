@@ -318,6 +318,8 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                     if hora_i > hora_f:
                         print('Esta operacion no es posible, la actividad esta empezando antes de que termine')
                         break
+                    horas_i1 = hora_i
+                    horas_i2 = hora_i
                     horas_t = hora_f - hora_i
                     horas_dia = horas_horario(usuario, estudiantes, dia)
                     horas_semana = horas_horario(
@@ -329,15 +331,18 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                         print("Está excediendo las 72 horas semanales")
                         break
                     for z in range(horas_t):
-                        if i['horario'][dia][hora_i] == []:
+                        if i['horario'][dia][horas_i2] == []:
                             insertar = True
-                            hora_i = hora_i + 1
-                        else:
+                            horas_i2 = horas_i2 + 1
+                        elif i['horario'][dia][horas_i2] != []:
                             print("Estas horas se presentan ocupadas")
                             insertar = False
                             break
-                    i['reporte'][dia].append(
-                        [actividad, 'Actividad extracurricular', horas_t, r_curso])
+                    if insertar == True:
+                        i['reporte'][dia].append([actividad, 'Actividad extracurricular', horas_t, r_curso])
+                        for p in range(horas_t):
+                            i['horario'][dia][horas_i1] = actividad
+                            horas_i1 = horas_i1 + 1
                 if comp == False:
                     print("Usted no está matriculado en este curso")
                     home()
@@ -355,6 +360,8 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                     break
                 hora_f = int(
                     input("Ingrese la hora final de la actividad: "))
+                horas_i1 = hora_i
+                horas_i2 = hora_i
                 if hora_i < 7 or hora_i > 24:
                     print('Hora no valida, recuerde que el horario disponible es de las 9 a las 24 horas')
                 if hora_i > hora_f:
@@ -371,14 +378,19 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 if horas_t + horas_semana > 72:
                     print("Está excediendo las 72 horas semanales")
                     break
-                i['reporte'][dia].append([actividad, tipo, horas_t])
                 for z in range(horas_t):
-                    if i['horario'][dia][hora_i] == []:
-                        i['horario'][dia][hora_i] = [actividad]
-                        hora_i = hora_i + 1
-                    else:
+                    if i['horario'][dia][horas_i2] == []:
+                        insertar = True
+                        horas_i2 = horas_i2 + 1
+                    elif i['horario'][dia][horas_i2] != []:
                         print("Estas horas se presentan ocupadas")
+                        insertar = False
                         break
+                if insertar == True:
+                    i['reporte'][dia].append([actividad, tipo, horas_t])
+                    for p in range(horas_t):
+                        i['horario'][dia][horas_i1] = actividad
+                        horas_i1 = horas_i1 + 1
             else:
                 print("Esa opcion no es válida")
                 home()
