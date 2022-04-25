@@ -52,6 +52,11 @@ def login():
             print("Vuelva a intentar")
 
 def registrar():
+    """
+        Esta es la segunda opción del menú principal. La función permite registrar un nuevo usuario de tipo estudiante o admin. Primero, el sistema le pide los datos necesarios al usuario que está creando la cuenta, este mismo verifica si el usuario ingresado ya está regstrado en el sistema. Una vez que el sisteema haya recolectado los datos para la creación de la cuenta, verifica el tipo indicado por el usuario para darle la forma adecuada dentro de la base de datos.
+        Esta función no recibe parámetros."""
+    global estudiantes
+    global usuarios
     nombre = input("Ingrese el nombre del usuario a registrar: ")
     tipo = input("Ingrese el tipo de usuario a registrar: (admin/estudiante)")
     telefono = input("Ingrese el numero de telefono del usuario: ")
