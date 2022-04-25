@@ -95,7 +95,6 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                                                                 hora = hora + contador
                                                                 contador = + 1
                                                                 i['estudios']['cursos'].append(codigo_curso)
-                                                                #i['estudios']['cursos_c'].append([{'curso' : curso_m, 'estado' : 'cursando'}])
                                                                 con = True
                                                             else:
                                                                 print(
@@ -146,12 +145,9 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
                         print(bcolors.yellow + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
                         print(bcolors.yellow + 'Curso asociado: ' + str(l[3]) + bcolors.reset)
                         print('')
-                horas = list(i['horario'][dia].keys())
-                for j in horas:
-                    if i['horario'][dia][j] == []:
-                        horas_d +=  1
         horas_dia = horas_horario(usuario, estudiantes, dia)  
-        print('La cantidad de horas de trabajo de este dia es de: ' , horas_dia)
+        horas_d = 18-horas_dia
+        print('La cantidad de horas ocupadas este dia es de: ' , horas_dia)
         print('Tiene ', horas_d, 'horas disponibles el día ', dia)
     elif dia == 'semana':
         for i in estudiantes:
