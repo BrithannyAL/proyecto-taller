@@ -3,6 +3,8 @@ import getpass
 import time
 
 def horas_horario(usuario, estudiantes, dia):
+    """
+       Esta función le permite saber al usuario cuantas horas tiene libres durante la semana"""
     contador = 0
     semana = 0
     if dia == 'semana':
@@ -32,6 +34,8 @@ def horas_horario(usuario, estudiantes, dia):
 
 
 def verificar_curso(usuario, carreras, cursos, estudiantes, r_curso):
+    """
+        Esta función nos permite saber si un curso está dentro de la lista de cursos en las que el estudiante está matriculado. Todas las verificaciones para obtener la información se hacen con condicionales y los ciclos for se usan para recorrer las listas."""
     for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
             for z in cursos:
