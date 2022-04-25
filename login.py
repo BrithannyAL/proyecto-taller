@@ -49,7 +49,7 @@ def login():
                 correcto = True
                 print("Ha ingresado como ", item['tipo'])
                 while 1 > 0:
-                    menu(item['tipo'], item['nombre'])
+                    menu(item['tipo'], usuario, item['nombre'])
         if correcto == False:
             print("Vuelva a intentar")
 
@@ -164,7 +164,7 @@ def menu(tipo, nombre):
             7: Salir del usuario
             """.format(nombre))
         opcion = int(input("¿Qué acción desea realizar? "))
-        funciones_estudiante(opcion)
+        funciones_estudiante(opcion, usuario)
 
 
 def funciones_admin(opcion):
@@ -190,7 +190,7 @@ def funciones_admin(opcion):
         login()
 
 
-def funciones_estudiante(opcion):
+def funciones_estudiante(opcion, usuario):
     """
         Esta función es la que llama a las funciones de los estudiantes, según la opción que ellos hayan escogido en el menú. Para esto se usan los condicionales, los cuales comparan la respuesta del usuario con las opciones del menú para saber cuál es la función que se desea invocar.
         
@@ -199,7 +199,6 @@ def funciones_estudiante(opcion):
     global carreras
     global cursos
     global estudiantes
-    global usuario
     if opcion == 1:
         estudiantes = matricular_carrera(
             usuario, carreras, cursos, estudiantes)
