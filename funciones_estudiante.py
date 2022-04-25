@@ -249,3 +249,11 @@ def aprobado_noAprobado(usuario, estudiantes):
     print("Los cursos en los que está matrículado son:")
     print(cursos_del_estudiante)
 
+def ver_horario(usuario, estudiantes):
+    dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
+    for x in estudiantes:
+        if x['autenticacion']['usuario'] == usuario:
+            for l in dias:
+                print(x['horario'][l])
+                print("")
+                print ("cambio")
