@@ -47,7 +47,7 @@ def login():
                 correcto = True
                 print("Ha ingresado como ", item['tipo'])
                 while 1 > 0:
-                    menu(item['tipo'], usuario, item['nombre'])
+                    menu(item['tipo'], item['nombre'])
         if correcto == False:
             print("Vuelva a intentar")
 
@@ -128,7 +128,13 @@ def registrar():
         inicio() 
             
 #Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
-def menu(tipo, usuario, nombre):
+def menu(tipo, nombre):
+    """
+        Esta función imprime el menú de opciones para cada tipo de usuarios (admin/estudiante). La función detecta el usuario usuario que le llega y apartir de este geberal el menú de opciones, las cuales son diferentes entre los tipos de usuarios. Para esto se utiliza un condicional. Después de haber impreso el menú de opciones, se le pedirá al usuario que seleccione una, y esta se enviará como parámetro a otra función.
+        
+        Los parametros de esta función son:
+        tipo: str = este es el tipo de cuenta que ha iniciado sesión, lo necesitamos para que el sistema sepa cuál es el menú que debe imprimir.
+        nombre: str = el nombre del usuario de la cuenta, este se usa para imprimir el saludo de bienvenida."""
     if tipo == "admin":
         print("""********************************* Bienvenido {} *********************************
             Menu de opciones:
@@ -151,9 +157,9 @@ def menu(tipo, usuario, nombre):
             5: Determinar el estado de un curso
             6: Ver horario
             7: Salir del usuario
-            """.format(usuario))
+            """.format(nombre))
         opcion = int(input("¿Qué acción desea realizar? "))
-        funciones_estudiante(opcion, usuario)
+        funciones_estudiante(opcion)
 
 def funciones_admin(opcion):
     global carreras
@@ -172,10 +178,11 @@ def funciones_admin(opcion):
             quit()
         login()
 
-def funciones_estudiante(opcion, usuario):
+def funciones_estudiante(opcion):
     global carreras
     global cursos
     global estudiantes
+    global usuario
     if opcion == 1:
          estudiantes = matricular_carrera(usuario, carreras, cursos, estudiantes)
     elif opcion == 2:
