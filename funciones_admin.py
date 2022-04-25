@@ -25,6 +25,15 @@ def agregar_curso(lista_cursos):
     return tuple(lista_cursos)
     
 def modificar_curso(lista_cursos):
+    """
+        Esta función le permite a los administradores modificar las caracteriticas de un curso ya existente en la 
+        base de datos. Para eso lo primero que hacemos es imprimir la lista de cursos para que el admin pueda
+        leerlos y escoger por medio de la clave única (código) el curso que modificará. Una vez haya escogido el
+        curso, se le pregunta se desea cambiar el nombre del curso y/o la cantidad de horas de las clases.
+        A partir de estas respuestas, se le presentarán al admin espacios para que pueda escribir el nuevo nombre
+        del curso y la nueva cantidad de horas de clases.
+        Estás respuestas se recolectan y reasignan sobre los campos en donde se almacenaba la vieja información
+        """
     imprimir(0, lista_cursos)
     curso_a_modificar = int(input("Escriba el código del curso que desea modificar: "))
     nombre_curso = input("""
@@ -40,6 +49,7 @@ def modificar_curso(lista_cursos):
     if horas_lectivas == "y":
         lista_cursos[curso_a_modificar -1]['horas_lectivas'] = input("Nuevo horas lectivas para el curso: ")
     print("""El curso ha sido modificado: {}""".format(lista_cursos[curso_a_modificar -1]))
+    return(tuple(lista_cursos))
     
 def agregar_carrera(lista_carrera, cursos):
     salir = False
