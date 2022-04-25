@@ -1,4 +1,5 @@
-def agregar_curso(lista_cursos):
+def agregar_curso(lista_cursos, estudiantes):
+    print(estudiantes[2])
     last_code = lista_cursos[-1]['codigo']
     curso = input("Ingrese el nombre del curso que desea agregar: ")
     creditos = input("Ingrese la cantidad de creditos del curso: ")

@@ -2,8 +2,13 @@
 from tkinter import E
 from base_de_datos import usuarios, estudiantes, carreras, cursos
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
-from funciones_estudiante import generar_reporte, matricular_carrera, matricular_curso, generar_reporte, registro_actividades, aprobado_noAprobado
+from funciones_estudiante import generar_reporte, matricular_carrera, matricular_curso, generar_reporte, registro_actividades, aprobado_noAprobado, ver_horario
 import hashlib
+
+
+
+
+
 
 def inicio():
     opcion = input("""
@@ -139,10 +144,11 @@ def menu(tipo, usuario, nombre):
             3: Generar reporte
             4: Registrar una actividad
             5: Deternminar el estado de un curso
-            6: Salir del usuario
+            6: Ver horario
+            7: Salir del usuario
             """.format(usuario))
         opcion = int(input("¿Qué acción desea realizar? "))
-        funciones_estudiante(opcion, usuario, carreras, cursos, estudiantes)
+        funciones_estudiante(opcion, usuario)
 
 def funciones_admin(opcion):
     global carreras
@@ -176,6 +182,8 @@ def funciones_estudiante(opcion, usuario):
     elif opcion == 5:
        aprobado_noAprobado(usuario, estudiantes)
     elif opcion == 6:
+        ver_horario(usuario, estudiantes)
+    elif opcion == 7:
         opci = input("¿Desea cerrar la aplicación? (y/n)")
         if opci == "y":
             quit()

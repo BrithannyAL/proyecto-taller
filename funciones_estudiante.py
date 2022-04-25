@@ -95,7 +95,6 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                                                                 hora = hora + contador
                                                                 contador = + 1
                                                                 i['estudios']['cursos'].append(codigo_curso)
-                                                                #i['estudios']['cursos_c'].append([{'curso' : curso_m, 'estado' : 'cursando'}])
                                                                 con = True
                                                             else:
                                                                 print(
@@ -250,3 +249,11 @@ def aprobado_noAprobado(usuario, estudiantes):
     print("Los cursos en los que está matrículado son:")
     
     print(cursos_del_estudiante)
+
+def ver_horario(usuario, estudiantes):
+    dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
+    for x in estudiantes:
+        if x['autenticacion']['usuario'] == usuario:
+            for l in dias:
+                print(x['horario'][l])
+                print("")
