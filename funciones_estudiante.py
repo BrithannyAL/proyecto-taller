@@ -302,10 +302,22 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                     actividad = input("Cuál es el nombre de la actividad? ")
                     dia = input(
                         "Ingrese el día que va a realizar la actividad:")
+                    if dia not in dias:
+                        print('Ese dia no existe, recuerde que los dias deben ser escritos con minuscula')
+                        break
                     hora_i = int(
                         input("Ingrese la hora de inicio de la actividad: "))
+                    if hora_i < 7 or hora_i > 24:
+                        print('Hora no valida, recuerde que el horario disponible es de las 9 a las 24 horas')
+                        break
                     hora_f = int(
                         input("Ingrese la hora final de la actividad: "))
+                    if hora_i < 7 or hora_i > 24:
+                        print('Hora no valida, recuerde que el horario disponible es de las 9 a las 24 horas')
+                        break
+                    if hora_i > hora_f:
+                        print('Esta operacion no es posible, la actividad esta empezando antes de que termine')
+                        break
                     horas_t = hora_f - hora_i
                     horas_dia = horas_horario(usuario, estudiantes, dia)
                     horas_semana = horas_horario(
@@ -333,9 +345,21 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 tipo = 'ocio'
                 actividad = input('Ingrese el nombre de la actividad: ')
                 dia = input("Ingrese el día que va a realizar la actividad:")
+                if dia not in dias:
+                    print('Ese dia no existe, recuerde que los dias deben ser escritos con minuscula')
+                    break                
                 hora_i = int(
                     input("Ingrese la hora de inicio de la actividad: "))
-                hora_f = int(input("Ingrese la hora final de la actividad: "))
+                if hora_i < 7 or hora_i > 24:
+                    print('Hora no valida, recuerde que el horario disponible es de las 9 a las 24 horas')
+                    break
+                hora_f = int(
+                    input("Ingrese la hora final de la actividad: "))
+                if hora_i < 7 or hora_i > 24:
+                    print('Hora no valida, recuerde que el horario disponible es de las 9 a las 24 horas')
+                if hora_i > hora_f:
+                    print('Esta operacion no es posible, la actividad esta empezando antes de que termine')
+                    break
                 fecha_i = str(input('Ingrese la fecha de inicio: '))
                 fecha_f = str(input('Ingrese la fecha de final: '))
                 horas_t = hora_f - hora_i
