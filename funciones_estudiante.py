@@ -2,11 +2,14 @@ from cgitb import reset
 from tkinter.tix import Tree
 from turtle import home
 from funciones import horas_horario, verificar_curso
+
+
 class bcolors:
-    green = '\033[92m' #Verde
-    yellow = '\033[93m' #Amarillo
-    red = '\033[91m' #Rojo
-    reset = '\033[0m' #RESETEAR COLOR
+    green = '\033[92m'  # Verde
+    yellow = '\033[93m'  # Amarillo
+    red = '\033[91m'  # Rojo
+    reset = '\033[0m'  # RESETEAR COLOR
+
 
 def matricular_carrera(usuario, carreras, cursos, estudiantes):
     print("")
@@ -31,12 +34,13 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
     # Si el código está en el estudiante pero no en la carrera no debería poder
     # Si el código está en el estudiante pero no en la carrera tampoco
 
+
 def matricular_curso(usuario, carreras, cursos, estudiantes):
     carrera = str
     cursos_carrera = list
     flag = False
     con = False
-    
+
     for r in estudiantes:
         if r['autenticacion']['usuario'] == usuario:
             if r['estudios']['carreras'] != []:
@@ -49,15 +53,15 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                 print('Primero ingrese una carrera')
                 print('')
                 break
-            else: break
+            else:
+                break
             print("Estos son los cursos disponibles: ")
             for o in cursos:
-                if o['codigo']  in cursos_carrera:
-                    
+                if o['codigo'] in cursos_carrera:
+
                     print(o['curso'])
                     print(" ")
             break
-
 
     curso_m = input("Ingrese el nombre del curso que desea matricular: ")
     for i in estudiantes:
@@ -65,7 +69,7 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
             if i['estudios']['carreras'] == []:
                 print("Primero ingrese una carrera")
                 break
-            else:                                                                                   
+            else:
                 carreras_en_curso = i['estudios']['carreras']
                 for r_cursos in cursos:
                     if flag == True:
@@ -73,11 +77,13 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                     if r_cursos['curso'] == curso_m:
                         codigo_curso = r_cursos['codigo']
                         if codigo_curso in i['estudios']['aprobados']:
-                            print("Usted no puede matricular este curso porque se encuentra aprobado")
+                            print(
+                                "Usted no puede matricular este curso porque se encuentra aprobado")
                             flag = True
                             break
                         if codigo_curso in i['estudios']['reprobados']:
-                            print("Usted no puede matricular este curso porque se encuentra reprobado")
+                            print(
+                                "Usted no puede matricular este curso porque se encuentra reprobado")
                             flag = True
                             break
                         for r_carreras in carreras:
@@ -94,37 +100,45 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                                         llaves_dias = i['horario'].keys()
                                         for a in llaves_dias:
                                             if flag == True:
-                                                break 
+                                                break
                                             if r_cursos['horario_de_clases'][0] == a:
                                                 dia = a
                                                 llaves_horas = list
                                                 llaves_horas = i['horario'][dia].keys(
-                                                    )
+                                                )
                                                 for b in llaves_horas:
                                                     if r_cursos['horario_de_clases'][1] == b:
                                                         hora = b
-                                                        hora_inicio = int(r_cursos['horario_de_clases'][1])
-                                                        hora_final = int(r_cursos['horario_de_clases'][2])
+                                                        hora_inicio = int(
+                                                            r_cursos['horario_de_clases'][1])
+                                                        hora_final = int(
+                                                            r_cursos['horario_de_clases'][2])
                                                         cantidad_horas = hora_final - hora_inicio
                                                         if cantidad_horas == 0:
                                                             cantidad_horas = 1
                                                         for contador in range(cantidad_horas):
                                                             contador = 1
                                                             if i['horario'][dia][hora] == []:
-                                                                horas_dia = horas_horario(usuario, estudiantes, r_cursos['horario_de_clases'][0]) ##
-                                                                horas_semana = horas_horario(usuario, estudiantes, 'semana')
+                                                                horas_dia = horas_horario(
+                                                                    usuario, estudiantes, r_cursos['horario_de_clases'][0])
+                                                                horas_semana = horas_horario(
+                                                                    usuario, estudiantes, 'semana')
                                                                 if cantidad_horas + horas_dia > 12:
-                                                                    print("Está excediendo las 12 horas diarias")
+                                                                    print(
+                                                                        "Está excediendo las 12 horas diarias")
                                                                     flag = True
                                                                     break
                                                                 if cantidad_horas + horas_semana > 72:
-                                                                    print("Está excediendo las 72 horas semanales")
+                                                                    print(
+                                                                        "Está excediendo las 72 horas semanales")
                                                                     flag = True
                                                                     break
-                                                                i['horario'][dia][hora] = [curso_m]
+                                                                i['horario'][dia][hora] = [
+                                                                    curso_m]
                                                                 hora = hora + contador
                                                                 contador = + 1
-                                                                i['estudios']['cursos'].append(codigo_curso)
+                                                                i['estudios']['cursos'].append(
+                                                                    codigo_curso)
                                                                 con = True
                                                             else:
                                                                 print(
@@ -133,7 +147,8 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                                                                 break
                                                         if flag == True:
                                                             break
-                                                        print('Matricula realizada con exito')
+                                                        print(
+                                                            'Matricula realizada con exito')
                                                         flag = True
                                                         break
                                 else:
@@ -144,50 +159,63 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                 else:
                     print("El curso ingresado no existe")
     if con == True:
-        i['reporte'][dia].append([curso_m,'curso',cantidad_horas, carreras_en_curso,])
+        i['reporte'][dia].append(
+            [curso_m, 'curso', cantidad_horas, carreras_en_curso, ])
     return estudiantes
+
 
 def generar_reporte(usuario, carreras, cursos, estudiantes):
     horas_d = 0
     dia = input('''Ingrese el día del que quiere generar el reporte: 
 Ingrese 'semana' si desea generar el reporte de la semana entera.
 ''')
-    dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
+    dias = ['lunes', 'martes', 'miercoles',
+            'jueves', 'viernes', 'sabado', 'domingo']
     if dia in dias:
         for i in estudiantes:
             if i['autenticacion']['usuario'] == usuario:
                 print(dia, ': ')
                 for l in i['reporte'][dia]:
                     if l[1] == 'ocio':
-                        print(bcolors.green + 'Actividad: '+ str(l[0]) + bcolors.reset)
-                        print(bcolors.green + 'Tipo: '+ str(l[1]) + bcolors.reset)
-                        print(bcolors.green + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
-                        print(bcolors.green + 'Fecha inicio: ' + str(l[3]) + bcolors.reset)
-                        print(bcolors.green + 'Horas de final: ' + str(l[4]) + bcolors.reset)
+                        print(bcolors.green + 'Actividad: ' +
+                              str(l[0]) + bcolors.reset)
+                        print(bcolors.green + 'Tipo: ' +
+                              str(l[1]) + bcolors.reset)
+                        print(bcolors.green + 'Horas de dedicacion: ' +
+                              str(l[2]) + bcolors.reset)
                         porcentaje = l[2] * 100 // 18
-                        print(bcolors.green + 'Porcentaje que ocupa en el día: ' + str(porcentaje) + '%' + bcolors.reset)
+                        print(bcolors.green + 'Porcentaje que ocupa en el día: ' +
+                              str(porcentaje) + '%' + bcolors.reset)
                         print('')
                     elif l[1] == 'curso':
-                        print(bcolors.red + 'Actividad: '+ str(l[0]) + bcolors.reset)
-                        print(bcolors.red + 'Tipo: '+ str(l[1]) + bcolors.reset)
-                        print(bcolors.red + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                        print(bcolors.red + 'Actividad: ' +
+                              str(l[0]) + bcolors.reset)
+                        print(bcolors.red + 'Tipo: ' +
+                              str(l[1]) + bcolors.reset)
+                        print(bcolors.red + 'Horas de dedicacion: ' +
+                              str(l[2]) + bcolors.reset)
                         porcentaje = l[2] * 100 // 18
-                        print(bcolors.red + 'Porcentaje que ocupa en el día: ' + str(porcentaje) + '%' + bcolors.reset)
-                        print(bcolors.red + 'Carrera asociada: ' + str(l[3]) + bcolors.reset)
+                        print(bcolors.red + 'Porcentaje que ocupa en el día: ' +
+                              str(porcentaje) + '%' + bcolors.reset)
+                        print(bcolors.red + 'Carrera asociada: ' +
+                              str(l[3]) + bcolors.reset)
                         print('')
                     elif l[1] == 'Actividad extracurricular':
-                        print(bcolors.yellow + 'Actividad: '+ str(l[0]) + bcolors.reset)
-                        print(bcolors.yellow + 'Tipo: '+ str(l[1]) + bcolors.reset)
-                        print(bcolors.yellow + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
-                        print(bcolors.yellow + 'Fecha inicio: ' + str(l[4]) + bcolors.reset)
-                        print(bcolors.yellow + 'Fecha final: ' + str(l[5]) + bcolors.reset)
+                        print(bcolors.yellow + 'Actividad: ' +
+                              str(l[0]) + bcolors.reset)
+                        print(bcolors.yellow + 'Tipo: ' +
+                              str(l[1]) + bcolors.reset)
+                        print(bcolors.yellow + 'Horas de dedicacion: ' +
+                              str(l[2]) + bcolors.reset)
                         porcentaje = l[2] * 100 // 18
-                        print(bcolors.yellow + 'Porcentaje que ocupa en el día: ' + str(porcentaje) + '%' + bcolors.reset)
-                        print(bcolors.yellow + 'Curso asociado: ' + str(l[3]) + bcolors.reset)
+                        print(bcolors.yellow + 'Porcentaje que ocupa en el día: ' +
+                              str(porcentaje) + '%' + bcolors.reset)
+                        print(bcolors.yellow + 'Curso asociado: ' +
+                              str(l[3]) + bcolors.reset)
                         print('')
-        horas_dia = horas_horario(usuario, estudiantes, dia)  
+        horas_dia = horas_horario(usuario, estudiantes, dia)
         horas_d = 18-horas_dia
-        print('La cantidad de horas ocupadas este dia es de: ' , horas_dia)
+        print('La cantidad de horas ocupadas este dia es de: ', horas_dia)
         print('Tiene ', horas_d, 'horas disponibles el día ', dia)
         return estudiantes
     elif dia == 'semana':
@@ -198,79 +226,90 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
                     print(z)
                     for l in i['reporte'][z]:
                         if l[1] == 'ocio':
-                            print(bcolors.green + 'Actividad: '+ str(l[0]) + bcolors.reset)
-                            print(bcolors.green + 'Tipo: '+ str(l[1]) + bcolors.reset)
-                            print(bcolors.green + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
-                            print(bcolors.green + 'Fecha de inicio: ' + str(l[3]) + bcolors.reset)
-                            print(bcolors.green + 'Fecha final: ' + str(l[4]) + bcolors.reset)
+                            print(bcolors.green + 'Actividad: ' +
+                                  str(l[0]) + bcolors.reset)
+                            print(bcolors.green + 'Tipo: ' +
+                                  str(l[1]) + bcolors.reset)
+                            print(bcolors.green + 'Horas de dedicacion: ' +
+                                  str(l[2]) + bcolors.reset)
                             porcentaje = l[2] * 100 // 126
-                            print(bcolors.green + 'Porcentaje que ocupa en la semana: ' + str(porcentaje) + '%' + bcolors.reset)
+                            print(bcolors.green + 'Porcentaje que ocupa en la semana: ' +
+                                  str(porcentaje) + '%' + bcolors.reset)
                             print('')
                         elif l[1] == 'curso':
-                            print(bcolors.red + 'Actividad: '+ str(l[0]) + bcolors.reset)
-                            print(bcolors.red + 'Tipo: '+ str(l[1]) + bcolors.reset)
-                            print(bcolors.red + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                            print(bcolors.red + 'Actividad: ' +
+                                  str(l[0]) + bcolors.reset)
+                            print(bcolors.red + 'Tipo: ' +
+                                  str(l[1]) + bcolors.reset)
+                            print(bcolors.red + 'Horas de dedicacion: ' +
+                                  str(l[2]) + bcolors.reset)
                             porcentaje = l[2] * 100 // 126
-                            print(bcolors.red + 'Porcentaje que ocupa en la semana: ' + str(porcentaje) + '%' + bcolors.reset)
-                            print(bcolors.red + 'Carrera asociada: ' + str(l[3]) + bcolors.reset)
+                            print(bcolors.red + 'Porcentaje que ocupa en la semana: ' +
+                                  str(porcentaje) + '%' + bcolors.reset)
+                            print(bcolors.red + 'Carrera asociada: ' +
+                                  str(l[3]) + bcolors.reset)
                             print('')
                         elif l[1] == 'Actividad extracurricular':
-                            print(bcolors.yellow + 'Actividad: '+ str(l[0]) + bcolors.reset)
-                            print(bcolors.yellow + 'Tipo: '+ str(l[1]) + bcolors.reset)
-                            print(bcolors.yellow + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
-                            print(bcolors.yellow + 'Fecha inicio: ' + str(l[4]) + bcolors.reset)
-                            print(bcolors.yellow + 'Fecha final: ' + str(l[5]) + bcolors.reset)
+                            print(bcolors.yellow + 'Actividad: ' +
+                                  str(l[0]) + bcolors.reset)
+                            print(bcolors.yellow + 'Tipo: ' +
+                                  str(l[1]) + bcolors.reset)
+                            print(bcolors.yellow + 'Horas de dedicacion: ' +
+                                  str(l[2]) + bcolors.reset)
                             porcentaje = l[2] * 100 // 126
-                            print(bcolors.yellow + 'Porcentaje que ocupa en la semana: ' + str(porcentaje) + '%' + bcolors.reset)
-                            print(bcolors.yellow + 'Curso asociado: ' + str(l[3]) + bcolors.reset)
+                            print(bcolors.yellow + 'Porcentaje que ocupa en la semana: ' +
+                                  str(porcentaje) + '%' + bcolors.reset)
+                            print(bcolors.yellow + 'Curso asociado: ' +
+                                  str(l[3]) + bcolors.reset)
                             print('')
                         print('')
-        
+
         horas_semana = horas_horario(usuario, estudiantes, dia)
         horas_libres = 126 - horas_semana
-        print('La cantidad de horas ocupadas de esta semana es de: ' , horas_semana, ' horas')
+        print('La cantidad de horas ocupadas de esta semana es de: ',
+              horas_semana, ' horas')
         print('Tiene ', horas_libres, 'horas disponibles esta semana')
         return estudiantes
     else:
         print('El dato ingresado no es valido')
-    
+
 
 def registro_actividades(usuario, carreras, cursos, estudiantes):
     insertar = False
     dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
     codigo_curso = int
-    for i in estudiantes: 
+    for i in estudiantes:
         if i['autenticacion']['usuario'] == usuario:
-            relacion_curso = input("Está su actividad relacionada con un curso? ")          
+            relacion_curso = input(
+                "Está su actividad relacionada con un curso? ")
             if relacion_curso == 'si' or relacion_curso == 'Si':
-                r_curso = input("A que curso está relacionada esta actividad? ")
-                comp = verificar_curso(usuario, carreras, cursos, estudiantes, r_curso)
+                r_curso = input(
+                    "A que curso está relacionada esta actividad? ")
+                comp = verificar_curso(
+                    usuario, carreras, cursos, estudiantes, r_curso)
                 for z in cursos:
                     if z['curso'] == r_curso:
                         codigo_curso = z['codigo']
                 if codigo_curso in i['estudios']['aprobados']:
-                    print("Usted no puede matricular esta actividad porque el curso se encuentra aprobado")
+                    print(
+                        "Usted no puede matricular esta actividad porque el curso se encuentra aprobado")
                     break
                 if codigo_curso in i['estudios']['reprobados']:
-                    print("Usted no puede matricular esta actividad porque el curso se encuentra reprobado")
+                    print(
+                        "Usted no puede matricular esta actividad porque el curso se encuentra reprobado")
                     break
                 if comp == True:
                     actividad = input("Cuál es el nombre de la actividad? ")
-                    dia = input("Ingrese el día que va a realizar la actividad:")
-                    if dia not in dias:
-                        print('Ese dia no existe, los dias deben ser escritos en minuscula')
-                        break
-                    try:
-                        hora_i = int(input("Ingrese la hora de inicio de la actividad: "))
-                        hora_f = int(input("Ingrese la hora final de la actividad: "))
-                    except:
-                        print('Ingrese la hora como un numero del 7 al 18')
-                        break
-                    fecha_i = str(input('Ingrese la fecha de inicio: '))
-                    fecha_f = str(input('Ingrese la fecha de final: '))
+                    dia = input(
+                        "Ingrese el día que va a realizar la actividad:")
+                    hora_i = int(
+                        input("Ingrese la hora de inicio de la actividad: "))
+                    hora_f = int(
+                        input("Ingrese la hora final de la actividad: "))
                     horas_t = hora_f - hora_i
-                    horas_dia = horas_horario(usuario, estudiantes, dia) 
-                    horas_semana = horas_horario(usuario, estudiantes, 'semana')
+                    horas_dia = horas_horario(usuario, estudiantes, dia)
+                    horas_semana = horas_horario(
+                        usuario, estudiantes, 'semana')
                     if horas_t + (horas_dia-1) > 12:
                         print("Está excediendo las 12 horas diarias")
                         break
@@ -285,27 +324,22 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                             print("Estas horas se presentan ocupadas")
                             insertar = False
                             break
-                        if insertar == True:
-                            for a in range(horas_t):
-                                i['horario'][dia][hora_i] = [actividad]
-                                hora_i = hora_i + 1
-                            i['reporte'][dia].append([actividad,'Actividad extracurricular',horas_t, r_curso, fecha_i,fecha_f])
+                    i['reporte'][dia].append(
+                        [actividad, 'Actividad extracurricular', horas_t, r_curso])
                 if comp == False:
                     print("Usted no está matriculado en este curso")
-                    home()     
+                    home()
             elif relacion_curso == 'no' or relacion_curso == 'No':
-                actividad = input ('Ingrese el nombre de la actividad: ')
+                tipo = 'ocio'
+                actividad = input('Ingrese el nombre de la actividad: ')
                 dia = input("Ingrese el día que va a realizar la actividad:")
-                if dia not in dias:
-                    print('Ese dia no existe')
-                    break
-                hora_i = int(input("Ingrese la hora de inicio de la actividad: "))
-                
+                hora_i = int(
+                    input("Ingrese la hora de inicio de la actividad: "))
                 hora_f = int(input("Ingrese la hora final de la actividad: "))
                 fecha_i = str(input('Ingrese la fecha de inicio: '))
                 fecha_f = str(input('Ingrese la fecha de final: '))
                 horas_t = hora_f - hora_i
-                horas_dia = horas_horario(usuario, estudiantes, dia) 
+                horas_dia = horas_horario(usuario, estudiantes, dia)
                 horas_semana = horas_horario(usuario, estudiantes, 'semana')
                 if horas_t + (horas_dia-1) > 12:
                     print("Está excediendo las 12 horas diarias")
@@ -313,11 +347,11 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 if horas_t + horas_semana > 72:
                     print("Está excediendo las 72 horas semanales")
                     break
-                i['reporte'][dia].append([actividad,'ocio',horas_t,fecha_i,fecha_f])
+                i['reporte'][dia].append([actividad, tipo, horas_t])
                 for z in range(horas_t):
                     if i['horario'][dia][hora_i] == []:
-                       i['horario'][dia][hora_i] = [actividad]
-                       hora_i = hora_i + 1
+                        i['horario'][dia][hora_i] = [actividad]
+                        hora_i = hora_i + 1
                     else:
                         print("Estas horas se presentan ocupadas")
                         break
@@ -325,11 +359,16 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 print("Esa opcion no es válida")
                 home()
     return estudiantes
-                
+
+
 def aprobado_noAprobado(usuario, estudiantes, cursos):
+    """
+        Parametros:
+        - usuario (list): """
     cursos_del_estudiante = []
     name_curso = ''
-    dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
+    dias = ['lunes', 'martes', 'miercoles',
+            'jueves', 'viernes', 'sabado', 'domingo']
     horas = []
     for x in estudiantes:
         if x['autenticacion']['usuario'] == usuario:
@@ -338,7 +377,8 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
     for cod in cursos_del_estudiante:
         for item in cursos:
             if item['codigo'] == cod:
-                print("Cursos: {}, Curso: {}".format(item['codigo'], item['curso']))
+                print("Cursos: {}, Curso: {}".format(
+                    item['codigo'], item['curso']))
     curso_a_modificar = int(input("Escriba al que se le cambiará el estado: "))
     for item in cursos:
         if item['codigo'] == curso_a_modificar:
@@ -355,12 +395,12 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
                 x['estudios']['aprobados'].append(curso_a_modificar)
                 print("Cursando: {}".format(x['estudios']['cursos']))
                 print("Aprobados: {}".format(x['estudios']['aprobados']))
-                for h in dias:
-                    for m in range(len(x['horario'][h])):
-                        if (x['horario'][h][m]) == name_curso:
+                for h in x['horario']:
+                    for m in x['horario'][h]:
+                        if name_curso in x['horario'][h][m]:
                             x['horario'][h][m].remove(name_curso)
-                        print(x['horario'][h][m])
-
+                            print("El curso ha cambiado su estado a 'Aprobado'")
+                    break
     elif estado == "R" or estado == "r":
         for x in estudiantes:
             if x['autenticacion']['usuario'] == usuario:
@@ -368,10 +408,17 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
                 x['estudios']['reprobados'].append(curso_a_modificar)
                 print("Cursando: {}".format(x['estudios']['cursos']))
                 print("Reprobados: {}".format(x['estudios']['reprobados']))
-                break
+                for h in x['horario']:
+                    for m in x['horario'][h]:
+                        if name_curso in x['horario'][h][m]:
+                            x['horario'][h][m].remove(name_curso)
+                            print("El curso ha cambiado su estado a 'Reprobado'")
+                    break
+
 
 def ver_horario(usuario, estudiantes):
-    dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo']
+    dias = ['lunes', 'martes', 'miercoles',
+            'jueves', 'viernes', 'sabado', 'domingo']
     for x in estudiantes:
         if x['autenticacion']['usuario'] == usuario:
             for l in dias:
