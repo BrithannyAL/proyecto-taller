@@ -387,13 +387,16 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
 
 def aprobado_noAprobado(usuario, estudiantes, cursos):
     """
+        La función permite al estudiante cambiar el estado de un curso (cursnado, aprobado o reprobado). Primero verificamos la carrera que está cursando el estudiante, esto lo hacemos buscando por medio del usuario en la base de datos de estudiantes. Una vez hayamos identificado, buscamos todas las carreras relacionadas a ese curso en las que el estudiante esté matriculado para imprimirlas en una lista junto con su clave unica.
+        Se le pide al usuario estudiante que elija el curso al que desea cambiar su estado por medio de la clave unica. el sistema cambiará en el estado del curso dentro de la base de datos de estudiante y además eliminará dentro del horario del estudiante todas las clases de este curso para dejar espacio en casa de que quiera matricular otro.
+        Todo esto se hizo recorriendo con ciclos las bases de datos y para llegar a la información necesaria, se utilizó los comprobantes if.
+            
         Parametros:
-        - usuario (list): """
+        - usuario (str): es el usuario de la cuenta que ha iniciado sesión
+        - estudiantes (list): es la base de datos en donde se almacenan las cuentas de los estudiantes
+        - cursos (tuple): es la base de datos en donde se almacenan todos los cursos"""
     cursos_del_estudiante = []
     name_curso = ''
-    dias = ['lunes', 'martes', 'miercoles',
-            'jueves', 'viernes', 'sabado', 'domingo']
-    horas = []
     for x in estudiantes:
         if x['autenticacion']['usuario'] == usuario:
             cursos_del_estudiante = x['estudios']['cursos']
