@@ -1,4 +1,16 @@
-def agregar_curso(lista_cursos, estudiantes):
+def agregar_curso(lista_cursos):
+    """
+        Esta función le permite hacer a los administradoresnagregar nuevos cursos en la base de datos
+        de el software. Le pide al admin el nombre del curso, la cantidad de créditos y las horas de las clases.
+        Esos datos se acomodan en un obejto y se le agrega una clave unica llamada código, que en la base datos
+        se gerera de de uno en uno, así que al código anterior le sumamos 1. Cuando ya hemos generado el nuevo 
+        objeto, este lo insertamos dentro de la base de datos de cursos para ser retronada y ser convertida a tupla
+        para protejer sus datos.
+        
+        Los parametros de la función son:
+        lista_cursos = list: Esta es la base de datos que contiene los cursos con todas las caracteristicas de los
+        mismos.
+        estudiante ="""
     print(estudiantes[2])
     last_code = lista_cursos[-1]['codigo']
     curso = input("Ingrese el nombre del curso que desea agregar: ")

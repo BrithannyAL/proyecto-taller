@@ -284,9 +284,6 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
                 x['estudios']['aprobados'].append(curso_a_modificar)
                 print("Cursando: {}".format(x['estudios']['cursos']))
                 print("Aprobados: {}".format(x['estudios']['aprobados']))
-                for dia in x['horario']:
-                    for hora in dia:
-                        print(hora)
                 break
     elif estado == "R" or estado == "r":
         for x in estudiantes:
