@@ -185,3 +185,11 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
                 print("Esa opcion no es válida")
                 home()
                 
+def aprobado_noAprobado(usuario, estudiantes):
+    cursos_del_estudiante = []
+    for x in estudiantes:
+        if x['autenticacion']['usuario'] == usuario:
+            cursos_del_estudiante = x['estudios']['cursos']
+    print("Los cursos en los que está matrículado son:")
+    
+    print(cursos_del_estudiante)
