@@ -25,6 +25,7 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
                     break
             else:
                 print("La carrera ingresada no existe")
+    return estudiantes
 
     # buscar si el codigo del curso esta en los codigos de la carrera y la carrera del estudiante
     # si el codigo del curso esta en la carrera entonces puede matricularlo pero hay que verificar que el estudiante esté en esa carrera
@@ -115,7 +116,7 @@ def matricular_curso(usuario, carreras, cursos, estudiantes):
                     print("El curso ingresado no existe")
     if con == True:
         i['reporte'][dia].append([curso_m,'curso',cantidad_horas, carreras_en_curso,])
-
+    return estudiantes
 
 def generar_reporte(usuario, carreras, cursos, estudiantes):
     horas_d = 0
@@ -132,23 +133,30 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
                         print(bcolors.green + 'Actividad: '+ str(l[0]) + bcolors.reset)
                         print(bcolors.green + 'Tipo: '+ str(l[1]) + bcolors.reset)
                         print(bcolors.green + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                        porcentaje = l[2] * 100 // 18
+                        print(bcolors.green + 'Porcentaje que ocupa en el día: ' + str(porcentaje) + '%' + bcolors.reset)
                         print('')
                     elif l[1] == 'curso':
                         print(bcolors.red + 'Actividad: '+ str(l[0]) + bcolors.reset)
                         print(bcolors.red + 'Tipo: '+ str(l[1]) + bcolors.reset)
                         print(bcolors.red + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                        porcentaje = l[2] * 100 // 18
+                        print(bcolors.red + 'Porcentaje que ocupa en el día: ' + str(porcentaje) + '%' + bcolors.reset)
                         print(bcolors.red + 'Carrera asociada: ' + str(l[3]) + bcolors.reset)
                         print('')
                     elif l[1] == 'Actividad extracurricular':
                         print(bcolors.yellow + 'Actividad: '+ str(l[0]) + bcolors.reset)
                         print(bcolors.yellow + 'Tipo: '+ str(l[1]) + bcolors.reset)
                         print(bcolors.yellow + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                        porcentaje = l[2] * 100 // 18
+                        print(bcolors.yellow + 'Porcentaje que ocupa en el día: ' + str(porcentaje) + '%' + bcolors.reset)
                         print(bcolors.yellow + 'Curso asociado: ' + str(l[3]) + bcolors.reset)
                         print('')
         horas_dia = horas_horario(usuario, estudiantes, dia)  
         horas_d = 18-horas_dia
         print('La cantidad de horas ocupadas este dia es de: ' , horas_dia)
         print('Tiene ', horas_d, 'horas disponibles el día ', dia)
+        return estudiantes
     elif dia == 'semana':
         for i in estudiantes:
             llaves = list(i['reporte'].keys())
@@ -160,17 +168,23 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
                             print(bcolors.green + 'Actividad: '+ str(l[0]) + bcolors.reset)
                             print(bcolors.green + 'Tipo: '+ str(l[1]) + bcolors.reset)
                             print(bcolors.green + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                            porcentaje = l[2] * 100 // 126
+                            print(bcolors.green + 'Porcentaje que ocupa en la semana: ' + str(porcentaje) + '%' + bcolors.reset)
                             print('')
                         elif l[1] == 'curso':
                             print(bcolors.red + 'Actividad: '+ str(l[0]) + bcolors.reset)
                             print(bcolors.red + 'Tipo: '+ str(l[1]) + bcolors.reset)
                             print(bcolors.red + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                            porcentaje = l[2] * 100 // 126
+                            print(bcolors.red + 'Porcentaje que ocupa en la semana: ' + str(porcentaje) + '%' + bcolors.reset)
                             print(bcolors.red + 'Carrera asociada: ' + str(l[3]) + bcolors.reset)
                             print('')
                         elif l[1] == 'Actividad extracurricular':
                             print(bcolors.yellow + 'Actividad: '+ str(l[0]) + bcolors.reset)
                             print(bcolors.yellow + 'Tipo: '+ str(l[1]) + bcolors.reset)
                             print(bcolors.yellow + 'Horas de dedicacion: ' + str(l[2]) + bcolors.reset)
+                            porcentaje = l[2] * 100 // 126
+                            print(bcolors.yellow + 'Porcentaje que ocupa en la semana: ' + str(porcentaje) + '%' + bcolors.reset)
                             print(bcolors.yellow + 'Curso asociado: ' + str(l[3]) + bcolors.reset)
                             print('')
                         print('')
@@ -179,11 +193,13 @@ Ingrese 'semana' si desea generar el reporte de la semana entera.
         horas_libres = 126 - horas_semana
         print('La cantidad de horas ocupadas de esta semana es de: ' , horas_semana, ' horas')
         print('Tiene ', horas_libres, 'horas disponibles esta semana')
+        return estudiantes
     else:
         print('El dato ingresado no es valido')
+    
 
 def registro_actividades(usuario, carreras, cursos, estudiantes):
-    for i in estudiantes:
+    for i in estudiantes: 
         if i['autenticacion']['usuario'] == usuario:
             relacion_curso = input("Está su actividad relacionada con un curso? ")          
             if relacion_curso == 'si' or relacion_curso == 'Si':
@@ -240,6 +256,7 @@ def registro_actividades(usuario, carreras, cursos, estudiantes):
             else:
                 print("Esa opcion no es válida")
                 home()
+    return estudiantes
                 
 def aprobado_noAprobado(usuario, estudiantes):
     cursos_del_estudiante = []
@@ -256,4 +273,3 @@ def ver_horario(usuario, estudiantes):
             for l in dias:
                 print(x['horario'][l])
                 print("")
-                print ("cambio")
