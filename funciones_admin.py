@@ -90,8 +90,25 @@ def agregar_carrera(lista_carrera, cursos):
     return tuple(lista_carrera)
     
 def modificar_carrera(lista_carreras, cursos):
+    """
+        Esta es la función que le permite a los administradores modificar una carrera existente dentro de la base
+        de datos. Lo primero es presentarle al usuario una lista de carreras con su respectivo codigo para que el
+        admnistrador pueda escoger el curso a modificar por medio de ellos. Lo sieguiente es que se le pregunta al
+        admin si desea modificar el nombre, la cantidad de semestres y los cursos relacionados a esta carrera.
+        Una vez se hayan contestado las preguntas, a partir de esta, se le tomará la información seleccionada
+        al administrador y guardarla en un diccionario que se agregará en la base de datos.
+        Para la modificaicón de los cursos, se llama a una función que devuelve los cursos impresos que están
+        relacionados con esa carrera, para que el admin decida si quiere hacer el cambio. En el caso de que diga que
+        si, lo llevamos a una función específica para que escoja los cursos que sea modificar.
+        Una vez toda la información esté recolectada y guardada en el diccionario, se inserta en la base de datos,
+        para que esta sea retornada en forma de tupla.
+        
+        Los parametro de esta función son:
+        lista_carrera = list: esta es la base de datos en forma de lista en la que garemos la modificación
+        de la carrera.
+        cursos = tuple: la utilizamos para imprimir los cursos que puede elegir el admin para relacionarla con la
+        carrera."""
     imprimir(1, lista_carreras)
-    
     carrera_a_modificar = int(input("Escriba el código del curso que desea modificar: "))
     name_carrera = input("""
                          El título de la carrera es {}
@@ -115,6 +132,16 @@ def modificar_carrera(lista_carreras, cursos):
     return tuple(lista_carreras)
     
 def imprimir_codigos_cursos_en_carreras(codigo, lista):
+    """
+        Esta función nos permite imprimir los códigos de los cursos de una carrera en espefícico que está en la
+        base de datos. Funciona con un ciclo que recorre la lista de carreras mientras la compara con una clave
+        unica (la carrera escogida) hasta encontrala. Luego devuelve la lista de codigos de todos los cursos
+        relacionados a ella.
+        
+        Los parametros para esta función son:
+        codigo = int: este dato nos da el código de la carrera que queremos buscar para imprimir sus cursos
+        lista = list: es base de datos en forma de lista que contiene todas las carreras, y es la que tenemos que
+        recorrer para comparar su codigo con el de nuestro interes"""
     carrera = int
     for item in lista:
         if codigo == item['codigo']:
