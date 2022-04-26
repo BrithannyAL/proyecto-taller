@@ -226,7 +226,8 @@ estudiantes = [
         'autenticacion':
         {
             'usuario': 'e1',
-            'contraseña': hashlib.md5('12345'.encode('ascii')).hexdigest()
+            'contraseña': 
+                hashlib.md5('12345'.encode('ascii')).hexdigest()
         },
         'horario':
         {
