@@ -44,7 +44,7 @@ def verificar_curso(usuario, carreras, cursos, estudiantes, r_curso):
                     for x in i['estudios']['cursos']:
                         if x == codigo:
                             return True
-                        else:
-                            return False
+                    else:
+                        return False
             else: print("Este curso no existe")
 

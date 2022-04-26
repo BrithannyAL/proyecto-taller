@@ -293,7 +293,7 @@ estudiantes = [
         'tipo': 'estudiante',
         'estudios':
         {
-            'carreras': ['Ingenieria en computacion'],
+            'carreras': [],
             'cursos': [],
             'aprobados' : [],
             'reprobados' : []

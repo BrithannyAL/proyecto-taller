@@ -189,7 +189,7 @@ def funciones_admin(opcion):
         opci = input("¿Desea cerrar la aplicación? (y/n)")
         if opci == "y":
             quit()
-        login()
+        inicio()
 
 
 def funciones_estudiante(opcion, usuario):
@@ -219,4 +219,4 @@ def funciones_estudiante(opcion, usuario):
         opci = input("¿Desea cerrar la aplicación? (y/n)")
         if opci == "y":
             quit()
-        login()
+        inicio()
