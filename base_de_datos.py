@@ -10,19 +10,19 @@ carreras = (
     {
         'carrera': 'Ingenieria en agronomia',
         'semestres': 8,
-        'cursos': [1, 2, 3, 4, 8, 9, 10],
+        'cursos': [1, 2, 3, 8, 9, 10],
         'codigo': 2
     },
     {
         'carrera': 'Administracion de empresas',
         'semestres': 10,
-        'cursos': [1, 2, 3, 4, 11, 12, 13],
+        'cursos': [1, 2, 3,11, 12, 13],
         'codigo': 3
     },
     {
         'carrera': 'Ingenieria en procuccion industrial',
         'semestres': 12,
-        'cursos': [1, 2, 3, 4, 14, 15],
+        'cursos': [1, 2, 3, 14, 15],
         'codigo': 4
     },
     {
