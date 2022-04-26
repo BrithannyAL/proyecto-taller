@@ -216,7 +216,6 @@ estudiantes = [
     {
         'nombre': 'Estudiante 1',
         'tipo': 'estudiante',
-        'tiempo': int,
         'estudios':
         {
             'carreras': ['Ingenieria en computacion'],
@@ -255,7 +254,6 @@ estudiantes = [
     {
         'nombre': 'Estudiente 2',
         'tipo': 'estudiante',
-        'tiempo': int,
         'estudios':
         {
             'carreras': ['Ingenieria en procuccion industrial'],
@@ -292,7 +290,6 @@ estudiantes = [
         {
         'nombre': 'Estudiente 3',
         'tipo': 'estudiante',
-        'tiempo': int,
         'estudios':
         {
             'carreras': ['Ingenieria en computacion'],
