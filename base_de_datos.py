@@ -160,5 +160,3 @@ e3 = estudiante (
             'domingo':    [],
             }
                 )
-    
-print(ingenieria_en_computacion)
