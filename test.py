@@ -1,3 +1,5 @@
-from base_de_datos import cursos, carreras, estudiante, admin
+from base_de_datos import ingenieria_en_computacion
+import base_de_datos
 
-print (carreras)
+for i in base_de_datos.carreras:
+    print(i)

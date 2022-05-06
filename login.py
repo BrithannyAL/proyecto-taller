@@ -29,8 +29,6 @@ Digite x si desea cerrar el software
 def login():
     """
         Esta función es la que permite un usuario inicie cesión con una cuenta existente. El sistema de le pide al usuario que ingrese su usuario y contraseña para iniciar. Él mismo, determinará si la cuenta es de tipo estudiante, adminitrador o si no existe. En caso de que la cuenta no se encuentre en la base de datos, el sistema pedirá la cuenta nuevamente. Para esto se usa un ciclo que trabaja con el estado de una variable tipo boolean y al cambiar dicho estado, le ciclo se cierra."""
-    global estudiantes
-    global usuarios
     correcto = False
     while correcto == False:
         print("Digite el usuario y contraseña para ingresar")
@@ -131,7 +129,6 @@ def registrar():
     else:
         print("Este tipo de usuario no es válido")
         inicio()
-
 # Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
 
 
