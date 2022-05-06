@@ -12,7 +12,7 @@ class carreras:
         self.cursos=cu
         self.codigo=co
 
-ingenieria_en_computacion = carreras('Ingenieria en computacion', 8 ,[1, 2, 3, 4, 5, 6, 7] , 1)
+ingenieria_en_computacion = carreras('Ingenieria en computacion', 8 , [1, 2, 3, 4, 5, 6, 7] , 1)
 ingenieria_en_agronomia = carreras('Ingenieria en agronomia', 8 ,[1, 2, 3, 8, 9, 10 ] , 2)
 administracion_de_empresas = carreras('Administracion de empresas', 10 ,[1, 2, 3, 11, 12, 13 ] , 3)
 administracion_en_produccion_industrial = carreras('Administracion en produccion industrial', 12 ,[1, 2, 3, 14, 15] , 4 )
@@ -27,11 +27,11 @@ class cursos:
     horario_de_clases = []
     codigo = 1
 
-    def __init__(self,cu, h_l , h_c , co):
+    def __init__(self , cu , c, h_l , h_c , co ):
         self.curso=cu
-        self.creditos=h_l
-        self.horas_lectivas=h_c
-        self.horario_de_clases=co
+        self.creditos= c
+        self.horas_lectivas=h_l
+        self.horario_de_clases=h_c
         self.codigo=co
 
 
@@ -39,19 +39,19 @@ matematica = cursos('Matematica general' , 3 , 3,  ['lunes', 9, 12] , 1)
 comunicacion = cursos('Comunicacion escrita' , 2 , 3 , ['martes', 9, 12] , 2)
 comunicacion = cursos('Ingles 1' , 2 , 3 , ['miercoles', 9, 12] , 3)
 intro_progra = cursos('Introduccion a la programacion' , 2 , 3 , ['martes', 7, 8] , 4)
-intro_progra = cursos('Taller de programacion' , 3 , 3 , ['jueves', 9, 12] , 5)
-intro_progra = cursos('Fundamentos de organizacion de computadoras' , 2 , 3 , ['viernes', 9, 12] , 6)
-intro_progra = cursos('Marematica discreta' , 3 , 3 , ['lunes', 13, 14] , 7)
-intro_progra = cursos('Introduccion a la agronomia' , 3 , 3 , ['lunnes', 13, 14] , 8)
-intro_progra = cursos('Agromatica' , 3 , 3 , ['miercoles', 14, 15] , 9)
-intro_progra = cursos('Biologia general' , 3 , 3 , ['jueves', 16, 17] , 10)
-intro_progra = cursos('Introducciona a la administracion de empresas' , 2 , 3 , ['viernes', 18, 19] , 11)
-intro_progra = cursos('Computacion para administracion' , 2 , 3 , ['lunes', 18, 19] , 12)
-intro_progra = cursos('Matematica para administracion' , 3 , 3 , ['martes', 14, 15] , 13)
-intro_progra = cursos('Dibijo tecnico' , 2 , 3 , ['miercoles', 19, 19] , 14)
-intro_progra = cursos('Quimica basica' , 2 , 3 , ['martes', 9, 12] , 15)
-intro_progra = cursos('Introduccion a la ingenieria' , 3 , 3 , ['martes', 13, 14] , 16)
-intro_progra = cursos('Calculo diferencial e integral' , 4 , 3 , ['miercoles', 18, 19] , 17)
+taller_progra = cursos('Taller de programacion' , 3 , 3 , ['jueves', 9, 12] , 5)
+fundamentos = cursos('Fundamentos de organizacion de computadoras' , 2 , 3 , ['viernes', 9, 12] , 6)
+mate_discreta = cursos('Marematica discreta' , 3 , 3 , ['lunes', 13, 14] , 7)
+intro_agro = cursos('Introduccion a la agronomia' , 3 , 3 , ['lunnes', 13, 14] , 8)
+agromatica = cursos('Agromatica' , 3 , 3 , ['miercoles', 14, 15] , 9)
+biologia = cursos('Biologia general' , 3 , 3 , ['jueves', 16, 17] , 10)
+intro_admin = cursos('Introducciona a la administracion de empresas' , 2 , 3 , ['viernes', 18, 19] , 11)
+compu_admin = cursos('Computacion para administracion' , 2 , 3 , ['lunes', 18, 19] , 12)
+mate_admin = cursos('Matematica para administracion' , 3 , 3 , ['martes', 14, 15] , 13)
+dibujo = cursos('Dibijo tecnico' , 2 , 3 , ['miercoles', 19, 19] , 14)
+quimica = cursos('Quimica basica' , 2 , 3 , ['martes', 9, 12] , 15)
+intro_ingenieria = cursos('Introduccion a la ingenieria' , 3 , 3 , ['martes', 13, 14] , 16)
+calculo = cursos('Calculo diferencial e integral' , 4 , 3 , ['miercoles', 18, 19] , 17)
 
 
 class admin:
