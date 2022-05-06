@@ -1,5 +1,5 @@
 import hashlib
-from socket import TIPC_CONN_TIMEOUT
+
 
 class carreras:
     carrera =  ''
@@ -18,6 +18,8 @@ ingenieria_en_agronomia = carreras('Ingenieria en agronomia', 8 ,[1, 2, 3, 8, 9,
 administracion_de_empresas = carreras('Administracion de empresas', 10 ,[1, 2, 3, 11, 12, 13 ] , 3)
 administracion_en_produccion_industrial = carreras('Administracion en produccion industrial', 12 ,[1, 2, 3, 14, 15] , 4 )
 administracion_en_electronica = carreras('Administracion en produccion industrial', 10 ,[1, 2, 3, 4, 16, 17] , 5 )
+
+print (ingenieria_en_computacion)
 
 class cursos:
     curso = ''
