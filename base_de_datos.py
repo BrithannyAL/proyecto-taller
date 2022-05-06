@@ -6,11 +6,19 @@ class carreras:
     cursos =  []
     codigo =  None
 
+    def __init__(self,ca,s,cu,co):
+        self.carrera=ca
+        self.semestres=s
+        self.cursos=cu
+        self.codigo=co
+
 ingenieria_en_computacion = carreras('Ingenieria en computacion', 8 ,[1, 2, 3, 4, 5, 6, 7] , 1)
 ingenieria_en_agronomia = carreras('Ingenieria en agronomia', 8 ,[1, 2, 3, 8, 9, 10 ] , 2)
 administracion_de_empresas = carreras('Administracion de empresas', 10 ,[1, 2, 3, 11, 12, 13 ] , 3)
 administracion_en_produccion_industrial = carreras('Administracion en produccion industrial', 12 ,[1, 2, 3, 14, 15] , 4 )
 administracion_en_electronica = carreras('Administracion en produccion industrial', 10 ,[1, 2, 3, 4, 16, 17] , 5 )
+
+print (ingenieria_en_computacion)
 
 class cursos:
     curso = ''
@@ -18,6 +26,13 @@ class cursos:
     horas_lectivas = None
     horario_de_clases = []
     codigo = 1
+
+    def __init__(self,cu, h_l , h_c , co):
+        self.curso=cu
+        self.creditos=h_l
+        self.horas_lectivas=h_c
+        self.horario_de_clases=co
+        self.codigo=co
 
 
 matematica = cursos('Matematica general' , 3 , 3,  ['lunes', 9, 12] , 1)
@@ -46,6 +61,13 @@ class admin:
     usuario = None
     contrasena = None
 
+    def __init__(self, n , ti , te , u , c):
+        self.nombre=n
+        self.tipo=ti
+        self.telefono=te
+        self.usuario=u
+        self.contrasena=c
+
 a1 = admin('Brithanny Arguello' , 'admin' , 12345678, 'barguello' , hashlib.md5('12345'.encode('ascii')).hexdigest())
 
 class estudiante:
@@ -59,6 +81,18 @@ class estudiante:
     contrasena = None
     horario = {}
     reporte = {}
+
+    def __init__(self,n,t,ca,cu,a,r,u,c,h,rep):
+        self.nombre = n
+        self.tipo = t 
+        self.carreras= ca
+        self.cursos= cu
+        self.aprobados= a
+        self.reprobados= r
+        self.usuario= u
+        self.contrasena = c
+        self.horario = h
+        self.reporte = rep
 
 e1 = estudiante (
         'Estudiante 1', 'estudiante' , ['Ingenieria en computacion'],  [1, 2, 3, 4, 5, 6, 7],  [],  [], 
