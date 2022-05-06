@@ -13,6 +13,9 @@ class carreras:
         self.cursos=cu
         self.codigo=co
 
+    def get_menu(self):
+            return('     ' + self.carrera + ' ' + self.semestres + ' ' + self.cursos + ' ' + self.codigo)
+
 ingenieria_en_computacion = carreras('Ingenieria en computacion', 8 , [1, 2, 3, 4, 5, 6, 7] , 1)
 ingenieria_en_agronomia = carreras('Ingenieria en agronomia', 8 ,[1, 2, 3, 8, 9, 10 ] , 2)
 administracion_de_empresas = carreras('Administracion de empresas', 10 ,[1, 2, 3, 11, 12, 13 ] , 3)
