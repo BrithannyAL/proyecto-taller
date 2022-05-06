@@ -1,5 +1,4 @@
 import hashlib
-from socket import TIPC_CONN_TIMEOUT
 
 class carreras:
     carrera =  ''
@@ -128,6 +127,4 @@ e3 = estudiante (
             }
                 )
     
-
-
-
+print(ingenieria_en_computacion)

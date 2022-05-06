@@ -1,6 +1,6 @@
 # Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
 from tkinter import E
-from base_de_datos import usuarios, estudiantes, carreras, cursos
+from base_de_datos import carreras, cursos, admin, estudiante
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
 from funciones_estudiante import generar_reporte, matricular_carrera, matricular_curso, generar_reporte, registro_actividades, aprobado_noAprobado, ver_horario
 import hashlib
