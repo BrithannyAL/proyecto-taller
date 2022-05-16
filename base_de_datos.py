@@ -170,7 +170,6 @@ admins.insertar(admins,admin('A2' , 'admin' , 12345678, 'a2' , hashlib.md5('1234
 
 
 l = admins.buscar('barguello')
-
 if l[2] == 'barguello' and l[3] == hashlib.md5('12345'.encode('ascii')).hexdigest():
     print (True)
 else: 
