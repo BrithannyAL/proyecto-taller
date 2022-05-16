@@ -43,8 +43,33 @@ btn_modificar_carrera = tk.Button(ventana_login,text = 'Modificar carrera')
 btn_modificar_carrera.configure(command= lambda: login.login(e_usuario.get(), e_contra.get()))
 btn_modificar_carrera.pack_forget
 
+btn_matricular_carrera = tk.Button(ventana_login,text = 'Matricular carrera')
+btn_matricular_carrera.configure(command= lambda: login.login(e_usuario.get(), e_contra.get()))
+btn_matricular_carrera.pack_forget
+
+btn_matricular_curso = tk.Button(ventana_login,text = 'Matricular curso')
+btn_matricular_curso.configure(command= lambda: login.login(e_usuario.get(), e_contra.get()))
+btn_matricular_curso.pack_forget
+
+btn_generar_reporte = tk.Button(ventana_login,text = 'Generar reporte')
+btn_generar_reporte.configure(command= lambda: login.login(e_usuario.get(), e_contra.get()))
+btn_generar_reporte.pack_forget
+
+btn_registrar_actividad = tk.Button(ventana_login,text = 'Registrar actividad')
+btn_registrar_actividad.configure(command= lambda: login.login(e_usuario.get(), e_contra.get()))
+btn_registrar_actividad.pack_forget
+
+btn_determinar_estado = tk.Button(ventana_login,text = 'Determinar estado del curso')
+btn_determinar_estado.configure(command= lambda: login.login(e_usuario.get(), e_contra.get()))
+btn_determinar_estado.pack_forget
+
+btn_ver_horario = tk.Button(ventana_login,text = 'Ver horario')
+btn_ver_horario.configure(command= lambda: login.login(e_usuario.get(), e_contra.get()))
+btn_ver_horario.pack_forget
+
+
 btn_log_out = tk.Button(ventana_login,text = 'Salir del usuario')
-btn_log_out.configure(command= lambda: [btn_login.pack(),btn_reg.pack(),btn_salir.pack(), hide([btn_agregar_curso,btn_modificar_curso,btn_agregar_carrera,btn_modificar_carrera,btn_log_out])])
+btn_log_out.configure(command= lambda: [btn_login.pack(),btn_reg.pack(),btn_salir.pack(), hide([btn_agregar_curso,btn_modificar_curso,btn_agregar_carrera,btn_modificar_carrera,btn_log_out,btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_generar_reporte,btn_determinar_estado,btn_ver_horario])])
 btn_log_out.pack_forget     
 
 lb_usuario = tk.Label(ventana_login,text='Ingrese su nombre de usuario: ')
@@ -78,12 +103,18 @@ def ingresar(bool):
         btn_agregar_carrera.pack()
         btn_modificar_carrera.pack()
         btn_log_out.pack()
-        btn_ingresar.pack_forget()
         clear_text([e_usuario,e_contra])
-        hide([lb_usuario,e_usuario,lb_contra,e_contra])
+        hide([lb_usuario,e_usuario,lb_contra,e_contra,btn_ingresar])
     elif bool == 2:
+        btn_matricular_carrera.pack()
+        btn_matricular_curso.pack()
+        btn_generar_reporte.pack()
+        btn_registrar_actividad.pack()
+        btn_determinar_estado.pack()
+        btn_ver_horario.pack()
+        btn_log_out.pack()
         clear_text([e_usuario,e_contra])
-        hide([lb_usuario,e_usuario,lb_contra,e_contra])
+        hide([lb_usuario,e_usuario,lb_contra,e_contra, btn_ingresar])
 
 
 btn_ingresar = tk.Button(ventana_login,text = 'Ingresar')
