@@ -17,13 +17,13 @@ def login(u,c):
     if l == False and a == False:
         print('El usuario no fue encontrado, intente de nuevo')
     elif l != False:
-        if (l[2] == u and l[3] == hashlib.md5(c.encode('ascii')).hexdigest()):
-            print("Entramos como admin")
-            return True
-    elif a !=False:
-        if (a[6] == u and a[7] == hashlib.md5(c.encode('ascii')).hexdigest()):
-            print("Entramos como estudiantes")
-            return True
+        if l[2] == u and l[3] == hashlib.md5(c.encode('ascii')).hexdigest():
+            print(True)
+            return 1
+    elif a != False:
+        if a[6] == u and a[7] == hashlib.md5(c.encode('ascii')).hexdigest():
+            print(True)
+            return 2
     else:
         print('El usuario o la contrasena son incorrectos')
         return False
