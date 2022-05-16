@@ -1,5 +1,6 @@
 # Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
 from email.mime import base
+from operator import truediv
 from tkinter import E
 import base_de_datos 
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
@@ -7,49 +8,19 @@ from funciones_estudiante import generar_reporte, matricular_carrera, matricular
 import hashlib
 
 
-def inicio():
-    """
-        Esta es la primera función en la que se trabaja. La primera que llama el sistema cuando empieza a correr. No contiene ningún parámetro. Se le presenta al usuario un menú en donde podrá elegir si inicir seción con una cuenta ya existente, registrar una nueva cuenta en el sistema o cerrar el sistema."""
-    opcion = input("""
-Digite 1 si desea iniciar sesión 
-Digite 2 si desea registrarse
-Digite x si desea cerrar el software
-""")
-    if opcion == '1':
-        login()
-    elif opcion == '2':
-        registrar()
-    elif opcion == 'x':
-        quit()
-    else:
-        print("")
-        print("Por favor ingrese una opcion valida")
-        inicio()
-
-
-def login():
+def login(u,c):
     """
     Esta función es la que permite un usuario inicie cesión con una cuenta existente. El sistema de le pide al usuario que ingrese su usuario y contraseña para iniciar. Él mismo, determinará si la cuenta es de tipo estudiante, adminitrador o si no existe. En caso de que la cuenta no se encuentre en la base de datos, el sistema pedirá la cuenta nuevamente. Para esto se usa un ciclo que trabaja con el estado de una variable tipo boolean y al cambiar dicho estado, le ciclo se cierra."""
-    correcto = False
-    while correcto == False:
-        print("Digite el usuario y contraseña para ingresar")
-        usuario = input("Usuario: ")
-        if usuario == "x":
-            quit()
-        contra = hashlib.md5(input("Contraseña: ").encode('ascii')).hexdigest()
-        l = base_de_datos.admins.buscar(usuario)
-        if l == False:
-            print('El usuario no fue encontrado, intente de nuevo')
-            login()
-        if l[2] == usuario and l[3] == contra:
-            correcto = True
-    else: 
-        correcto = False
-        print("Ha ingresado como", l[1])
-        while 1 > 0:
-            menu(l[1], usuario, l[0])
-        if correcto == False:
-            print("Vuelva a intentar")
+    l = base_de_datos.admins.buscar(u)
+    if l == False:
+        print('El usuario no fue encontrado, intente de nuevo')
+    elif l[2] == u and l[3] == hashlib.md5(c.encode('ascii')).hexdigest():
+        print(True)
+        return True
+    else:
+        print('El usuario o la contrasena son incorrectos')
+        return False
+
 
 def registrar():
     """
@@ -79,7 +50,7 @@ def registrar():
             })
         print("""El administrador se ha ingresado correctamente
         """)
-        inicio()
+
     elif tipo == 'estudiante':
         for i in estudiantes:
             if i['autenticacion']['usuario'] == usuario:
@@ -124,10 +95,11 @@ def registrar():
             })
         print("""El estudiante se ha ingresado correctamente
         """)
-        inicio()
+
     else:
         print("Este tipo de usuario no es válido")
-        inicio()
+
+
 # Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
 
 
@@ -185,7 +157,7 @@ def funciones_admin(opcion):
         opci = input("¿Desea cerrar la aplicación? (y/n)")
         if opci == "y":
             quit()
-        inicio()
+
 
 
 def funciones_estudiante(opcion, usuario):
@@ -215,4 +187,3 @@ def funciones_estudiante(opcion, usuario):
         opci = input("¿Desea cerrar la aplicación? (y/n)")
         if opci == "y":
             quit()
-        inicio()
