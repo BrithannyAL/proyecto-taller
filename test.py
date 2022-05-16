@@ -1,12 +1,19 @@
-import tkinter as tk
+import tkinter
+import tkinter
+import sys
 
-def createNewWindow():
-    newWindow = tk.Toplevel(app)
+class CoreGUI(object):
+    def __init__(self, parent):
+        text_box = tkinter.Text(parent, state=tkinter.DISABLED)
+        text_box.pack()
 
-app = tk.Tk()
-buttonExample = tk.Button(app, 
-              text="Create new window",
-              command=createNewWindow)
-buttonExample.pack()
+        output_button = tkinter.Button(parent, text="Output", command=self.main)
+        output_button.pack()
 
-app.mainloop()
+    def main(self):
+        print ("Std Output")
+        raise ValueError("Std Error")
+
+root = tkinter.Tk()
+CoreGUI(root)
+root.mainloop()
