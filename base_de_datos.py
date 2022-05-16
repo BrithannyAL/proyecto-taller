@@ -201,16 +201,25 @@ class estudiante:
             cont+=1
         return(cont)
    
-    def get_name (self,pos):
-        if self.contar()<pos:
-            return (None)
-        else:
-            cont=0
-            actual=self
-            while cont<pos:
-                actual=actual.sig
-                cont+=1
-            return(actual.nombre, actual.tipo, actual.carreras,actual.cursos,actual.aprobados,actual.reprobados ,actual.usuario, actual.contrasena, actual.horario, actual.reporte)
+    def recorrer_lista(self) -> str:
+        actual = self
+        respuesta = "["
+        while actual.sig != None:
+            respuesta+=f"'{actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.horario, actual.reporte}',"
+            actual=actual.sig
+        respuesta+= f"'{actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.horario, actual.reporte}']"
+        return respuesta
+
+    def buscar(self,a):
+        actual = self
+        while actual.sig != None:
+            if actual.usuario == a:
+                return actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.horario, actual.reporte
+            else:
+                actual = actual.sig
+                if actual.usuario == a:
+                    return actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.horario, actual.reporte
+        return False
     
     def insertar(self,l,p):
         if l.sig == None:
