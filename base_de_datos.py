@@ -32,7 +32,6 @@ class cursos:
         self.horario_de_clases=h_c
         self.codigo=co
 
-
 matematica = cursos('Matematica general' , 3 , 3,  ['lunes', 9, 12] , 1)
 comunicacion = cursos('Comunicacion escrita' , 2 , 3 , ['martes', 9, 12] , 2)
 comunicacion = cursos('Ingles 1' , 2 , 3 , ['miercoles', 9, 12] , 3)
@@ -50,7 +49,6 @@ dibujo = cursos('Dibijo tecnico' , 2 , 3 , ['miercoles', 19, 19] , 14)
 quimica = cursos('Quimica basica' , 2 , 3 , ['martes', 9, 12] , 15)
 intro_ingenieria = cursos('Introduccion a la ingenieria' , 3 , 3 , ['martes', 13, 14] , 16)
 calculo = cursos('Calculo diferencial e integral' , 4 , 3 , ['miercoles', 18, 19] , 17)
-
 
 class admin:
     nombre = None
