@@ -1,11 +1,15 @@
 # Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
 from tkinter import E
-from base_de_datos import carreras, cursos, admin, estudiante
+import base_de_datos 
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
 from funciones_estudiante import generar_reporte, matricular_carrera, matricular_curso, generar_reporte, registro_actividades, aprobado_noAprobado, ver_horario
 import hashlib
 
 
+
+print(base_de_datos.buscar('a5',0,base_de_datos.admins))
+
+exit()
 def inicio():
     """
         Esta es la primera función en la que se trabaja. La primera que llama el sistema cuando empieza a correr. No contiene ningún parámetro. Se le presenta al usuario un menú en donde podrá elegir si inicir seción con una cuenta ya existente, registrar una nueva cuenta en el sistema o cerrar el sistema."""
@@ -36,12 +40,11 @@ def login():
         if usuario == "x":
             quit()
         contra = hashlib.md5(input("Contraseña: ").encode('ascii')).hexdigest()
-        for item in usuarios:
-            if (usuario in item['autenticacion']['usuario']) and (contra in item['autenticacion']['contraseña']):
-                correcto = True
-                print("Ha ingresado como", item['tipo'])
-                while 1 > 0:
-                    menu(item['tipo'], usuario, item['nombre'])
+        if (usuario in base_de_datos.buscar) and (contra in item.contrasena): 
+            correcto = True
+            print("Ha ingresado como", item['Admin'])
+            while 1 > 0:
+                pass#menu(item['tipo'], usuario, item['nombre'])
         for item in estudiantes:
             if(usuario in item['autenticacion']['usuario'] and (contra in item['autenticacion']['contraseña'])):
                 correcto = True
