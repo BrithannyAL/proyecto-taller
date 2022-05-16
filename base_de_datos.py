@@ -7,6 +7,7 @@ class carreras:
     cursos =  []
     codigo =  None
     sig = None
+    
     def _init_(self,ca,s,cu,co):
         self.carrera=ca
         self.semestres=s

@@ -27,9 +27,6 @@ def clear_text(x):
    for i in x:
         i.delete(0, END)
 
-
-
-
 btn_agregar_curso = tk.Button(ventana_login,text = 'Agregar curso')
 btn_agregar_curso.configure(command= lambda: login.login(e_usuario.get(), e_contra.get()))
 btn_agregar_curso.pack_forget
