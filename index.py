@@ -23,6 +23,10 @@ def hide(x):
     for i in x:
         i.pack_forget()
 
+def clear_text(x):
+   for i in x:
+        i.delete(0, END)
+
 
 
 
@@ -71,18 +75,20 @@ lb_contra.pack_forget()
 e_contra.pack_forget()
 
 def ingresar(bool):
-    if login.login(e_usuario.get(), e_contra.get()) == True:
+    if bool == True:
         btn_agregar_curso.pack()
         btn_modificar_curso.pack()
         btn_agregar_carrera.pack()
         btn_modificar_carrera.pack()
         btn_log_out.pack()
         btn_ingresar.pack_forget()
+        clear_text([e_usuario,e_contra])
+        hide([lb_usuario,e_usuario,lb_contra,e_contra])
 
 
 
 btn_ingresar = tk.Button(ventana_login,text = 'Ingresar')
-btn_ingresar.configure(command= lambda:  [ingresar(login.login(e_usuario.get(), e_contra.get())),hide([lb_usuario,e_usuario,lb_contra,e_contra]) ])
+btn_ingresar.configure(command= lambda:  [ingresar(login.login(e_usuario.get(), e_contra.get())) ])
 
 
 btn_login = tk.Button(ventana_login,text = 'Iniciar sesion')

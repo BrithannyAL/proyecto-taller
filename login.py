@@ -1,4 +1,5 @@
 # Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
+from ast import Return
 from email.mime import base
 from operator import truediv
 from tkinter import E
