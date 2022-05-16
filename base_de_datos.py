@@ -175,7 +175,6 @@ def buscar(a, inicio, p):
             return p.nombre
         else:
             return buscar(a,inicio,admins)
-            s
     
 #print(buscar('barguello',0,admins))
 
@@ -297,13 +296,9 @@ estudiantes.insertar(estudiantes,estudiante (
             'sabado':     [],
             'domingo':    [],
             }
-<<<<<<< HEAD
-                )
-=======
                 ))
 
 def recorrer_lista(inicio, p):
     if inicio < p.contar():
         print(p.get_name(inicio))
         recorrer_lista(inicio+1,estudiantes)
->>>>>>> c1c97220c6cfc3d7f5154a3279c3ac20452d87ab
