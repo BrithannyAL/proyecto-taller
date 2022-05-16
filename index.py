@@ -75,7 +75,7 @@ lb_contra.pack_forget()
 e_contra.pack_forget()
 
 def ingresar(bool):
-    if bool == True:
+    if bool == 1:
         btn_agregar_curso.pack()
         btn_modificar_curso.pack()
         btn_agregar_carrera.pack()
@@ -84,7 +84,9 @@ def ingresar(bool):
         btn_ingresar.pack_forget()
         clear_text([e_usuario,e_contra])
         hide([lb_usuario,e_usuario,lb_contra,e_contra])
-
+    elif bool == 2:
+        clear_text([e_usuario,e_contra])
+        hide([lb_usuario,e_usuario,lb_contra,e_contra])
 
 
 btn_ingresar = tk.Button(ventana_login,text = 'Ingresar')

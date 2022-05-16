@@ -19,11 +19,11 @@ def login(u,c):
     elif l != False:
         if l[2] == u and l[3] == hashlib.md5(c.encode('ascii')).hexdigest():
             print(True)
-            return True
+            return 1
     elif a != False:
         if a[6] == u and a[7] == hashlib.md5(c.encode('ascii')).hexdigest():
             print(True)
-            return True
+            return 2
     else:
         print('El usuario o la contrasena son incorrectos')
         return False
