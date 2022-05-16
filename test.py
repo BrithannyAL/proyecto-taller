@@ -1,11 +1,12 @@
-from tkinter import *
+import tkinter as tk
 
-def hide(x):
-    x.pack_forget()
+def createNewWindow():
+    newWindow = tk.Toplevel(app)
 
-root = Tk() 
-d=Button(root, text="Click to hide me!")
+app = tk.Tk()
+buttonExample = tk.Button(app, 
+              text="Create new window",
+              command=createNewWindow)
+buttonExample.pack()
 
-d.configure(command=lambda: hide(d))
-d.pack()
-root.mainloop()
+app.mainloop()

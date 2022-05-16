@@ -48,11 +48,6 @@ lista_carreras.insertar(lista_carreras, carreras('Ingenieria en electronica', 10
 while carreras.sig != None:
     print({})
 
-def recorrer_lista(inicio, p):
-    if inicio < p.contar():
-        print(p.get_name(inicio))
-        recorrer_lista(inicio+1, lista_carreras)
-
 
 class cursos:
     curso = ''
@@ -115,12 +110,6 @@ lista_cursos.insertar(lista_cursos,cursos('Calculo diferencial e integral' , 4 ,
 while cursos.sig != None:
     print({})
 
-def recorrer_lista(inicio, p):
-    if inicio < p.contar():
-        print(p.get_name(inicio))
-        recorrer_lista(inicio+1, lista_cursos)
-
-
 
 class admin:
     nombre = None
@@ -169,11 +158,11 @@ admins = admin('Brithanny Arguello' , 'admin' , 12345678, 'barguello' , hashlib.
 admins.insertar(admins,admin('A2' , 'admin' , 12345678, 'a2' , hashlib.md5('123456'.encode('ascii')).hexdigest()))
 
 
-l = admins.buscar('barguello')
+'''l = admins.buscar('barguello')
 if l[2] == 'barguello' and l[3] == hashlib.md5('12345'.encode('ascii')).hexdigest():
     print (True)
 else: 
-    print(False)
+    print(False)'''
 
 
 #print(admins.recorrer_lista())
@@ -299,7 +288,4 @@ estudiantes.insertar(estudiantes,estudiante (
             }
                 ))
 
-def recorrer_lista(inicio, p):
-    if inicio < p.contar():
-        print(p.get_name(inicio))
-        recorrer_lista(inicio+1,estudiantes)
+
