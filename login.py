@@ -1,4 +1,5 @@
 # Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
+from email.mime import base
 from tkinter import E
 import base_de_datos 
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
@@ -6,10 +7,6 @@ from funciones_estudiante import generar_reporte, matricular_carrera, matricular
 import hashlib
 
 
-
-print(base_de_datos.buscar('a5',0,base_de_datos.admins))
-
-exit()
 def inicio():
     """
         Esta es la primera función en la que se trabaja. La primera que llama el sistema cuando empieza a correr. No contiene ningún parámetro. Se le presenta al usuario un menú en donde podrá elegir si inicir seción con una cuenta ya existente, registrar una nueva cuenta en el sistema o cerrar el sistema."""
@@ -32,9 +29,7 @@ Digite x si desea cerrar el software
 
 def login():
     """
-        Esta función es la que permite un usuario inicie cesión con una cuenta existente. El sistema de le pide al usuario que ingrese su usuario y contraseña para iniciar. Él mismo, determinará si la cuenta es de tipo estudiante, adminitrador o si no existe. En caso de que la cuenta no se encuentre en la base de datos, el sistema pedirá la cuenta nuevamente. Para esto se usa un ciclo que trabaja con el estado de una variable tipo boolean y al cambiar dicho estado, le ciclo se cierra."""
-    global estudiantes
-    global usuarios
+    Esta función es la que permite un usuario inicie cesión con una cuenta existente. El sistema de le pide al usuario que ingrese su usuario y contraseña para iniciar. Él mismo, determinará si la cuenta es de tipo estudiante, adminitrador o si no existe. En caso de que la cuenta no se encuentre en la base de datos, el sistema pedirá la cuenta nuevamente. Para esto se usa un ciclo que trabaja con el estado de una variable tipo boolean y al cambiar dicho estado, le ciclo se cierra."""
     correcto = False
     while correcto == False:
         print("Digite el usuario y contraseña para ingresar")
@@ -42,17 +37,17 @@ def login():
         if usuario == "x":
             quit()
         contra = hashlib.md5(input("Contraseña: ").encode('ascii')).hexdigest()
-        if (usuario in base_de_datos.buscar) and (contra in item.contrasena): 
+        l = base_de_datos.admins.buscar(usuario)
+        if l == False:
+            print('El usuario no fue encontrado, intente de nuevo')
+            login()
+        if l[2] == usuario and l[3] == contra:
             correcto = True
-            print("Ha ingresado como", item['Admin'])
-            while 1 > 0:
-                pass#menu(item['tipo'], usuario, item['nombre'])
-        for item in estudiantes:
-            if(usuario in item['autenticacion']['usuario'] and (contra in item['autenticacion']['contraseña'])):
-                correcto = True
-                print("Ha ingresado como ", item['tipo'])
-                while 1 > 0:
-                    menu(item['tipo'], usuario, item['nombre'])
+    else: 
+        correcto = False
+        print("Ha ingresado como", l[1])
+        while 1 > 0:
+            menu(l[1], usuario, l[0])
         if correcto == False:
             print("Vuelva a intentar")
 

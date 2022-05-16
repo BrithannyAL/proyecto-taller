@@ -137,24 +137,27 @@ class admin:
         self.usuario=u
         self.contrasena=c
 
-    def contar(self):
-        cont=1
-        actual=self
-        while actual.sig!=None:
+    def recorrer_lista(self) -> str:
+        actual = self
+        respuesta = "["
+        while actual.sig != None:
+            respuesta+=f"'{actual.nombre, actual.tipo, actual.usuario, actual.contrasena}',"
             actual=actual.sig
-            cont+=1
-        return(cont)
-   
-    def get_name (self,pos):
-        if self.contar()<pos:
-            return (None)
-        else:
-            cont=0
-            actual=self
-            while cont<pos:
-                actual=actual.sig
-                cont+=1
-            return(actual.nombre, actual.tipo, actual.usuario, actual.contrasena)
+        respuesta+= f"'{actual.nombre, actual.tipo, actual.usuario, actual.contrasena}']"
+        return respuesta
+
+    def buscar(self,a):
+        actual = self
+
+        while actual.sig != None:
+            if actual.usuario == a:
+                return actual.nombre, actual.tipo, actual.usuario, actual.contrasena
+            else:
+                actual = actual.sig
+                if actual.usuario == a:
+                    return actual.nombre, actual.tipo, actual.usuario, actual.contrasena
+        return False
+
     
     def insertar(self,l,p):
         if l.sig == None:
@@ -163,26 +166,18 @@ class admin:
             self.insertar(l.sig,p)
 
 admins = admin('Brithanny Arguello' , 'admin' , 12345678, 'barguello' , hashlib.md5('12345'.encode('ascii')).hexdigest())
-admins.insertar(admins,admin('A2' , 'admin' , 12345678, 'a2' , hashlib.md5('12345'.encode('ascii')).hexdigest()))
-
-def recorrer_lista(inicio, p):
-    if inicio < p.contar():
-        return (p.get_name(inicio), recorrer_lista(inicio+1,admins))
-    
-print(recorrer_lista(0,admins  ))
-
-def buscar(a, inicio, p):
-    if inicio < p.contar():
-        if p.usuario == a:
-            return p.nombre
-        else:
-            return buscar(a,inicio,admins)
-            
-
-    
-#print(buscar('barguello',0,admins))
+admins.insertar(admins,admin('A2' , 'admin' , 12345678, 'a2' , hashlib.md5('123456'.encode('ascii')).hexdigest()))
 
 
+l = admins.buscar('barguello')
+
+if l[2] == 'barguello' and l[3] == hashlib.md5('12345'.encode('ascii')).hexdigest():
+    print (True)
+else: 
+    print(False)
+
+
+#print(admins.recorrer_lista())
 
 
 class estudiante:
