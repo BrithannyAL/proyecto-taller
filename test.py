@@ -1,19 +1,21 @@
-import tkinter
-import tkinter
-import sys
+#Import the required libraries
+from tkinter import *
 
-class CoreGUI(object):
-    def __init__(self, parent):
-        text_box = tkinter.Text(parent, state=tkinter.DISABLED)
-        text_box.pack()
+#Create an instance of tkinter frame
+win= Tk()
 
-        output_button = tkinter.Button(parent, text="Output", command=self.main)
-        output_button.pack()
+#Set the geometry of frame
+win.geometry("650x250")
 
-    def main(self):
-        print ("Std Output")
-        raise ValueError("Std Error")
+#Define a function to clear the Entry Widget Content
+def clear_text():
+   text.delete(0, END)
 
-root = tkinter.Tk()
-CoreGUI(root)
-root.mainloop()
+#Create a entry widget
+text= Entry(win, width=40)
+text.pack()
+
+#Create a button to clear the Entry Widget
+Button(win,text="Clear", command=clear_text, font=('Helvetica bold',10)).pack(pady=5)
+
+win.mainloop()

@@ -1,4 +1,5 @@
 # Se importan los dstos de los usuarios y las funciones para sus respectivas interfaces
+from ast import Return
 from email.mime import base
 from operator import truediv
 from tkinter import E
@@ -12,11 +13,17 @@ def login(u,c):
     """
     Esta función es la que permite un usuario inicie cesión con una cuenta existente. El sistema de le pide al usuario que ingrese su usuario y contraseña para iniciar. Él mismo, determinará si la cuenta es de tipo estudiante, adminitrador o si no existe. En caso de que la cuenta no se encuentre en la base de datos, el sistema pedirá la cuenta nuevamente. Para esto se usa un ciclo que trabaja con el estado de una variable tipo boolean y al cambiar dicho estado, le ciclo se cierra."""
     l = base_de_datos.admins.buscar(u)
-    if l == False:
+    a = base_de_datos.estudiantes.buscar(u)
+    if l == False and a == False:
         print('El usuario no fue encontrado, intente de nuevo')
-    elif l[2] == u and l[3] == hashlib.md5(c.encode('ascii')).hexdigest():
-        print(True)
-        return True
+    elif l != False:
+        if l[2] == u and l[3] == hashlib.md5(c.encode('ascii')).hexdigest():
+            print(True)
+            return True
+    elif a != False:
+        if a[6] == u and a[7] == hashlib.md5(c.encode('ascii')).hexdigest():
+            print(True)
+            return True
     else:
         print('El usuario o la contrasena son incorrectos')
         return False
