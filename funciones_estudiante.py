@@ -1,5 +1,3 @@
-from cgitb import reset
-from tkinter.tix import Tree
 from turtle import home
 from funciones import horas_horario, verificar_curso
 

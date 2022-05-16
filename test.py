@@ -1,5 +1,11 @@
-from base_de_datos import ingenieria_en_computacion
-import base_de_datos
+from tkinter import *
 
-for i in base_de_datos.carreras:
-    print(i)
+def hide(x):
+    x.pack_forget()
+
+root = Tk() 
+d=Button(root, text="Click to hide me!")
+
+d.configure(command=lambda: hide(d))
+d.pack()
+root.mainloop()
