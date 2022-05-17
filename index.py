@@ -94,18 +94,14 @@ btn_log_out.pack_forget
 
 #Login
 
-def ingresar(bool):
-    print(bool)
-    global u
-    u = bool[1]
-    if bool[0] == 1:
-        show([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera, btn_log_out])
-        clear_text([e_usuario,e_contra])
-        hide([lb_usuario,e_usuario,lb_contra,e_contra,btn_ingresar])
-    elif bool[0] == 2:
-        show([btn_matricular_carrera, btn_matricular_curso, btn_generar_reporte, btn_registrar_actividad, btn_determinar_estado, btn_ver_horario, btn_log_out])
-        clear_text([e_usuario,e_contra])
-        hide([lb_usuario,e_usuario,lb_contra,e_contra, btn_ingresar])
+def ingresar(bl, e_usuario, e_contra):
+    print(bl)
+    if type(bl) == list:
+        if bool[0] == 1:
+            show([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera, btn_log_out])
+        elif bool[0] == 2:
+            show([btn_matricular_carrera, btn_matricular_curso, btn_generar_reporte, btn_registrar_actividad, btn_determinar_estado, btn_ver_horario, btn_log_out])
+    return(generar_ventana_login())        
 
 def generar_ventana_login():
     sv_usuario = tk.StringVar()
@@ -119,15 +115,14 @@ def generar_ventana_login():
     
     btn_ingresar = tk.Button(ventana_login,text = 'Ingresar')
     btn_ingresar.configure(command= lambda:
-        [hide([lb_usuario, e_usuario, lb_contra, e_contra, btn_ingresar]),
-         ingresar(login.login(e_usuario.get(),e_contra.get()))])
+        [ingresar(login.login(sv_usuario.get(),sv_contrasena.get()), e_usuario, e_contra),
+         hide([lb_usuario, e_usuario, lb_contra, e_contra, btn_ingresar])])
     
     return(
         show([lb_usuario, e_usuario, lb_contra, e_contra, btn_ingresar])
     )
     
 def generar_ventana_registrar():
-    
     sv_new_name = StringVar()
     sv_new_num = StringVar()
     sv_new_user = StringVar()
@@ -146,7 +141,11 @@ def generar_ventana_registrar():
     e_new_pass = ttk.Entry(ventana_login, textvariable = sv_new_pass, width = 40)
     
     btn_registrar_admin = tk.Button(ventana_login, text = "Registrarse como Administrador")
+    btn_registrar_admin.configure(command=lambda:
+        [login.registrar(0, sv_new_name.get(), sv_new_num.get(), sv_new_user.get(), sv_new_pass.get())])
     btn_registrar_estud = tk.Button(ventana_login, text = "Registrarse como Estudiante")
+    btn_registrar_estud.configure(command=lambda:
+        [login.registrar(1, sv_new_name.get(), sv_new_num.get(), sv_new_user.get(), sv_new_pass.get())])
     
     return(show([lb_new_name, e_new_name, lb_new_num, e_new_num ,lb_new_user, e_new_user, lb_new_pass, e_new_pass, btn_registrar_admin, btn_registrar_estud]))
 
@@ -166,7 +165,7 @@ btn_login.configure(command=lambda:
 btn_reg.configure(command=lambda:
     [hide([btn_salir,btn_login,btn_reg]), generar_ventana_registrar()])
 
-btn_salir.configure(command= cerrar_ventana_login)
+btn_salir.configure(command = cerrar_ventana_login)
 
 btn_login.pack()
 btn_reg.pack()

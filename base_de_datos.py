@@ -212,10 +212,13 @@ class estudiante:
     reporte = dic_reporte
     sig = None
 
-    def __init__(self,n,t,cu,u,c):
+    def __init__(self,n,t,ca,cu,a,r,u,c,h,rep):
         self.nombre = n
         self.tipo = t 
+        self.carreras= ca
         self.cursos= cu
+        self.aprobados= a
+        self.reprobados= r
         self.usuario= u
         self.contrasena = c
 
@@ -276,7 +279,7 @@ estudiantes = estudiante (
             }
                 )
 
-estudiantes.insertar(estudiantes,estudiante (
+estudiantes.insertar(estudiantes, estudiante (
         'Estudiante 2', 'estudiante' , ['Ingenieria en procuccion industrial'],  [1, 2, 3, 4, 14, 15],  [],  [], 
         'e2',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
             {
