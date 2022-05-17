@@ -18,12 +18,10 @@ def login(u,c):
         print('El usuario no fue encontrado, intente de nuevo')
     elif l != False:
         if l[2] == u and l[3] == hashlib.md5(c.encode('ascii')).hexdigest():
-            print(True)
-            return 1
+            return [1,l[2]]
     elif a != False:
         if a[6] == u and a[7] == hashlib.md5(c.encode('ascii')).hexdigest():
-            print(True)
-            return 2
+            return [2,a[6]]
     else:
         print('El usuario o la contrasena son incorrectos')
         return False
