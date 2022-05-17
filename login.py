@@ -18,12 +18,10 @@ def login(u,c):
         print('El usuario no fue encontrado, intente de nuevo')
     elif l != False:
         if l[2] == u and l[3] == hashlib.md5(c.encode('ascii')).hexdigest():
-            print(True)
-            return 1
+            return [1,l[2]]
     elif a != False:
         if a[6] == u and a[7] == hashlib.md5(c.encode('ascii')).hexdigest():
-            print(True)
-            return 2
+            return [2,a[6]]
     else:
         print('El usuario o la contrasena son incorrectos')
         return False
@@ -110,27 +108,26 @@ def registrar():
 # Según el tipo de usuario se mostrará una interfaz diferente definida por su tipo de usuario
 
 
-def menu(tipo, usuario, nombre):
-    """
+"""def menu(tipo, usuario, nombre):
         Esta función imprime el menú de opciones para cada tipo de usuarios (admin/estudiante). La función detecta el usuario usuario que le llega y apartir de este geberal el menú de opciones, las cuales son diferentes entre los tipos de usuarios. Para esto se utiliza un condicional. Después de haber impreso el menú de opciones, se le pedirá al usuario que seleccione una, y esta se enviará como parámetro a otra función.
 
         Parámetros:
         - tipo (str): este es el tipo de cuenta que ha iniciado sesión, lo necesitamos para que el sistema sepa cuál es el menú que debe imprimir.
-        - nombre (str): el nombre del usuario de la cuenta, este se usa para imprimir el saludo de bienvenida."""
+        - nombre (str): el nombre del usuario de la cuenta, este se usa para imprimir el saludo de bienvenida.
     if tipo == "admin":
-        print("""********************************* Bienvenido {} *********************************
+        print(********************************* Bienvenido  *********************************
             Menu de opciones:
             1: Agregar cursos
             2: Modificar cursos
             3: Agregar carreras
             4: Modificar carreras
             5: Salir del usuario
-            """.format(nombre))
+            .format(nombre))
         opcion = int(input("¿Qué acción desea realizar? "))
         funciones_admin(opcion)
     elif tipo == "estudiante":
-        print("""
-            ********************************* Bienvenido {} *********************************
+        print(
+            ********************************* Bienvenido *********************************
             Menu de opciones:
             1: Matricular una carrera
             2: Matricular un curso
@@ -139,9 +136,9 @@ def menu(tipo, usuario, nombre):
             5: Determinar el estado de un curso
             6: Ver horario
             7: Salir del usuario
-            """.format(nombre))
+            .format(nombre))
         opcion = int(input("¿Qué acción desea realizar? "))
-        funciones_estudiante(opcion, usuario)
+        funciones_estudiante(opcion, usuario)"""
 
 
 def funciones_admin(opcion):

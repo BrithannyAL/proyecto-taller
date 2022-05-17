@@ -13,24 +13,35 @@ class carreras:
         self.cursos=cu
         self.codigo=co
 
-    def contar(self):
-        cont=1
-        actual=self
-        while actual.sig!=None:
+    def recorrer_lista(self) -> str:
+        actual = self
+        respuesta = []
+        while actual.sig != None:
+            respuesta.append([actual.carrera, actual.semestres, actual.cursos, actual.codigo])
             actual=actual.sig
-            cont+=1
-        return(cont)
-   
-    def get_name (self,pos):
-        if self.contar()<pos:
-            return (None)
-        else:
-            cont=0
-            actual=self
-            while cont<pos:
-                actual=actual.sig
-                cont+=1
-            return(actual.carrera, actual.semestres, actual.cursos, actual.codigo)
+        respuesta.append([actual.carrera, actual.semestres, actual.cursos, actual.codigo])
+        return respuesta
+
+    def nombre_carrera(self):
+        actual = self
+        respuesta = []
+        while actual.sig != None:
+            respuesta.append([actual.carrera])
+            actual=actual.sig
+        respuesta.append([actual.carrera])
+        return respuesta
+
+    def buscar(self,a):
+        actual = self
+
+        while actual.sig != None:
+            if actual.usuario == a:
+                return actual.carrera, actual.semestres, actual.cursos, actual.codigo
+            else:
+                actual = actual.sig
+                if actual.usuario == a:
+                    return actual.carrera, actual.semestres, actual.cursos, actual.codigo
+        return False
     
     def insertar(self,l,p):
         if l.sig == None:
@@ -44,6 +55,8 @@ lista_carreras.insertar(lista_carreras, carreras('Ingenieria en agronomia', 8 ,[
 lista_carreras.insertar(lista_carreras, carreras('Administracion de empresas', 10 ,[1, 2, 3, 11, 12, 13 ] , 3))
 lista_carreras.insertar(lista_carreras, carreras('Administracion en produccion industrial', 12 ,[1, 2, 3, 14, 15] , 4 ))
 lista_carreras.insertar(lista_carreras, carreras('Ingenieria en electronica', 10 ,[1, 2, 3, 4, 16, 17] , 5 ))
+
+
 
 while carreras.sig != None:
     print({})
@@ -64,24 +77,26 @@ class cursos:
         self.horario_de_clases=h_c
         self.codigo=co
 
-    def contar(self):
-        cont=1
-        actual=self
-        while actual.sig!=None:
+    def recorrer_lista(self) -> str:
+        actual = self
+        respuesta = "["
+        while actual.sig != None:
+            respuesta+=f"'{actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo}',"
             actual=actual.sig
-            cont+=1
-        return(cont)
-   
-    def get_name (self,pos):
-        if self.contar()<pos:
-            return (None)
-        else:
-            cont=0
-            actual=self
-            while cont<pos:
-                actual=actual.sig
-                cont+=1
-            return(actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo)
+        respuesta+= f"'{actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo}']"
+        return respuesta
+
+    def buscar(self,a):
+        actual = self
+
+        while actual.sig != None:
+            if actual.usuario == a:
+                return actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo
+            else:
+                actual = actual.sig
+                if actual.usuario == a:
+                    return actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo
+        return False
     
     def insertar(self,l,p):
         if l.sig == None:
@@ -137,7 +152,6 @@ class admin:
 
     def buscar(self,a):
         actual = self
-
         while actual.sig != None:
             if actual.usuario == a:
                 return actual.nombre, actual.tipo, actual.usuario, actual.contrasena
@@ -165,7 +179,7 @@ else:
     print(False)'''
 
 
-#print(admins.recorrer_lista())
+#print(admin.buscar(admins,'a2'))
 
 
 class estudiante:
@@ -228,6 +242,8 @@ class estudiante:
             self.insertar(l.sig,p)
 
 
+
+
 estudiantes = estudiante (
         'Estudiante 1', 'estudiante' , ['Ingenieria en computacion'],  [1, 2, 3, 4, 5, 6, 7],  [],  [], 
         'e1',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
@@ -276,7 +292,7 @@ estudiantes.insertar(estudiantes,estudiante (
 
 estudiantes.insertar(estudiantes,estudiante (
         'Estudiante 3', 'estudiante' , [],  [],  [],  [], 
-        'e2',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
+        'e3',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
             {
             'lunes':      {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
             'martes':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},

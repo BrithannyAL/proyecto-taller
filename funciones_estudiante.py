@@ -8,9 +8,9 @@ class bcolors:
     red = '\033[91m'  # Rojo
     reset = '\033[0m'  # RESETEAR COLOR
 
-def matricular_carrera(usuario, carreras, cursos, estudiantes):
+def matricular_carrera(carrera, usuario , carreras_base):
     '''
-        Esta funcion matricula una carrera en el usuario e imprime las carreras disponibles para matricular'''
+        Esta funcion matricula una carrera en el usuario e imprime las carreras disponibles para matricular
     print("")
     print("Las carreras disponibles son: ")
     for i in carreras:
@@ -25,8 +25,9 @@ def matricular_carrera(usuario, carreras, cursos, estudiantes):
                     print('La carrera se ha matriculado existosamente')
                     break
             else:
-                print("La carrera ingresada no existe")
-    return estudiantes
+                print("La carrera ingresada no existe")'''
+    print([carrera,usuario,carreras_base])
+    return ([carrera,usuario,carreras_base])
 
 
 def matricular_curso(usuario, carreras, cursos, estudiantes):
