@@ -77,8 +77,6 @@ def funciones_admin(opcion):
         if opci == "y":
             quit()
 
-
-
 def funciones_estudiante(opcion, usuario):
     """
         Esta función es la que llama a las funciones de los estudiantes, según la opción que ellos hayan escogido en el menú. Para esto se usan los condicionales, los cuales comparan la respuesta del usuario con las opciones del menú para saber cuál es la función que se desea invocar.

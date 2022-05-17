@@ -97,11 +97,12 @@ btn_log_out.pack_forget
 def ingresar(bl, e_usuario, e_contra):
     print(bl)
     if type(bl) == list:
-        if bool[0] == 1:
+        if bl[0] == 1:
             show([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera, btn_log_out])
-        elif bool[0] == 2:
+        elif bl [0] == 2:
             show([btn_matricular_carrera, btn_matricular_curso, btn_generar_reporte, btn_registrar_actividad, btn_determinar_estado, btn_ver_horario, btn_log_out])
-    return(generar_ventana_login())        
+    else:
+        return(generar_ventana_login())  
 
 def generar_ventana_login():
     sv_usuario = tk.StringVar()
