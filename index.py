@@ -128,16 +128,27 @@ def generar_ventana_login():
     
 def generar_ventana_registrar():
     
+    sv_new_name = StringVar()
+    sv_new_num = StringVar()
     sv_new_user = StringVar()
     sv_new_pass = StringVar()
     
-    lb_new_user = tk.Label(ventana_login, text="Ingrese el nombre de usuario a registrar")
+    lb_new_name = tk.Label(ventana_login, text="Ingrese su nombre")
+    e_new_name = ttk.Entry(ventana_login, textvariable = sv_new_name, width = 40)
+    
+    lb_new_num = tk.Label(ventana_login, text="Ingrese su número de teléfono")
+    e_new_num = ttk.Entry(ventana_login, textvariable = sv_new_num, width = 40)
+    
+    lb_new_user = tk.Label(ventana_login, text="Ingrese su usuario")
     e_new_user = ttk.Entry(ventana_login,textvariable = sv_new_user, width = 40)
     
-    lb_new_pass = tk.Label(ventana_login, text="Ingrese la contraseña que desea registrar")
+    lb_new_pass = tk.Label(ventana_login, text="Ingrese su contraseña")
     e_new_pass = ttk.Entry(ventana_login, textvariable = sv_new_pass, width = 40)
     
-    return(show([lb_new_user, e_new_user, lb_new_pass, e_new_pass]))
+    btn_registrar_admin = tk.Button(ventana_login, text = "Registrarse como Administrador")
+    btn_registrar_estud = tk.Button(ventana_login, text = "Registrarse como Estudiante")
+    
+    return(show([lb_new_name, e_new_name, lb_new_num, e_new_num ,lb_new_user, e_new_user, lb_new_pass, e_new_pass, btn_registrar_admin, btn_registrar_estud]))
 
 btn_login = tk.Button(ventana_login,text = 'Iniciar sesion')
 btn_login.place(x=60,y=100)
