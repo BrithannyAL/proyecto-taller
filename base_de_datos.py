@@ -1,6 +1,5 @@
 import hashlib
 
-
 class carreras:
     carrera =  ''
     semestres =  None
@@ -8,7 +7,7 @@ class carreras:
     codigo =  None
     sig = None
     
-    def _init_(self,ca,s,cu,co):
+    def __init__(self,ca,s,cu,co):
         self.carrera=ca
         self.semestres=s
         self.cursos=cu
@@ -58,7 +57,7 @@ class cursos:
     codigo = 1
     sig = None
 
-    def _init_(self , cu , c, h_l , h_c , co ):
+    def __init__(self , cu , c, h_l , h_c , co ):
         self.curso=cu
         self.creditos= c
         self.horas_lectivas=h_l
@@ -120,7 +119,7 @@ class admin:
     contrasena = None
     sig = None
 
-    def _init_(self, n , ti , te , u , c):
+    def __init__(self, n , ti , te , u , c):
         self.nombre=n
         self.tipo=ti
         self.telefono=te
@@ -182,7 +181,7 @@ class estudiante:
     reporte = {}
     sig = None
 
-    def _init_(self,n,t,ca,cu,a,r,u,c,h,rep):
+    def __init__(self,n,t,ca,cu,a,r,u,c,h,rep):
         self.nombre = n
         self.tipo = t 
         self.carreras= ca

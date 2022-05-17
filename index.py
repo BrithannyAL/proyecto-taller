@@ -11,8 +11,6 @@ import login
 #msvcrt.getch()
 
 ventana_login = tk.Tk()
-
-
 ventana_login.title('Proyecto Taller')
 ventana_login.minsize(800,600)
 
@@ -67,7 +65,6 @@ btn_ver_horario = tk.Button(ventana_login,text = 'Ver horario')
 btn_ver_horario.configure(command= lambda: login.login(e_usuario.get(), e_contra.get()))
 btn_ver_horario.pack_forget
 
-
 btn_log_out = tk.Button(ventana_login,text = 'Salir del usuario')
 btn_log_out.configure(command= lambda: [btn_login.pack(),btn_reg.pack(),btn_salir.pack(), hide([btn_agregar_curso,btn_modificar_curso,btn_agregar_carrera,btn_modificar_carrera,btn_log_out,btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_generar_reporte,btn_determinar_estado,btn_ver_horario])])
 btn_log_out.pack_forget     
@@ -116,10 +113,8 @@ def ingresar(bool):
         clear_text([e_usuario,e_contra])
         hide([lb_usuario,e_usuario,lb_contra,e_contra, btn_ingresar])
 
-
 btn_ingresar = tk.Button(ventana_login,text = 'Ingresar')
 btn_ingresar.configure(command= lambda:  [ingresar(login.login(e_usuario.get(), e_contra.get())) ])
-
 
 btn_login = tk.Button(ventana_login,text = 'Iniciar sesion')
 btn_login.place(x=60,y=100)
@@ -130,14 +125,11 @@ btn_reg.place(x=10,y=40)
 btn_salir = tk.Button(ventana_login,text = 'Salir')
 btn_salir.place(x=80,y=100)
 
-
 btn_login.configure(command=lambda: [hide([btn_salir,btn_login,btn_reg]),lb_usuario.pack(), e_usuario.pack(),lb_contra.pack(),e_contra.pack(), btn_ingresar.pack()])
 btn_salir.configure(command= cerrar_ventana_login)
 
 btn_login.pack()
 btn_salir.pack()
 btn_reg.pack()
-
-
 
 tk.mainloop()
