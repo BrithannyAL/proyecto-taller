@@ -30,7 +30,7 @@ def login(u,c):
             messagebox.showinfo(message="El usuario o la contrasena son incorrectos")
             print('El usuario o la contrasena son incorrectos')
             return False
-    except :
+    except:
         messagebox.showerror("Ha habido un error en el sistema")
         print("Ha habido un error en el sistema")
 
@@ -76,8 +76,6 @@ def funciones_admin(opcion):
         opci = input("¿Desea cerrar la aplicación? (y/n)")
         if opci == "y":
             quit()
-
-
 
 def funciones_estudiante(opcion, usuario):
     """

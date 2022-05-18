@@ -1,5 +1,6 @@
 from turtle import home
 from funciones import horas_horario, verificar_curso
+from tkinter import E, messagebox
 
 
 class bcolors:
@@ -8,156 +9,63 @@ class bcolors:
     red = '\033[91m'  # Rojo
     reset = '\033[0m'  # RESETEAR COLOR
 
-def matricular_carrera(carrera, usuario , carreras_base):
-    '''
-        Esta funcion matricula una carrera en el usuario e imprime las carreras disponibles para matricular
-    print("")
-    print("Las carreras disponibles son: ")
-    for i in carreras:
-        print(i['carrera'])
-        print("")
-    carrera_m = input("Ingrese el nombre de la carrera que desea matricular: ")
-    for i in estudiantes:
-        if i['autenticacion']['usuario'] == usuario:
-            for x in carreras:
-                if x['carrera'] == carrera_m:
-                    i['estudios']['carreras'].append(carrera_m)
-                    print('La carrera se ha matriculado existosamente')
-                    break
-            else:
-                print("La carrera ingresada no existe")'''
-    print([carrera,usuario,carreras_base])
+def matricular_carrera(carrera, usuario , carreras_base, base_de_datos):
+    new_carrera1 = carrera[1:]
+    new_carrera2 = new_carrera1[:-1]
+    print(new_carrera2)
+
+    l = base_de_datos.carreras.buscar(base_de_datos.lista_carreras, new_carrera2)
+    if l != False:
+        estudiante = base_de_datos.estudiantes.buscar(usuario)
+        if new_carrera2 in estudiante[2]:
+            messagebox.showerror(message='Ya ha matriculado esta carrera')
+        else:
+            estudiante[2].append(new_carrera2)
+            messagebox.showinfo(message='Carrera matriculada exitosamente')
+            print(estudiante)
+    else: messagebox.showerror(message='La carrera que intenta matricular no existe') 
     return ([carrera,usuario,carreras_base])
 
 
-def matricular_curso(usuario, carreras, cursos, estudiantes):
-    '''
-    Esta funcion matricula un curso y tiene muchas comprobaciones dentro de ella para evitar errores, algunas de estas son; el evitar que se matricule un curso sin matricular una carrera antes o matricular un curso de una carrera que el usuario no ha matriculado '''
-    carrera = str
-    cursos_carrera = list
-    flag = False
-    con = False
+def matricular_curso(curso, usuario, carreras , cursos_base, base_de_datos):
+    '''Esta funcion matricula un curso y tiene muchas comprobaciones dentro de ella para evitar errores, algunas de estas son; el evitar que se matricule un curso sin matricular una carrera antes o matricular un curso de una carrera que el usuario no ha matriculado '''
+    new_curso1 = curso[1:]
+    new_curso2 = new_curso1[:-1]
 
-    for r in estudiantes:
-        if r['autenticacion']['usuario'] == usuario:
-            if r['estudios']['carreras'] != []:
-                carrera = r['estudios']['carreras']
-                for p in carreras:
-                    if carrera == [p['carrera']]:
-                        cursos_carrera = p['cursos']
-            elif r['estudios']['carreras'] == []:
-                print('')
-                print('Primero ingrese una carrera')
-                print('')
-                break
-            else:
-                break
-            print("Estos son los cursos disponibles: ")
-            for o in cursos:
-                if o['codigo'] in cursos_carrera:
 
-                    print(o['curso'])
-                    print(" ")
-            break
-    curso_m = input("Ingrese el nombre del curso que desea matricular: ")
-    for i in estudiantes:
-        if i['autenticacion']['usuario'] == usuario:
-            if i['estudios']['carreras'] == []:
-                print("Primero ingrese una carrera")
-                break
-            else:
-                carreras_en_curso = i['estudios']['carreras']
-                for r_cursos in cursos:
-                    if flag == True:
-                        break
-                    if r_cursos['curso'] == curso_m:
-                        codigo_curso = r_cursos['codigo']
-                        if codigo_curso in i['estudios']['aprobados']:
-                            print(
-                                "Usted no puede matricular este curso porque se encuentra aprobado")
-                            flag = True
-                            break
-                        if codigo_curso in i['estudios']['reprobados']:
-                            print(
-                                "Usted no puede matricular este curso porque se encuentra reprobado")
-                            flag = True
-                            break
-                        for r_carreras in carreras:
-                            # Entro a la carrera del estudiante
-                            if r_carreras['carrera'] in carreras_en_curso:
-                                if codigo_curso in r_carreras['cursos']:
-                                    if flag == True:
-                                        break
-                                    if flag == True:
-                                        break
-                                        # Entra al horario y recorre los dias, por lo tanto el dia ya es el mismo
-                                    if r_cursos['horario_de_clases'][0] in i['horario']:
-                                        llaves_dias = list
-                                        llaves_dias = i['horario'].keys()
-                                        for a in llaves_dias:
-                                            if flag == True:
-                                                break
-                                            if r_cursos['horario_de_clases'][0] == a:
-                                                dia = a
-                                                llaves_horas = list
-                                                llaves_horas = i['horario'][dia].keys(
-                                                )
-                                                for b in llaves_horas:
-                                                    if r_cursos['horario_de_clases'][1] == b:
-                                                        hora = b
-                                                        hora_inicio = int(
-                                                            r_cursos['horario_de_clases'][1])
-                                                        hora_final = int(
-                                                            r_cursos['horario_de_clases'][2])
-                                                        cantidad_horas = hora_final - hora_inicio
-                                                        if cantidad_horas == 0:
-                                                            cantidad_horas = 1
-                                                        for contador in range(cantidad_horas):
-                                                            contador = 1
-                                                            if i['horario'][dia][hora] == []:
-                                                                horas_dia = horas_horario(
-                                                                    usuario, estudiantes, r_cursos['horario_de_clases'][0])
-                                                                horas_semana = horas_horario(
-                                                                    usuario, estudiantes, 'semana')
-                                                                if cantidad_horas + horas_dia > 12:
-                                                                    print(
-                                                                        "Está excediendo las 12 horas diarias")
-                                                                    flag = True
-                                                                    break
-                                                                if cantidad_horas + horas_semana > 72:
-                                                                    print(
-                                                                        "Está excediendo las 72 horas semanales")
-                                                                    flag = True
-                                                                    break
-                                                                i['horario'][dia][hora] = [
-                                                                    curso_m]
-                                                                hora = hora + contador
-                                                                contador = + 1
-                                                                i['estudios']['cursos'].append(
-                                                                    codigo_curso)
-                                                                con = True
-                                                            else:
-                                                                print(
-                                                                    "Usted tiene un choque de horarios")
-                                                                flag = True
-                                                                break
-                                                        if flag == True:
-                                                            break
-                                                        print(
-                                                            'Matricula realizada con exito')
-                                                        flag = True
-                                                        break
-                                else:
-                                    print(
-                                        "El curso ingresado no pertenece a la carrera matriculada")
-                                    flag = True
-                                    break
-                else:
-                    print("El curso ingresado no existe")
-    if con == True:
-        i['reporte'][dia].append(
-            [curso_m, 'curso', cantidad_horas, carreras_en_curso, ])
-    return estudiantes
+    l = base_de_datos.cursos.buscar(base_de_datos.lista_cursos, new_curso2)
+    if l != False:
+        estudiante = base_de_datos.estudiantes.buscar(usuario)
+        string = estudiante[2]
+        characters = "[']"
+        string = ''.join( x for x in string if x not in characters)
+        carreras_en_curso =  base_de_datos.carreras.buscar(base_de_datos.lista_carreras, string)
+        try:
+            cursos = carreras_en_curso[2]
+        except TypeError:
+            messagebox.showerror(message='Primero matricule una carrera')
+        if new_curso2 in estudiante[3]:
+            messagebox.showerror(message='Ya ha matriculado este curso')
+        elif new_curso2 in estudiante[4] or new_curso2 in estudiante[5]:
+            messagebox.showerror(message='Este curso se encuentra aprobado o reprobado')
+        elif l[4] not in cursos:
+            messagebox.showerror(message='Este curso no pertenece a su carrera')
+        else:
+            estudiante[3].append(new_curso2)
+            messagebox.showinfo(message='Curso matriculado exitosamente')
+            #print(estudiante)
+    else: messagebox.showerror(message='La carrera que intenta matricular no existe') 
+    return ([curso,usuario,cursos_base])
+
+    #Verificar el usuario                                           DONE
+    #Verificar que haya alguna carrera matriculada                  DONE
+    #Verificar que el curso no este aprobado o reprobado            DONE
+    #Verificar que el curso este en la carrera                      DONE                             
+    #Verificar choques de horarios
+    #Meter en el horario
+    #Que no exceda las horas diarias y semanales
+
+
 
 def generar_reporte(usuario, carreras, cursos, estudiantes):
     '''

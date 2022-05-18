@@ -53,11 +53,11 @@ class carreras:
         actual = self
 
         while actual.sig != None:
-            if actual.usuario == a:
+            if actual.carrera == a:
                 return actual.carrera, actual.semestres, actual.cursos, actual.codigo
             else:
                 actual = actual.sig
-                if actual.usuario == a:
+                if actual.carrera == a:
                     return actual.carrera, actual.semestres, actual.cursos, actual.codigo
         return False
     
@@ -76,8 +76,7 @@ lista_carreras.insertar(lista_carreras, carreras('Ingenieria en electronica', 10
 
 
 
-while carreras.sig != None:
-    print({})
+
 
 
 class cursos:
@@ -104,15 +103,24 @@ class cursos:
         respuesta+= f"'{actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo}']"
         return respuesta
 
+    def nombre_curso(self):
+        actual = self
+        respuesta = []
+        while actual.sig != None:
+            respuesta.append([actual.curso])
+            actual=actual.sig
+        respuesta.append([actual.curso])
+        return respuesta
+
     def buscar(self,a):
         actual = self
 
         while actual.sig != None:
-            if actual.usuario == a:
+            if actual.curso == a:
                 return actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo
             else:
                 actual = actual.sig
-                if actual.usuario == a:
+                if actual.curso == a:
                     return actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo
         return False
     
@@ -130,7 +138,7 @@ lista_cursos.insertar(lista_cursos,cursos('Taller de programacion' , 3 , 3 , ['j
 lista_cursos.insertar(lista_cursos,cursos('Fundamentos de organizacion de computadoras' , 2 , 3 , ['viernes', 9, 12] , 6))
 lista_cursos.insertar(lista_cursos,cursos('Marematica discreta' , 3 , 3 , ['lunes', 13, 14] , 7))
 lista_cursos.insertar(lista_cursos,cursos('Introduccion a la agronomia' , 3 , 3 , ['lunnes', 13, 14] , 8))
-lista_cursos.insertar(lista_cursos,cursos('Agromatica' , 3 , 3 , ['miercoles', 14, 15] , 9))
+lista_cursos.insertar(lista_cursos,cursos('Agromatica ' , 3 , 3 , ['miercoles', 14, 15] , 9))
 lista_cursos.insertar(lista_cursos,cursos('Biologia general' , 3 , 3 , ['jueves', 16, 17] , 10))
 lista_cursos.insertar(lista_cursos,cursos('Introducciona a la administracion de empresas' , 2 , 3 , ['viernes', 18, 19] , 11))
 lista_cursos.insertar(lista_cursos,cursos('Computacion para administracion' , 2 , 3 , ['lunes', 18, 19] , 12))
