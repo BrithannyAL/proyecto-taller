@@ -324,7 +324,7 @@ class estudiante:
                 )
 
 estudiantes.insertar(estudiantes, estudiante (
-        'Estudiante 2', 'estudiante' , ['Ingenieria en procuccion industrial'],  [1, 2, 3, 4, 14, 15],  [],  [], 
+        'Estudiante 2', 'estudiante' , ['Ingenieria en produccion industrial'],  [2, 3, 4],  [],  [], 
         'e2',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
             {
             'lunes':      {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
