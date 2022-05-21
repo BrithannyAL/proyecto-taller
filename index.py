@@ -44,7 +44,6 @@ def mostrar_menu_a():
     btn_modificar_carrera.pack()
     btn_agregar_curso.pack()
     btn_agregar_carrera.pack()
-    
 
 def mostrar_menu_e():
     btn_matricular_carrera.pack()
@@ -120,17 +119,16 @@ radioValue = tk.IntVar()
 rdioOne = tk.Radiobutton(ventana_login, text='Si', variable=radioValue, value=1) 
 rdioTwo = tk.Radiobutton(ventana_login, text='No', variable=radioValue, value=2) 
 
-
-sv_cursos = tk .StringVar()
+"""sv_cursos = tk .StringVar()
 cb_cursos = ttk.Combobox(ventana_login,  textvariable=sv_cursos)
 cb_cursos['values'] =  base_de_datos.cursos.nombre_curso(base_de_datos.lista_cursos)
 cb_cursos['state'] = 'readonly'
-cb_cursos.pack_forget()
-
+cb_cursos.pack_forget()"""
 
 btn_ingresar_actividad = tk.Button(ventana_login,text = 'Registrar actividad')
 btn_ingresar_actividad.configure(command= lambda: funciones_estudiante.ver_horario(u,base_de_datos))
 btn_ingresar_actividad.pack_forget
+
 
 def si():
     x = radioValue.get()
@@ -148,34 +146,10 @@ def si():
         btn_ingresar_actividad.pack()
 
 
-
-
 rdioOne.configure(command=si)
 rdioTwo.configure(command=si)
 rdioOne.pack_forget
 rdioTwo.pack_forget
-
-
-
-
-
-#Menu admin
-btn_agregar_curso = tk.Button(ventana_login,text = 'Agregar curso')
-btn_agregar_curso.configure(command= lambda: print)
-btn_agregar_curso.pack_forget
-
-btn_modificar_curso = tk.Button(ventana_login,text = 'Modificar curso')
-btn_modificar_curso.configure(command= lambda: print)
-btn_modificar_curso.pack_forget
-
-btn_agregar_carrera = tk.Button(ventana_login,text = 'Agregar carrera')
-btn_agregar_carrera.configure(command= lambda: print)
-btn_agregar_carrera.pack_forget
-
-btn_modificar_carrera = tk.Button(ventana_login,text = 'Modificar carrera')
-btn_modificar_carrera.configure(command= lambda:print)
-btn_modificar_carrera.pack_forget
-
 
 
 #Menu estudiante
@@ -276,6 +250,21 @@ def generar_ventana_registrar():
         [login.registrar(1, sv_new_name.get(), sv_new_num.get(), sv_new_user.get(), sv_new_pass.get())])
     
     return(show([lb_new_name, e_new_name, lb_new_num, e_new_num ,lb_new_user, e_new_user, lb_new_pass, e_new_pass, btn_registrar_admin, btn_registrar_estud]))
+
+def generar_menu_admin():
+    btn_agregar_curso = tk.Button(ventana_login,text = 'Agregar curso')
+    btn_agregar_curso.configure(command= lambda: print)
+
+    btn_modificar_curso = tk.Button(ventana_login,text = 'Modificar curso')
+    btn_modificar_curso.configure(command= lambda: print)
+
+    btn_agregar_carrera = tk.Button(ventana_login,text = 'Agregar carrera')
+    btn_agregar_carrera.configure(command= lambda: print)
+
+    btn_modificar_carrera = tk.Button(ventana_login,text = 'Modificar carrera')
+    btn_modificar_carrera.configure(command= lambda:print)
+    
+    return (show([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera]))
 
 btn_login = tk.Button(ventana_login,text = 'Iniciar sesion')
 btn_login.place(x=60,y=100)
