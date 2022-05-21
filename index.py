@@ -51,7 +51,6 @@ def mostrar_menu_e():
     btn_matricular_curso.pack()
     btn_registrar_actividad.pack()
     btn_determinar_estado.pack()
-    btn_ver_horario.pack()
     btn_atras.pack(side=(BOTTOM))
 
 def mostrar_mat_curso():
@@ -180,42 +179,34 @@ btn_modificar_carrera.pack_forget
 
 #Menu estudiante
 btn_matricular_carrera = tk.Button(ventana_login,text = 'Matricular carrera')
-btn_matricular_carrera.configure(command= lambda:(show([cb_carrera,btn_ingresar_carrera,btn_atras]), hide([btn_matricular_carrera, btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado,btn_ver_horario])))
+btn_matricular_carrera.configure(command= lambda:(show([cb_carrera,btn_ingresar_carrera,btn_atras]), hide([btn_matricular_carrera, btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado])))
 btn_matricular_carrera.pack_forget
 
 btn_matricular_curso = tk.Button(ventana_login,text = 'Matricular curso')
-btn_matricular_curso.configure(command= lambda:(show([cb_curso,btn_ingresar_curso,btn_atras]), hide([btn_matricular_carrera, btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado,btn_ver_horario])))
+btn_matricular_curso.configure(command= lambda:(show([cb_curso,btn_ingresar_curso,btn_atras]), hide([btn_matricular_carrera, btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado])))
 btn_matricular_curso.pack_forget
 
 btn_registrar_actividad = tk.Button(ventana_login,text = 'Registrar actividad')
-btn_registrar_actividad.configure(command= lambda: (hide([btn_matricular_carrera, btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado,btn_ver_horario]),show([lb_actividad,e_actividad, lb_dia,e_dia,lb_hora_i,e_hora_i,lb_hora_f,e_hora_f,lb_if,rdioOne,rdioTwo])))
+btn_registrar_actividad.configure(command= lambda: (hide([btn_matricular_carrera, btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado]),show([lb_actividad,e_actividad, lb_dia,e_dia,lb_hora_i,e_hora_i,lb_hora_f,e_hora_f,lb_if,rdioOne,rdioTwo])))
 btn_registrar_actividad.pack_forget
 
 btn_determinar_estado = tk.Button(ventana_login,text = 'Determinar estado del curso')
 btn_determinar_estado.configure(command= lambda: print)
 btn_determinar_estado.pack_forget
 
-btn_ver_horario = tk.Button(ventana_login,text = 'Ver horario')
-btn_ver_horario.configure(command= lambda: funciones_estudiante.ver_horario(u,base_de_datos))
-btn_ver_horario.pack_forget
 
-def horario(funcion):
-    print(funcion)
-    '''t = Text(ventana_login)
-    for x in funcion:
-        t.insert(END, x + '\n')
-    t.pack()'''
+
 
 
 #Boton para salir
 btn_log_out = tk.Button(ventana_login,text = 'Salir del usuario')
-btn_log_out.configure(command= lambda: [show([btn_login,btn_reg,btn_salir]), hide([btn_agregar_curso,btn_modificar_curso,btn_agregar_carrera,btn_modificar_carrera,btn_log_out,btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado,btn_ver_horario, cb_carrera, btn_ingresar_carrera, cb_curso, btn_ingresar_curso,lb_actividad, e_actividad,rdioOne,rdioTwo, lb_dia,e_dia,lb_hora_i,e_hora_i,lb_hora_f,e_hora_f,cb_cursos,btn_ingresar_actividad])])
+btn_log_out.configure(command= lambda: [show([btn_login,btn_reg,btn_salir]), hide([btn_agregar_curso,btn_modificar_curso,btn_agregar_carrera,btn_modificar_carrera,btn_log_out,btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado, cb_carrera, btn_ingresar_carrera, cb_curso, btn_ingresar_curso,lb_actividad, e_actividad,rdioOne,rdioTwo, lb_dia,e_dia,lb_hora_i,e_hora_i,lb_hora_f,e_hora_f,cb_cursos,btn_ingresar_actividad])])
 btn_log_out.pack_forget     
 
 #Login
 
 btn_atras = tk.Button(ventana_login,text = 'Regresar al menu')
-btn_atras.configure(command= lambda: (show([btn_matricular_carrera,btn_matricular_curso,btn_ver_horario,btn_determinar_estado,btn_log_out]), hide([cb_carrera,btn_ingresar_carrera,cb_curso,btn_ingresar_curso])))
+btn_atras.configure(command= lambda: (show([btn_matricular_carrera,btn_matricular_curso,btn_determinar_estado,btn_log_out]), hide([cb_carrera,btn_ingresar_carrera,cb_curso,btn_ingresar_curso])))
 btn_modificar_carrera.pack_forget
 
 def ingresar(bl):
@@ -230,7 +221,6 @@ def ingresar(bl):
             
         elif bl[0] == 2:
             mostrar_menu_e()
-            #show([btn_matricular_carrera, btn_matricular_curso, btn_generar_reporte, btn_registrar_actividad, btn_determinar_estado, btn_ver_horario, btn_log_out])
             btn_log_out.pack(side=BOTTOM)
     else:
         return(generar_ventana_login())  
