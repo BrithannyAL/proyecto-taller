@@ -60,27 +60,27 @@ def mostrar_mat_curso():
 
 #Menu matricular carrera
 
-sv_nombre_persona = tk .StringVar()
+"""sv_nombre_persona = tk .StringVar()
 cb_carrera = ttk.Combobox(ventana_login, textvariable=sv_nombre_persona)
 cb_carrera['values'] =  base_de_datos.carreras.nombre_carrera(base_de_datos.lista_carreras)
 cb_carrera['state'] = 'readonly'
-cb_carrera.pack_forget()
+cb_carrera.pack_forget()"""
 
-btn_ingresar_carrera = tk.Button(ventana_login,text='Matricular')
+"""btn_ingresar_carrera = tk.Button(ventana_login,text='Matricular')
 btn_ingresar_carrera.configure(command= lambda: (funciones_estudiante.matricular_carrera(cb_carrera.get() ,u, base_de_datos.carreras.nombre_carrera(base_de_datos.lista_carreras),base_de_datos),cb_carrera.set('')))
-btn_ingresar_carrera.pack_forget()
+btn_ingresar_carrera.pack_forget()"""
 
 #Men matricular curso
 
-sv_nombre_persona = tk .StringVar()
+"""sv_nombre_persona = tk .StringVar()
 cb_curso = ttk.Combobox(ventana_login, textvariable=sv_nombre_persona)
 cb_curso['values'] =  base_de_datos.cursos.nombre_curso(base_de_datos.lista_cursos)
 cb_curso['state'] = 'readonly'
-cb_curso.pack_forget()
+cb_curso.pack_forget()"""
 
-btn_ingresar_curso = tk.Button(ventana_login,text='Matricular')
+"""btn_ingresar_curso = tk.Button(ventana_login,text='Matricular')
 btn_ingresar_curso.configure(command= lambda: (funciones_estudiante.matricular_curso(cb_curso.get() ,u,base_de_datos.carreras.recorrer_lista(base_de_datos.lista_carreras), base_de_datos.cursos.nombre_curso(base_de_datos.lista_cursos),base_de_datos),cb_curso.set('')))
-btn_ingresar_curso.pack_forget()
+btn_ingresar_curso.pack_forget()"""
 
 #Menu admin
 btn_agregar_curso = tk.Button(ventana_login,text = 'Agregar curso')
@@ -132,21 +132,17 @@ btn_log_out.pack_forget
 #Login
 
 def ingresar(bl):
-    global u
-    u = bl[1]
-    print(u)
-    if type(bl) == list:
-        if bl[0] == 1:
-
+    if type(bl) == int:
+        if bl == 1:
             show([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera])
             btn_log_out.pack(side=BOTTOM)
             
-        elif bl[0] == 2:
+        elif bl == 2:
             mostrar_menu_e()
             #show([btn_matricular_carrera, btn_matricular_curso, btn_generar_reporte, btn_registrar_actividad, btn_determinar_estado, btn_ver_horario, btn_log_out])
             btn_log_out.pack(side=BOTTOM)
     else:
-        return(generar_ventana_login())  
+        return(generar_ventana_login())
 
 def generar_ventana_login():
     sv_usuario = tk.StringVar()
