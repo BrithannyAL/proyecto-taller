@@ -1,4 +1,6 @@
 from base_de_datos import admin, estudiante
+from tkinter.messagebox import askyesno  
+
 
 def cargar_archivos_admins():
     global admin
