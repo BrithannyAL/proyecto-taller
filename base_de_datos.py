@@ -71,7 +71,7 @@ class carreras:
 lista_carreras = carreras('Ingenieria en computacion', 8 , [1, 2, 3, 4, 5, 6, 7] , 1)
 lista_carreras.insertar(lista_carreras, carreras('Ingenieria en agronomia', 8 ,[1, 2, 3, 8, 9, 10 ] , 2))
 lista_carreras.insertar(lista_carreras, carreras('Administracion de empresas', 10 ,[1, 2, 3, 11, 12, 13 ] , 3))
-lista_carreras.insertar(lista_carreras, carreras('Administracion en produccion industrial', 12 ,[1, 2, 3, 14, 15] , 4 ))
+lista_carreras.insertar(lista_carreras, carreras('Ingenieria en produccion industrial', 12 ,[1, 2, 3, 14, 15] , 4 ))
 lista_carreras.insertar(lista_carreras, carreras('Ingenieria en electronica', 10 ,[1, 2, 3, 4, 16, 17] , 5 ))
 
 
@@ -216,8 +216,8 @@ class estudiante:
     reprobados = []
     usuario = None
     contrasena = None
-    horario = dic_horario
-    reporte = dic_reporte
+    horario = []
+    reporte = []
     sig = None
 
     def __init__(self,n,t,ca,cu,a,r,u,c,h,rep):
@@ -229,6 +229,8 @@ class estudiante:
         self.reprobados= r
         self.usuario= u
         self.contrasena = c
+        self.horario = h
+        self.reporte = rep
 
     def contar(self):
         cont=1
@@ -288,7 +290,7 @@ estudiantes = estudiante (
                 )
 
 estudiantes.insertar(estudiantes, estudiante (
-        'Estudiante 2', 'estudiante' , ['Ingenieria en procuccion industrial'],  [1, 2, 3, 4, 14, 15],  [],  [], 
+        'Estudiante 2', 'estudiante' , ['Ingenieria en produccion industrial'],  [2, 3, 4],  [],  [], 
         'e2',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
             {
             'lunes':      {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },

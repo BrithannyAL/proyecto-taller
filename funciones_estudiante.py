@@ -1,3 +1,5 @@
+from email.mime import base
+from pickle import TRUE
 from turtle import home
 from funciones import horas_horario, verificar_curso
 from tkinter import E, messagebox
@@ -27,7 +29,7 @@ def matricular_carrera(carrera, usuario , carreras_base, base_de_datos):
     return ([carrera,usuario,carreras_base])
 
 
-def matricular_curso(curso, usuario, carreras , cursos_base, base_de_datos):
+def matricular_curso(curso, usuario,carreras, cursos_base, base_de_datos):
     '''Esta funcion matricula un curso y tiene muchas comprobaciones dentro de ella para evitar errores, algunas de estas son; el evitar que se matricule un curso sin matricular una carrera antes o matricular un curso de una carrera que el usuario no ha matriculado '''
     new_curso1 = curso[1:]
     new_curso2 = new_curso1[:-1]
@@ -44,26 +46,130 @@ def matricular_curso(curso, usuario, carreras , cursos_base, base_de_datos):
             cursos = carreras_en_curso[2]
         except TypeError:
             messagebox.showerror(message='Primero matricule una carrera')
-        if new_curso2 in estudiante[3]:
+        if l[4] in estudiante[3]:
             messagebox.showerror(message='Ya ha matriculado este curso')
-        elif new_curso2 in estudiante[4] or new_curso2 in estudiante[5]:
+        elif l[4] in estudiante[4] or l[4] in estudiante[5]:
             messagebox.showerror(message='Este curso se encuentra aprobado o reprobado')
         elif l[4] not in cursos:
             messagebox.showerror(message='Este curso no pertenece a su carrera')
+        elif insertar_en_horario(base_de_datos, new_curso2, estudiante, l)[0] == False:
+            error = insertar_en_horario(base_de_datos, new_curso2, estudiante, l)[1]
+            if error[1] == 'choque':
+                messagebox.showerror(message='Usted presenta un choque de horarios')
+            elif error[1] == 'horas':
+                messagebox.showerror(message='Está excediendo las horas diarias o semanales')
         else:
-            estudiante[3].append(new_curso2)
+            insertar_en_horario( new_curso2, estudiante, l)
+            estudiante[3].append(l[4])
+            insertar_en_reporte(estudiante, 'curso',l)
             messagebox.showinfo(message='Curso matriculado exitosamente')
-            #print(estudiante)
     else: messagebox.showerror(message='La carrera que intenta matricular no existe') 
-    return ([curso,usuario,cursos_base])
+                         
 
-    #Verificar el usuario                                           DONE
-    #Verificar que haya alguna carrera matriculada                  DONE
-    #Verificar que el curso no este aprobado o reprobado            DONE
-    #Verificar que el curso este en la carrera                      DONE                             
-    #Verificar choques de horarios
-    #Meter en el horario
-    #Que no exceda las horas diarias y semanales
+def insertar_en_horario(curso_o_actividad, estudiante, curso_base):
+    horas_d = 0
+    horas_s = 0     
+    horario = curso_base[3]
+    dia = horario[0]
+    hora_i = horario[1]
+    hora_f = horario[2]
+    dias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
+
+#Obtiene las horas semanales
+    for i in estudiante[8]:
+        h = 7
+        while h <= 24:
+            if estudiante[8][i][h] != []:
+                horas_s = horas_s + 1
+            h = h+1  
+    
+#Obtiene las horas diarias    
+    for y in estudiante[8][dia]:
+        h = 7
+        while h <= 24:
+            if y[h] != []:
+                horas_d = horas_d + 1
+            h = h+1  
+
+    for x in range(hora_f-hora_i):
+        if estudiante[8][dia][hora_i] != []:
+            return [False,'choque']
+        elif horas_d + (hora_f-hora_i) > 12 or horas_s + (hora_f-hora_i) > 72:
+            return[False,'horas']
+    else:
+        for x in range(hora_f-hora_i):
+            estudiante[8][dia][hora_i] = curso_o_actividad
+            hora_i = hora_i + 1
+            return [True,'a']
+
+
+def insertar_en_reporte(estudiante , tipo, actividad):
+    #Curso, tipo(curso), horas, carrera
+    if tipo == 'curso':
+        horario = actividad[3]
+        dia = horario[0]
+        estudiante[9][dia].append([actividad[0],tipo,horario[2]-horario[1],estudiante[2]])
+
+    #Actividad extracurricular, tipo, horas, curso asociado
+    #Ocio, tipo, horas 
+
+def ver_reporte(usuario, base_de_datos):
+    reporte = []
+    dias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
+    estudiante =  base_de_datos.estudiante.buscar(base_de_datos.estudiantes,usuario)
+    for x in dias:
+        reporte.append([x, ': ', estudiante[9][x]])
+    messagebox.showinfo(message=reporte)
+    return reporte
+
+def ver_horario(usuario, base_de_datos):
+    horario = []
+    dias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
+    estudiante =  base_de_datos.estudiante.buscar(base_de_datos.estudiantes,usuario)
+    for x in dias:
+        horario.append([x, ': ', estudiante[8][x]])
+    messagebox.showinfo(message=horario)
+    return horario
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -363,12 +469,5 @@ def aprobado_noAprobado(usuario, estudiantes, cursos):
 
 '''Funcion que recorre e imprime el horario del usuario dia por dia'''
 
-def ver_horario(usuario, estudiantes):
-    dias = ['lunes', 'martes', 'miercoles',
-            'jueves', 'viernes', 'sabado', 'domingo']
-    for x in estudiantes:
-        if x['autenticacion']['usuario'] == usuario:
-            for l in dias:
-                print(l)
-                print(x['horario'][l])
-                print("")
+
+
