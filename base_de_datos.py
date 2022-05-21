@@ -83,13 +83,6 @@ class carreras:
                         [puntero.carrera, puntero.semestres, puntero.cursos, puntero.codigo].__str__()+"\n")
         except FileNotFoundError as error:
             messagebox.showerror(title="Error" ,message="Problemas al guardar la información en los archivos")
-    
-"""lista_carreras = carreras('Ingenieria en computacion', 8 , [1, 2, 3, 4, 5, 6, 7] , 1)
-lista_carreras.insertar(lista_carreras, carreras('Ingenieria en agronomia', 8 ,[1, 2, 3, 8, 9, 10 ] , 2))
-lista_carreras.insertar(lista_carreras, carreras('Administracion de empresas', 10 ,[1, 2, 3, 11, 12, 13 ] , 3))
-lista_carreras.insertar(lista_carreras, carreras('Administracion en produccion industrial', 12 ,[1, 2, 3, 14, 15] , 4 ))
-lista_carreras.insertar(lista_carreras, carreras('Ingenieria en electronica', 10 ,[1, 2, 3, 4, 16, 17] , 5 ))"""
-
 
 class cursos:
     curso = ''
@@ -153,25 +146,6 @@ class cursos:
                         [puntero.curso, puntero.creditos, puntero.horas_lectivas, puntero.horario_de_clases, puntero.codigo].__str__()+"\n")
         except FileNotFoundError as error:
             messagebox.showerror(title="Error" ,message="Problemas al guardar la información en los archivos")
-
-"""lista_cursos = cursos('Matematica general' , 3 , 3,  ['lunes', 9, 12] , 1)
-lista_cursos.insertar(lista_cursos,cursos('Comunicacion escrita' , 2 , 3 , ['martes', 9, 12] , 2))
-lista_cursos.insertar(lista_cursos,cursos('Ingles 1' , 2 , 3 , ['miercoles', 9, 12] , 3))
-lista_cursos.insertar(lista_cursos,cursos('Introduccion a la programacion' , 2 , 3 , ['martes', 7, 8] , 4))
-lista_cursos.insertar(lista_cursos,cursos('Taller de programacion' , 3 , 3 , ['jueves', 9, 12] , 5))
-lista_cursos.insertar(lista_cursos,cursos('Fundamentos de organizacion de computadoras' , 2 , 3 , ['viernes', 9, 12] , 6))
-lista_cursos.insertar(lista_cursos,cursos('Marematica discreta' , 3 , 3 , ['lunes', 13, 14] , 7))
-lista_cursos.insertar(lista_cursos,cursos('Introduccion a la agronomia' , 3 , 3 , ['lunnes', 13, 14] , 8))
-lista_cursos.insertar(lista_cursos,cursos('Agromatica ' , 3 , 3 , ['miercoles', 14, 15] , 9))
-lista_cursos.insertar(lista_cursos,cursos('Biologia general' , 3 , 3 , ['jueves', 16, 17] , 10))
-lista_cursos.insertar(lista_cursos,cursos('Introducciona a la administracion de empresas' , 2 , 3 , ['viernes', 18, 19] , 11))
-lista_cursos.insertar(lista_cursos,cursos('Computacion para administracion' , 2 , 3 , ['lunes', 18, 19] , 12))
-lista_cursos.insertar(lista_cursos,cursos('Matematica para administracion' , 3 , 3 , ['martes', 14, 15] , 13))
-lista_cursos.insertar(lista_cursos,cursos('Dibijo tecnico' , 2 , 3 , ['miercoles', 19, 19] , 14))
-lista_cursos.insertar(lista_cursos,cursos('Quimica basica' , 2 , 3 , ['martes', 9, 12] , 15))
-lista_cursos.insertar(lista_cursos,cursos('Introduccion a la ingenieria' , 3 , 3 , ['martes', 13, 14] , 16))
-lista_cursos.insertar(lista_cursos,cursos('Calculo diferencial e integral' , 4 , 3 , ['miercoles', 18, 19] , 17))"""
-
 
 class admin:
     nombre = None

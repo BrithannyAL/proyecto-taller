@@ -1,6 +1,10 @@
 from base_de_datos import admin, estudiante
+<<<<<<< HEAD
 from tkinter.messagebox import askyesno  
 
+=======
+from tkinter.messagebox import askyesno
+>>>>>>> fee4c31d298febff4888fa4fac5410e57dc56490
 
 def cargar_archivos_admins():
     global admin
