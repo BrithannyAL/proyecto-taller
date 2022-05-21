@@ -1,4 +1,8 @@
 import hashlib
+from tkinter import messagebox
+from tkinter.messagebox import askyesno
+
+#VARIABLES GLOBALES
 dic_horario = {
             'lunes':      {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
             'martes':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
@@ -8,6 +12,7 @@ dic_horario = {
             'sabado':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
             'domingo':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
             }
+
 dic_reporte = {
             'lunes':      [],
             'martes':     [],
@@ -51,7 +56,6 @@ class carreras:
 
     def buscar(self,a):
         actual = self
-
         while actual.sig != None:
             if actual.carrera == a:
                 return actual.carrera, actual.semestres, actual.cursos, actual.codigo
@@ -61,22 +65,30 @@ class carreras:
                     return actual.carrera, actual.semestres, actual.cursos, actual.codigo
         return False
     
-    def insertar(self,l,p):
-        if l.sig == None:
-            l.sig = p
-        else:
-            self.insertar(l.sig,p)
+    def insertar (self,rn):
+        puntero=self
+        while (puntero.sig!=None):
+            puntero=puntero.sig
+        puntero.sig=rn
+        
+    def guardar_en_archivos(self):
+        puntero=self
+        try:
+            with open("carreras.dat", "tw") as archivo:
+                archivo.writelines(
+                    [puntero.carrera, puntero.semestres, puntero.cursos, puntero.codigo].__str__()+"\n")
+                while puntero.sig != None:
+                    puntero = puntero.sig
+                    archivo.writelines(
+                        [puntero.carrera, puntero.semestres, puntero.cursos, puntero.codigo].__str__()+"\n")
+        except FileNotFoundError as error:
+            messagebox.showerror(title="Error" ,message="Problemas al guardar la información en los archivos")
     
-
-lista_carreras = carreras('Ingenieria en computacion', 8 , [1, 2, 3, 4, 5, 6, 7] , 1)
+"""lista_carreras = carreras('Ingenieria en computacion', 8 , [1, 2, 3, 4, 5, 6, 7] , 1)
 lista_carreras.insertar(lista_carreras, carreras('Ingenieria en agronomia', 8 ,[1, 2, 3, 8, 9, 10 ] , 2))
 lista_carreras.insertar(lista_carreras, carreras('Administracion de empresas', 10 ,[1, 2, 3, 11, 12, 13 ] , 3))
-lista_carreras.insertar(lista_carreras, carreras('Ingenieria en produccion industrial', 12 ,[1, 2, 3, 14, 15] , 4 ))
-lista_carreras.insertar(lista_carreras, carreras('Ingenieria en electronica', 10 ,[1, 2, 3, 4, 16, 17] , 5 ))
-
-
-
-
+lista_carreras.insertar(lista_carreras, carreras('Administracion en produccion industrial', 12 ,[1, 2, 3, 14, 15] , 4 ))
+lista_carreras.insertar(lista_carreras, carreras('Ingenieria en electronica', 10 ,[1, 2, 3, 4, 16, 17] , 5 ))"""
 
 
 class cursos:
@@ -114,7 +126,6 @@ class cursos:
 
     def buscar(self,a):
         actual = self
-
         while actual.sig != None:
             if actual.curso == a:
                 return actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo
@@ -124,13 +135,26 @@ class cursos:
                     return actual.curso, actual.creditos, actual.horas_lectivas, actual.horario_de_clases, actual.codigo
         return False
     
-    def insertar(self,l,p):
-        if l.sig == None:
-            l.sig = p
-        else:
-            self.insertar(l.sig,p)
+    def insertar (self,rn):
+        puntero=self
+        while (puntero.sig!=None):
+            puntero=puntero.sig
+        puntero.sig=rn
+        
+    def guardar_en_archivos(self):
+        puntero=self
+        try:
+            with open("cursos.dat", "tw") as archivo:
+                archivo.writelines(
+                    [puntero.curso, puntero.creditos, puntero.horas_lectivas, puntero.horario_de_clases, puntero.codigo].__str__()+"\n")
+                while puntero.sig != None:
+                    puntero = puntero.sig
+                    archivo.writelines(
+                        [puntero.curso, puntero.creditos, puntero.horas_lectivas, puntero.horario_de_clases, puntero.codigo].__str__()+"\n")
+        except FileNotFoundError as error:
+            messagebox.showerror(title="Error" ,message="Problemas al guardar la información en los archivos")
 
-lista_cursos = cursos('Matematica general' , 3 , 3,  ['lunes', 9, 12] , 1)
+"""lista_cursos = cursos('Matematica general' , 3 , 3,  ['lunes', 9, 12] , 1)
 lista_cursos.insertar(lista_cursos,cursos('Comunicacion escrita' , 2 , 3 , ['martes', 9, 12] , 2))
 lista_cursos.insertar(lista_cursos,cursos('Ingles 1' , 2 , 3 , ['miercoles', 9, 12] , 3))
 lista_cursos.insertar(lista_cursos,cursos('Introduccion a la programacion' , 2 , 3 , ['martes', 7, 8] , 4))
@@ -146,10 +170,7 @@ lista_cursos.insertar(lista_cursos,cursos('Matematica para administracion' , 3 ,
 lista_cursos.insertar(lista_cursos,cursos('Dibijo tecnico' , 2 , 3 , ['miercoles', 19, 19] , 14))
 lista_cursos.insertar(lista_cursos,cursos('Quimica basica' , 2 , 3 , ['martes', 9, 12] , 15))
 lista_cursos.insertar(lista_cursos,cursos('Introduccion a la ingenieria' , 3 , 3 , ['martes', 13, 14] , 16))
-lista_cursos.insertar(lista_cursos,cursos('Calculo diferencial e integral' , 4 , 3 , ['miercoles', 18, 19] , 17))
-
-while cursos.sig != None:
-    print({})
+lista_cursos.insertar(lista_cursos,cursos('Calculo diferencial e integral' , 4 , 3 , ['miercoles', 18, 19] , 17))"""
 
 
 class admin:
@@ -186,25 +207,25 @@ class admin:
                 if actual.usuario == a:
                     return actual.nombre, actual.tipo, actual.usuario, actual.contrasena
         return False
-
-    
-    def insertar(self,l,p):
-        if l.sig == None:
-            l.sig = p
-        else:
-            self.insertar(l.sig,p)
-
-admins = admin('Brithanny Arguello' , 'admin' , 12345678, 'barguello' , hashlib.md5('12345'.encode('ascii')).hexdigest())
-admins.insertar(admins,admin('A2' , 'admin' , 12345678, 'a2' , hashlib.md5('123456'.encode('ascii')).hexdigest()))
-
-
-'''l = admins.buscar('barguello')
-if l[2] == 'barguello' and l[3] == hashlib.md5('12345'.encode('ascii')).hexdigest():
-    print (True)
-else: 
-    print(False)'''
-
-
+            
+    def insertar (self,rn):
+        puntero=self
+        while (puntero.sig!=None):
+            puntero=puntero.sig
+        puntero.sig=rn
+            
+    def guardar_en_archivos(self):
+        puntero=self
+        try:
+            with open("admins.dat", "tw") as archivo:
+                archivo.writelines(
+                    [puntero.nombre, puntero.tipo, puntero.telefono, puntero.usuario, puntero.contrasena].__str__()+"\n")
+                while puntero.sig != None:
+                    puntero = puntero.sig
+                    archivo.writelines(
+                        [puntero.nombre, puntero.tipo, puntero.telefono, puntero.usuario, puntero.contrasena].__str__()+"\n")
+        except FileNotFoundError as error:
+            messagebox.showerror(title="Error" ,message="Problemas al guardar la información en los archivos")
 
 
 class estudiante:
@@ -216,11 +237,11 @@ class estudiante:
     reprobados = []
     usuario = None
     contrasena = None
-    horario = []
-    reporte = []
+    horario = None
+    reporte = None
     sig = None
 
-    def __init__(self,n,t,ca,cu,a,r,u,c,h,rep):
+    def __init__(self,n,t,ca,cu,a,r,u,c,dicr,dich):
         self.nombre = n
         self.tipo = t 
         self.carreras= ca
@@ -229,8 +250,8 @@ class estudiante:
         self.reprobados= r
         self.usuario= u
         self.contrasena = c
-        self.horario = h
-        self.reporte = rep
+        self.horario = dich
+        self.reporte = dicr
 
     def contar(self):
         cont=1
@@ -260,13 +281,26 @@ class estudiante:
                     return actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.horario, actual.reporte
         return False
     
-    def insertar(self,l,p):
-        if l.sig == None:
-            l.sig = p
-        else:
-            self.insertar(l.sig,p)
+    def insertar (self,rn):
+        puntero=self
+        while (puntero.sig!=None):
+            puntero=puntero.sig
+        puntero.sig=rn
+        
+    def guardar_en_archivos(self):
+        puntero=self
+        try:
+            with open("estudiantes.dat", "tw") as archivo:
+                archivo.writelines(
+                    [puntero.nombre, puntero.tipo, puntero.carreras, puntero.cursos, puntero.aprobados, puntero.reprobados, puntero.usuario, puntero.contrasena, puntero.reporte, puntero.horario].__str__()+"\n")
+                while puntero.sig != None:
+                    puntero = puntero.sig
+                    archivo.writelines(
+                        [puntero.nombre, puntero.tipo, puntero.carreras, puntero.cursos, puntero.aprobados, puntero.reprobados, puntero.usuario, puntero.contrasena, puntero.reporte, puntero.horario].__str__()+"\n")
+        except FileNotFoundError as error:
+            messagebox.showerror(title="Error" ,message="Problemas al guardar la información en los archivos")
 
-estudiantes = estudiante (
+"""estudiantes = estudiante (
         'Estudiante 1', 'estudiante' , ['Ingenieria en computacion'],  [1, 2, 3, 4, 5, 6, 7],  [],  [], 
         'e1',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
             {
@@ -306,4 +340,4 @@ estudiantes.insertar(estudiantes, estudiante (
 estudiantes.insertar(estudiantes,estudiante (
         'Estudiante 3', 'estudiante' , [],  [],  [],  [], 
         'e3',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
-            dic_horario, dic_reporte))
+            dic_horario, dic_reporte))"""
