@@ -13,16 +13,6 @@ dic_horario = {
             'domingo':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
             }
 
-dic_reporte = {
-            'lunes':      [],
-            'martes':     [],
-            'miercoles':  [],
-            'jueves':     [],
-            'viernes':    [],
-            'sabado':     [],
-            'domingo':    [],
-            }
-
 class carreras:
     carrera =  ''
     semestres =  None
@@ -212,10 +202,10 @@ class estudiante:
     usuario = None
     contrasena = None
     horario = None
-    reporte = None
+    actividades = None
     sig = None
 
-    def __init__(self,n,t,ca,cu,a,r,u,c,dicr,dich):
+    def __init__(self,n,t,ca,cu,a,r,u,c,act,dich):
         self.nombre = n
         self.tipo = t 
         self.carreras= ca
@@ -224,8 +214,9 @@ class estudiante:
         self.reprobados= r
         self.usuario= u
         self.contrasena = c
+        self.actividades = act
         self.horario = dich
-        self.reporte = dicr
+        
 
     def contar(self):
         cont=1
@@ -239,20 +230,20 @@ class estudiante:
         actual = self
         respuesta = "["
         while actual.sig != None:
-            respuesta+=f"'{actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.horario, actual.reporte}',"
+            respuesta+=f"'{actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena,actual.actividades, actual.horario}',"
             actual=actual.sig
-        respuesta+= f"'{actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.horario, actual.reporte}']"
+        respuesta+= f"'{actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena,actual.actividades, actual.horario}']"
         return respuesta
 
     def buscar(self,a):
         actual = self
         while actual.sig != None:
             if actual.usuario == a:
-                return actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.horario, actual.reporte
+                return actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.actividades,actual.horario
             else:
                 actual = actual.sig
                 if actual.usuario == a:
-                    return actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.horario, actual.reporte
+                    return actual.nombre, actual.tipo, actual.carreras, actual.cursos, actual.aprobados, actual.reprobados, actual.usuario, actual.contrasena, actual.actividades, actual.horario
         return False
     
     def insertar (self,rn):
@@ -266,11 +257,11 @@ class estudiante:
         try:
             with open("estudiantes.dat", "tw") as archivo:
                 archivo.writelines(
-                    [puntero.nombre, puntero.tipo, puntero.carreras, puntero.cursos, puntero.aprobados, puntero.reprobados, puntero.usuario, puntero.contrasena, puntero.reporte, puntero.horario].__str__()+"\n")
+                    [puntero.nombre, puntero.tipo, puntero.carreras, puntero.cursos, puntero.aprobados, puntero.reprobados, puntero.usuario, puntero.contrasena, puntero.actividades, puntero.horario].__str__()+"\n")
                 while puntero.sig != None:
                     puntero = puntero.sig
                     archivo.writelines(
-                        [puntero.nombre, puntero.tipo, puntero.carreras, puntero.cursos, puntero.aprobados, puntero.reprobados, puntero.usuario, puntero.contrasena, puntero.reporte, puntero.horario].__str__()+"\n")
+                        [puntero.nombre, puntero.tipo, puntero.carreras, puntero.cursos, puntero.aprobados, puntero.reprobados, puntero.usuario, puntero.contrasena, puntero.actividades, puntero.horario].__str__()+"\n")
         except FileNotFoundError as error:
             messagebox.showerror(title="Error" ,message="Problemas al guardar la información en los archivos")
 

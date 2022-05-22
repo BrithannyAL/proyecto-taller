@@ -1,126 +1,156 @@
 from email.mime import base
 from pickle import TRUE
 from turtle import home
+from base_de_datos import estudiante
 from funciones import horas_horario, verificar_curso
 from tkinter import E, messagebox
 
 
-class bcolors:
-    green = '\033[92m'  # Verde
-    yellow = '\033[93m'  # Amarillo
-    red = '\033[91m'  # Rojo
-    reset = '\033[0m'  # RESETEAR COLOR
-
-def matricular_carrera(carrera, usuario , carreras_base, base_de_datos):
-    new_carrera1 = carrera[1:]
-    new_carrera2 = new_carrera1[:-1]
-    print(new_carrera2)
-
-    l = base_de_datos.carreras.buscar(base_de_datos.lista_carreras, new_carrera2)
+def matricular_carrera(carrera, usuario , carreras):
+    codigo = 0
+    l = carreras()
     if l != False:
-        estudiante = base_de_datos.estudiantes.buscar(usuario)
-        if new_carrera2 in estudiante[2]:
+        while l.sig != None:
+            if l.carrera == carrera:
+                codigo = l.codigo
+            l = l.sig
+        if l.sig == None:
+            if l.carrera == carrera:
+                codigo = l.codigo
+        if codigo == 0:
+            messagebox.showerror(message='La carrera que intenta matricular no existe') 
+        elif codigo in usuario.carreras:
             messagebox.showerror(message='Ya ha matriculado esta carrera')
         else:
-            estudiante[2].append(new_carrera2)
+            usuario.carreras.append(codigo)
             messagebox.showinfo(message='Carrera matriculada exitosamente')
-            print(estudiante)
-    else: messagebox.showerror(message='La carrera que intenta matricular no existe') 
-    return ([carrera,usuario,carreras_base])
+            print(usuario.carreras)
+    return ([usuario])
 
 
-def matricular_curso(curso, usuario,carreras, cursos_base, base_de_datos):
+def matricular_curso(curso, usuario, cursos, carreras):
     '''Esta funcion matricula un curso y tiene muchas comprobaciones dentro de ella para evitar errores, algunas de estas son; el evitar que se matricule un curso sin matricular una carrera antes o matricular un curso de una carrera que el usuario no ha matriculado '''
-    new_curso1 = curso[1:]
-    new_curso2 = new_curso1[:-1]
+    codigos = []
+    codigo = 0
+    l = cursos()
+    c = carreras()
+    
+    cursos_carrera = []
+    while c.sig != None:
+        if [c.codigo] == usuario.carreras:
+            cursos_carrera = c.cursos
+        c = c.sig 
+        if c.sig == None:
+            if [c.codigo] == usuario.carreras:
+                cursos_carrera = c.cursos
 
-
-    l = base_de_datos.cursos.buscar(base_de_datos.lista_cursos, new_curso2)
     if l != False:
-        estudiante = base_de_datos.estudiantes.buscar(usuario)
-        string = estudiante[2]
-        characters = "[']"
-        string = ''.join( x for x in string if x not in characters)
-        carreras_en_curso =  base_de_datos.carreras.buscar(base_de_datos.lista_carreras, string)
-        try:
-            cursos = carreras_en_curso[2]
-        except TypeError:
+
+        while l.sig != None:
+            if l.curso == curso:
+                codigo = l.codigo
+                codigos.append(l.codigo)
+            l = l.sig
+        if l.sig == None:
+            if l.curso == curso:
+                codigo = l.codigo
+                codigos.append(l.codigo)
+        
+        carrera = usuario.carreras
+        if carrera == []:
             messagebox.showerror(message='Primero matricule una carrera')
-        if l[4] in estudiante[3]:
+        elif codigo in usuario.cursos:
             messagebox.showerror(message='Ya ha matriculado este curso')
-        elif l[4] in estudiante[4] or l[4] in estudiante[5]:
+        elif codigo in usuario.aprobados or codigo in usuario.reprobados:
             messagebox.showerror(message='Este curso se encuentra aprobado o reprobado')
-        elif l[4] not in cursos:
+        elif codigo not in cursos_carrera:
             messagebox.showerror(message='Este curso no pertenece a su carrera')
-        elif insertar_en_horario(base_de_datos, new_curso2, estudiante, l)[0] == False:
-            error = insertar_en_horario(base_de_datos, new_curso2, estudiante, l)[1]
+        elif insertar_en_horario(curso, usuario, cursos)[0] == False:
+            error = insertar_en_horario(curso, usuario, cursos)[1]
             if error[1] == 'choque':
                 messagebox.showerror(message='Usted presenta un choque de horarios')
-            elif error[1] == 'horas':
+            elif error[1] == 'horas': 
                 messagebox.showerror(message='Está excediendo las horas diarias o semanales')
+            elif error[1] == 'no':
+                messagebox.showerror(message='Este curso no existe')
         else:
-            insertar_en_horario( new_curso2, estudiante, l)
-            estudiante[3].append(l[4])
-            insertar_en_reporte(estudiante, 'curso',l)
+            insertar_en_horario(curso, usuario, cursos)
+            usuario.cursos.append(codigo)
             messagebox.showinfo(message='Curso matriculado exitosamente')
-    else: messagebox.showerror(message='La carrera que intenta matricular no existe') 
+    else: messagebox.showerror(message='El curso que intenta matricular no existe') 
                          
 
+
+def ingresar_actividad(usuario,estudiantes,actividad,dia,hora_i,hora_f,radioValue,curso_r):
+    if actividad == '' or dia == '' or hora_i == '' or hora_f == '':
+        messagebox.showerror(message='Por favor rellene todos los campos')
+    elif radioValue == 1:
+        if curso_r == '':
+            messagebox.showerror(message='Por favor rellene todos los campos')
+        elif hora_i < hora_f:
+            messagebox.showerror(message='La hora final es mayor a la hora de inicio')
+        else:
+            usuario.actividades[dia].append(['Actividad:', actividad, 'dia:', dia, 'Hora de inicio:', hora_i, 'Hora final:',hora_f, 'Curso relacionado', curso_r])
+            print(usuario.actividades)
+            messagebox.showinfo(message='Actividad agregada exitosamente')
+    elif radioValue == 2:
+        if hora_i < hora_f:
+            messagebox.showerror(message='La hora final es mayor a la hora de inicio')
+        else:
+            usuario.actividades[dia].append(['Actividad:', actividad, 'dia:', dia, 'Hora de inicio:', hora_i, 'Hora final:',hora_f])
+            print(usuario.actividades)
+            messagebox.showinfo(message='Actividad agregada exitosamente')
+
+
+
+
+
+
+
+
 def insertar_en_horario(curso_o_actividad, estudiante, curso_base):
+    c = curso_base()
+    while c.sig != None:
+
+        if c.curso == curso_o_actividad:
+            curso = c
+        c = c.sig 
+        if c.sig == None:
+            if c.curso == curso_o_actividad:
+                curso = c  
     horas_d = 0
     horas_s = 0     
-    horario = curso_base[3]
+    horario = curso.horario_de_clases
     dia = horario[0]
     hora_i = horario[1]
     hora_f = horario[2]
-    dias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
 
 #Obtiene las horas semanales
-    for i in estudiante[8]:
+    for i in estudiante.horario:
         h = 7
         while h <= 24:
-            if estudiante[8][i][h] != []:
+            if estudiante.horario[i][h] != []:
                 horas_s = horas_s + 1
             h = h+1  
     
 #Obtiene las horas diarias    
-    for y in estudiante[8][dia]:
         h = 7
         while h <= 24:
-            if y[h] != []:
+            if estudiante.horario[dia][h] != []:
                 horas_d = horas_d + 1
             h = h+1  
 
     for x in range(hora_f-hora_i):
-        if estudiante[8][dia][hora_i] != []:
+        if estudiante.horario[dia][hora_i] != []:
             return [False,'choque']
         elif horas_d + (hora_f-hora_i) > 12 or horas_s + (hora_f-hora_i) > 72:
             return[False,'horas']
     else:
         for x in range(hora_f-hora_i):
-            estudiante[8][dia][hora_i] = curso_o_actividad
+            estudiante.horario[dia][hora_i] = curso_o_actividad
             hora_i = hora_i + 1
             return [True,'a']
 
-
-def insertar_en_reporte(estudiante , tipo, actividad):
-    #Curso, tipo(curso), horas, carrera
-    if tipo == 'curso':
-        horario = actividad[3]
-        dia = horario[0]
-        estudiante[9][dia].append([actividad[0],tipo,horario[2]-horario[1],estudiante[2]])
-
-    #Actividad extracurricular, tipo, horas, curso asociado
-    #Ocio, tipo, horas 
-
-def ver_reporte(usuario, base_de_datos):
-    reporte = []
-    dias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
-    estudiante =  base_de_datos.estudiante.buscar(base_de_datos.estudiantes,usuario)
-    for x in dias:
-        reporte.append([x, ': ', estudiante[9][x]])
-    messagebox.showinfo(message=reporte)
-    return reporte
 
 def ver_horario(usuario, base_de_datos):
     horario = []
@@ -158,132 +188,6 @@ def ver_horario(usuario, base_de_datos):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def generar_reporte(usuario, carreras, cursos, estudiantes):
-    '''
-        Esta funcion genera los reportes de las actividades matriculadas e imprime sus distintos atributos, ademas de esto diferencia por colores cada tipo de actividad'''
-    horas_d = 0
-    dia = input('''Ingrese el día del que quiere generar el reporte: 
-Ingrese 'semana' si desea generar el reporte de la semana entera.
-''')
-    dias = ['lunes', 'martes', 'miercoles',
-            'jueves', 'viernes', 'sabado', 'domingo']
-    if dia in dias:
-        for i in estudiantes:
-            if i['autenticacion']['usuario'] == usuario:
-                print(dia, ': ')
-                for l in i['reporte'][dia]:
-                    if l[1] == 'ocio':
-                        print(bcolors.green + 'Actividad: ' +
-                              str(l[0]) + bcolors.reset)
-                        print(bcolors.green + 'Tipo: ' +
-                              str(l[1]) + bcolors.reset)
-                        print(bcolors.green + 'Horas de dedicacion: ' +
-                              str(l[2]) + bcolors.reset)
-                        porcentaje = l[2] * 100 // 18
-                        print(bcolors.green + 'Porcentaje que ocupa en el día: ' +
-                              str(porcentaje) + '%' + bcolors.reset)
-                        print('')
-                    elif l[1] == 'curso':
-                        print(bcolors.red + 'Actividad: ' +
-                              str(l[0]) + bcolors.reset)
-                        print(bcolors.red + 'Tipo: ' +
-                              str(l[1]) + bcolors.reset)
-                        print(bcolors.red + 'Horas de dedicacion: ' +
-                              str(l[2]) + bcolors.reset)
-                        porcentaje = l[2] * 100 // 18
-                        print(bcolors.red + 'Porcentaje que ocupa en el día: ' +
-                              str(porcentaje) + '%' + bcolors.reset)
-                        print(bcolors.red + 'Carrera asociada: ' +
-                              str(l[3]) + bcolors.reset)
-                        print('')
-                    elif l[1] == 'Actividad extracurricular':
-                        print(bcolors.yellow + 'Actividad: ' +
-                              str(l[0]) + bcolors.reset)
-                        print(bcolors.yellow + 'Tipo: ' +
-                              str(l[1]) + bcolors.reset)
-                        print(bcolors.yellow + 'Horas de dedicacion: ' +
-                              str(l[2]) + bcolors.reset)
-                        porcentaje = l[2] * 100 // 18
-                        print(bcolors.yellow + 'Porcentaje que ocupa en el día: ' +
-                              str(porcentaje) + '%' + bcolors.reset)
-                        print(bcolors.yellow + 'Curso asociado: ' +
-                              str(l[3]) + bcolors.reset)
-                        print('')
-        horas_dia = horas_horario(usuario, estudiantes, dia)
-        horas_d = 18-horas_dia
-        print('La cantidad de horas ocupadas este dia es de: ', horas_dia)
-        print('Tiene ', horas_d, 'horas disponibles el día ', dia)
-        return estudiantes
-    elif dia == 'semana':
-        for i in estudiantes:
-            llaves = list(i['reporte'].keys())
-            if i['autenticacion']['usuario'] == usuario:
-                for z in llaves:
-                    print(z)
-                    for l in i['reporte'][z]:
-                        if l[1] == 'ocio':
-                            print(bcolors.green + 'Actividad: ' +
-                                  str(l[0]) + bcolors.reset)
-                            print(bcolors.green + 'Tipo: ' +
-                                  str(l[1]) + bcolors.reset)
-                            print(bcolors.green + 'Horas de dedicacion: ' +
-                                  str(l[2]) + bcolors.reset)
-                            porcentaje = l[2] * 100 // 126
-                            print(bcolors.green + 'Porcentaje que ocupa en la semana: ' +
-                                  str(porcentaje) + '%' + bcolors.reset)
-                            print('')
-                        elif l[1] == 'curso':
-                            print(bcolors.red + 'Actividad: ' +
-                                  str(l[0]) + bcolors.reset)
-                            print(bcolors.red + 'Tipo: ' +
-                                  str(l[1]) + bcolors.reset)
-                            print(bcolors.red + 'Horas de dedicacion: ' +
-                                  str(l[2]) + bcolors.reset)
-                            porcentaje = l[2] * 100 // 126
-                            print(bcolors.red + 'Porcentaje que ocupa en la semana: ' +
-                                  str(porcentaje) + '%' + bcolors.reset)
-                            print(bcolors.red + 'Carrera asociada: ' +
-                                  str(l[3]) + bcolors.reset)
-                            print('')
-                        elif l[1] == 'Actividad extracurricular':
-                            print(bcolors.yellow + 'Actividad: ' +
-                                  str(l[0]) + bcolors.reset)
-                            print(bcolors.yellow + 'Tipo: ' +
-                                  str(l[1]) + bcolors.reset)
-                            print(bcolors.yellow + 'Horas de dedicacion: ' +
-                                  str(l[2]) + bcolors.reset)
-                            porcentaje = l[2] * 100 // 126
-                            print(bcolors.yellow + 'Porcentaje que ocupa en la semana: ' +
-                                  str(porcentaje) + '%' + bcolors.reset)
-                            print(bcolors.yellow + 'Curso asociado: ' +
-                                  str(l[3]) + bcolors.reset)
-                            print('')
-                        print('')
-
-        horas_semana = horas_horario(usuario, estudiantes, dia)
-        horas_libres = 126 - horas_semana
-        print('La cantidad de horas ocupadas de esta semana es de: ',
-              horas_semana, ' horas')
-        print('Tiene ', horas_libres, 'horas disponibles esta semana')
-        return estudiantes
-    else:
-        print('El dato ingresado no es valido')
-        
 
 def registro_actividades(usuario, carreras, cursos, estudiantes):
     '''
