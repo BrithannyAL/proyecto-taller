@@ -20,27 +20,22 @@ def login(u,c):
         registro_actual = None
         tipo = None
         
-        pun_admin = admins
         while registro_actual == None:
-            if pun_admin.usuario == u and pun_admin.contrasena == hashlib.md5(c.encode('ascii')).hexdigest():
-                registro_actual = pun_admin
+            if admins.usuario == u and admins.contrasena == hashlib.md5(c.encode('ascii')).hexdigest():
+                registro_actual = admins
                 tipo = 1
             else:
-                if pun_admin.sig != None:
-                    pun_admin = pun_admin.sig
+                if admins.sig != None:
+                    admins = admins.sig
                 else:
-                    registro_actual = False
-             
-        pun_estudiantes = estudiantes
-        while registro_actual == None:
-            if pun_estudiantes.usuario == u and pun_estudiantes.contrasena == hashlib.md5(c.encode('ascii')).hexdigest():
-                registro_actual = pun_estudiantes
-                tipo = 2
-            else:
-                if pun_estudiantes.sig != None:
-                    pun_estudiantes = pun_estudiantes.sig
-                else:
-                    registro_actual = False
+                    if estudiantes.usuario == u and estudiantes.contrasena == hashlib.md5(c.encode('ascii')).hexdigest():
+                        registro_actual = estudiantes
+                        tipo = 2
+                    else:
+                        if estudiantes.sig != None:
+                            estudiantes = estudiantes.sig
+                        else:
+                            registro_actual = False
                             
         if registro_actual != False:
             return (tipo)

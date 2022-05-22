@@ -1,5 +1,6 @@
 from cargar_en_archivos import cargar_archivos_estudiantes, cargar_archivos_admins, cargar_archivos_cursos, cargar_archivos_carreras
 from base_de_datos import carreras, cursos
+import hashlib
 
 def escribir_carreras():
     global cargar_archivos_carreras
@@ -34,6 +35,33 @@ def escribir_cursos():
     list_cursos.insertar(cursos('Calculo diferencial e integral' , 4 , 3 , ['miercoles', 18, 19] , 17))
     list_cursos.guardar_en_archivos()
 
-escribir_carreras()
-escribir_cursos()
 
+u = 'fdgtrgt'
+c = '12345'
+
+estudiantes = cargar_archivos_estudiantes()
+admins = cargar_archivos_admins()
+registro_actual = None
+tipo = None
+
+while registro_actual == None:
+    if admins.usuario == u and admins.contrasena == hashlib.md5(c.encode('ascii')).hexdigest():
+        registro_actual = admins
+        tipo = 1
+    else:
+        if admins.sig != None:
+            admins = admins.sig
+        else:
+            if estudiantes.usuario == u and estudiantes.contrasena == hashlib.md5(c.encode('ascii')).hexdigest():
+                registro_actual = estudiantes
+                tipo = 2
+            else:
+                if estudiantes.sig != None:
+                    estudiantes = estudiantes.sig
+                else:
+                    registro_actual = False
+        
+                    
+if registro_actual != False:
+    print(tipo)
+    print(registro_actual)
