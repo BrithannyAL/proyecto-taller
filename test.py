@@ -23,7 +23,7 @@ def escribir_cursos():
     list_cursos.insertar(cursos('Taller de programacion' , 3 , 3 , ['jueves', 9, 12] , 5))
     list_cursos.insertar(cursos('Fundamentos de organizacion de computadoras' , 2 , 3 , ['viernes', 9, 12] , 6))
     list_cursos.insertar(cursos('Marematica discreta' , 3 , 3 , ['lunes', 13, 14] , 7))
-    list_cursos.insertar(cursos('Introduccion a la agronomia' , 3 , 3 , ['lunnes', 13, 14] , 8))
+    list_cursos.insertar(cursos('Introduccion a la agronomia' , 3 , 3 , ['lunes', 13, 14] , 8))
     list_cursos.insertar(cursos('Agromatica ' , 3 , 3 , ['miercoles', 14, 15] , 9))
     list_cursos.insertar(cursos('Biologia general' , 3 , 3 , ['jueves', 16, 17] , 10))
     list_cursos.insertar(cursos('Introducciona a la administracion de empresas' , 2 , 3 , ['viernes', 18, 19] , 11))
@@ -34,9 +34,12 @@ def escribir_cursos():
     list_cursos.insertar(cursos('Introduccion a la ingenieria' , 3 , 3 , ['martes', 13, 14] , 16))
     list_cursos.insertar(cursos('Calculo diferencial e integral' , 4 , 3 , ['miercoles', 18, 19] , 17))
     list_cursos.guardar_en_archivos()
+    
+escribir_carreras()
+escribir_cursos()
 
 
-u = 'fdgtrgt'
+"""u = 'fdgtrgt'
 c = '12345'
 
 estudiantes = cargar_archivos_estudiantes()
@@ -64,4 +67,4 @@ while registro_actual == None:
                     
 if registro_actual != False:
     print(tipo)
-    print(registro_actual)
+    print(registro_actual)"""

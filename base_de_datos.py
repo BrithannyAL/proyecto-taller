@@ -79,8 +79,9 @@ class cursos:
     creditos = None
     horas_lectivas = None
     horario_de_clases = []
-    codigo = 1
+    codigo = None
     sig = None
+    ant = None
 
     def __init__(self , cu , c, h_l , h_c , co ):
         self.curso=cu
@@ -122,6 +123,7 @@ class cursos:
         puntero=self
         while (puntero.sig!=None):
             puntero=puntero.sig
+            
         puntero.sig=rn
         
     def guardar_en_archivos(self):
@@ -144,6 +146,7 @@ class admin:
     usuario = None
     contrasena = None
     sig = None
+    ant = None
 
     def __init__(self, n , ti , te , u , c):
         self.nombre=n
@@ -177,6 +180,7 @@ class admin:
         while (puntero.sig!=None):
             puntero=puntero.sig
         puntero.sig=rn
+        rn.ant = puntero
             
     def guardar_en_archivos(self):
         puntero=self

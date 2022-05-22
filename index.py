@@ -5,6 +5,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import *
 import login
+import funciones_admin
 import funciones_estudiante
 import base_de_datos
 from cargar_en_archivos import cargar_archivos_admins, cargar_archivos_estudiantes, cargar_archivos_carreras, cargar_archivos_cursos
@@ -54,7 +55,6 @@ def mostrar_mat_curso():
 
 
 #Menu matricular carrera
-
 sv_nombre_persona = tk .StringVar()
 cb_carrera = ttk.Combobox(ventana_login, textvariable=sv_nombre_persona,width = 35)
 
@@ -208,25 +208,57 @@ rdioOne.pack_forget
 rdioTwo.pack_forget
 
 
+#Boton para salir
+btn_log_out = tk.Button(ventana_login,text = 'Salir del usuario')
+btn_log_out.configure(command= lambda: [show([btn_login,btn_reg,btn_salir]), hide([btn_log_out,btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado, cb_carrera, btn_ingresar_carrera, cb_curso, btn_ingresar_curso,lb_actividad, e_actividad,rdioOne,rdioTwo, lb_dia,cb_dia,lb_hora_i,cb_hora_i,lb_hora_f,cb_hora_f,cb_cursos,btn_ingresar_actividad,listbox_carreras])])
+btn_log_out.pack_forget    
 
 
+#Menu admin:
+def generar_ventana_agregar_curso():
+    sv_nombre_curso = StringVar()
+    sv_creditos_curso = StringVar()
+    sv_horario_curso = StringVar()
+    sv_final_horario = StringVar()
+    
+    lb_nombre_curso = tk.Label(ventana_login, text='Escriba el nombre del curso que desea agregar') 
+    e_nombre_curso = ttk.Entry(ventana_login, textvariable=sv_nombre_curso, width=40) 
+    
+    lb_creditos_curso = tk.Label(ventana_login, text='Escriba la cantidad de créditos de la carrera') 
+    e_creditos_curso = ttk.Entry(ventana_login, textvariable=sv_creditos_curso, width=20) 
+    
+    lb_horario_curso = tk.Label(ventana_login, text='Elija el horario lectivo de la carrera')     
+    cb_horario_curso = ttk.Combobox(ventana_login,  textvariable=sv_cbdia)
+    cb_horario_curso['values'] =  'lunes','martes','miercoles','jueves','viernes','sabado','domingo'
+    cb_horario_curso['state'] = 'readonly'
+    
+    lb_hora_inicial = tk.Label(ventana_login, text='Hora inicial, de 7 a 24')
+    e_hora_inicial = ttk.Entry(ventana_login, textvariable=sv_final_horario) 
+    
+    lb_hora_final = tk.Label(ventana_login, text='Hora final, de 7 a 24')
+    e_hora_final = ttk.Entry(ventana_login, textvariable=sv_final_horario) 
+    
+    btn_guardar_curso = tk.Button(ventana_login, text='Agregar curso')
+    btn_guardar_curso.configure(command=lambda:(funciones_admin.agregar_curso(e_nombre_curso.get(), e_creditos_curso.get(), cb_horario_curso.get(), e_hora_inicial.get(), e_hora_final.get())))
+    
+    return(show([lb_nombre_curso, e_nombre_curso, lb_creditos_curso, e_creditos_curso, lb_horario_curso, cb_horario_curso, lb_hora_inicial, e_hora_inicial, lb_hora_final, e_hora_final, btn_guardar_curso]))
+    
+def generar_menu_admin():
+    global btn_log_out
+    
+    btn_agregar_curso = tk.Button(ventana_login,text = 'Agregar curso')
+    btn_agregar_curso.configure(command= lambda: (hide([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera]), generar_ventana_agregar_curso()))
+    
+    btn_modificar_curso = tk.Button(ventana_login,text = 'Modificar curso')
+    btn_modificar_curso.configure(command= lambda: print)
 
-#Menu admin
-btn_agregar_curso = tk.Button(ventana_login,text = 'Agregar curso')
-btn_agregar_curso.configure(command= lambda: print)
-btn_agregar_curso.pack_forget
+    btn_agregar_carrera = tk.Button(ventana_login,text = 'Agregar carrera')
+    btn_agregar_carrera.configure(command= lambda: print)
 
-btn_modificar_curso = tk.Button(ventana_login,text = 'Modificar curso')
-btn_modificar_curso.configure(command= lambda: print)
-btn_modificar_curso.pack_forget
-
-btn_agregar_carrera = tk.Button(ventana_login,text = 'Agregar carrera')
-btn_agregar_carrera.configure(command= lambda: print)
-btn_agregar_carrera.pack_forget
-
-btn_modificar_carrera = tk.Button(ventana_login,text = 'Modificar carrera')
-btn_modificar_carrera.configure(command= lambda:print)
-btn_modificar_carrera.pack_forget
+    btn_modificar_carrera = tk.Button(ventana_login,text = 'Modificar carrera')
+    btn_modificar_carrera.configure(command= lambda:print)
+    
+    return(show([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera, btn_log_out]))
 
 
 
@@ -247,27 +279,18 @@ btn_determinar_estado = tk.Button(ventana_login,text = 'Determinar estado del cu
 btn_determinar_estado.configure(command= lambda: print)
 btn_determinar_estado.pack_forget
 
-
-
-
-
-#Boton para salir
-btn_log_out = tk.Button(ventana_login,text = 'Salir del usuario')
-btn_log_out.configure(command= lambda: [show([btn_login,btn_reg,btn_salir]), hide([btn_agregar_curso,btn_modificar_curso,btn_agregar_carrera,btn_modificar_carrera,btn_log_out,btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado, cb_carrera, btn_ingresar_carrera, cb_curso, btn_ingresar_curso,lb_actividad, e_actividad,rdioOne,rdioTwo, lb_dia,cb_dia,lb_hora_i,cb_hora_i,lb_hora_f,cb_hora_f,cb_cursos,btn_ingresar_actividad,listbox_carreras])])
-btn_log_out.pack_forget     
+ 
 
 #Login
 
 btn_atras = tk.Button(ventana_login,text = 'Regresar al menu')
 btn_atras.configure(command= lambda: (show([btn_matricular_carrera,btn_matricular_curso,btn_determinar_estado,btn_log_out]), hide([cb_carrera,btn_ingresar_carrera,cb_curso,btn_ingresar_curso,listbox_carreras])))
-btn_modificar_carrera.pack_forget
 
 def ingresar(bl):
     if type(bl[0]) == int:
         if bl[0] == 1:
-            show([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera])
+            generar_menu_admin()
             btn_log_out.pack(side=BOTTOM)
-            
         elif bl[0] == 2:
             global u
             u = bl[1]
@@ -281,7 +304,7 @@ def generar_ventana_login():
     sv_contrasena = tk.StringVar()
         
     lb_usuario = tk.Label(ventana_login,text='Ingrese su nombre de usuario: ')
-    e_usuario = ttk.Entry(ventana_login,textvariable = sv_usuario, width = 40)
+    e_usuario = ttk.Entry(ventana_login, textvariable = sv_usuario, width = 40)
 
     lb_contra = tk.Label(ventana_login,text='Ingrese su contraseña: ')
     e_contra = ttk.Entry(ventana_login,textvariable = sv_contrasena, width = 40)

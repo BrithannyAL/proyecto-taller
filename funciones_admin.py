@@ -1,22 +1,32 @@
-def agregar_curso(lista_cursos):
+from base_de_datos import cursos
+from cargar_en_archivos import cargar_archivos_cursos
+from tkinter import E, messagebox
+
+def agregar_curso(vname, vcredit, vday, vhi, vhf):
     """
         Esta función le permite hacer a los administradoresnagregar nuevos cursos en la base de datos de el software. Le pide al admin el nombre del curso, la cantidad de créditos y las horas de las clases. Esos datos se acomodan en un obejto y se le agrega una clave unica llamada código, que en la base datos se gerera de de uno en uno, así que al código anterior le sumamos 1. Cuando ya hemos generado el nuevo  objeto, este lo insertamos dentro de la base de datos de cursos para ser retronada y ser convertida a tupla para protejer sus datos.
 
         Parámetros:
         - lista_cursos (list): Esta es la base de datos que contiene los cursos con todas las caracteristicas de los
         mismos."""
-    last_code = lista_cursos[-1]['codigo']
-    curso = input("Ingrese el nombre del curso que desea agregar: ")
-    creditos = input("Ingrese la cantidad de creditos del curso: ")
-    horas_l = input("Ingrese la cantidad de horas lectivas del curso: ")
-    codigo = last_code + 1
-    nuevo_curso = {'curso': curso, 'creditos': creditos,
-                   'horas_lectivas': horas_l, 'codigo': codigo}
-    lista_cursos.append(nuevo_curso)
-    print("""
-          El nuevo curso es:
-          {}""".format(nuevo_curso))
-    return tuple(lista_cursos)
+    try:    
+        horario_lectivo = [vday, int(vhi), int(vhf)]
+        horas_lectivas = int(vhf) - int(vhi)
+        lista_cursos = cargar_archivos_cursos()
+        codigo = 0
+        
+        while lista_cursos.sig != None:
+            lista_cursos = lista_cursos.sig
+        
+        
+            
+        new = cursos(vname, vcredit, horas_lectivas, horario_lectivo, )
+        
+    except ValueError:
+        messagebox.showerror(title='Error', message='Las horas deben ser números')
+        
+        
+    print('estoy entrando a la función')
 
 
 def modificar_curso(lista_cursos):

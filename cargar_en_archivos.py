@@ -39,9 +39,6 @@ def cargar_archivos_cursos():
             open("cursos.dat", "tw").close()
     finally:
         return respuesta
-    
-
-
 
 def cargar_archivos_admins():
     global admin
