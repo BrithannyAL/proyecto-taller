@@ -19,6 +19,7 @@ class carreras:
     cursos =  []
     codigo =  None
     sig = None
+    ant = None
     
     def __init__(self,ca,s,cu,co):
         self.carrera=ca
@@ -60,6 +61,7 @@ class carreras:
         while (puntero.sig!=None):
             puntero=puntero.sig
         puntero.sig=rn
+        rn.ant = puntero
         
     def guardar_en_archivos(self):
         puntero=self
@@ -125,6 +127,7 @@ class cursos:
             puntero=puntero.sig
             
         puntero.sig=rn
+        rn.ant = puntero
         
     def guardar_en_archivos(self):
         puntero=self
@@ -208,6 +211,7 @@ class estudiante:
     horario = None
     actividades = None
     sig = None
+    ant = None
 
     def __init__(self,n,t,ca,cu,a,r,u,c,act,dich):
         self.nombre = n
@@ -255,6 +259,7 @@ class estudiante:
         while (puntero.sig!=None):
             puntero=puntero.sig
         puntero.sig=rn
+        rn.ant = puntero
         
     def guardar_en_archivos(self):
         puntero=self
@@ -269,44 +274,3 @@ class estudiante:
         except FileNotFoundError as error:
             messagebox.showerror(title="Error" ,message="Problemas al guardar la información en los archivos")
 
-"""estudiantes = estudiante (
-        'Estudiante 1', 'estudiante' , ['Ingenieria en computacion'],  [1, 2, 3, 4, 5, 6, 7],  [],  [], 
-        'e1',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
-            {
-            'lunes':      {7: [], 8:[], 9:["Matematica general"], 10:["Matematica general"], 11:["Matematica general"], 12:["Matematica general"], 13:["Matematica discreta"], 14:["Matematica discreta"], 15:[], 16:[], 17:[], 18:["Repaso mate"], 19:["Repaso mate"], 20:[], 21:[], 22:["descanso"], 23:["descanso"], 24:[] },
-            'martes':     {7: ["Introduccion a la programacion"], 8:["Introduccion a la programacion"], 9:["Comunicacion escrita"], 10:["Comunicacion escrita"], 11:["Comunicacion escrita"], 12:["Comunicacion escrita"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
-            'miercoles':  {7: [], 8:[], 9:["Ingles 1"], 10:["Ingles 1"], 11:["Ingles 1"], 12:["Ingles 1"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
-            'jueves':     {7: [], 8:[], 9:["Taller de programacion"], 10:["Taller de programacion"], 11:["Taller de programacion"], 12:["Taller de programacion"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
-            'viernes':    {7: [], 8:[], 9:["Fundamentos de organizacion de computadoras"], 10:["Fundamentos de organizacion de computadoras"], 11:["Fundamentos de organizacion de computadoras"], 12:["Fundamentos de organizacion de computadoras"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
-            'sabado':     {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
-            'domingo':    {7: [], 8:[], 9:[], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
-            },
-            {
-            'lunes':      [['Matematica general' , 'curso' , 3, ['Ingenieria en computacion']],['Matematica discreta' , 'curso' , 2, ['Ingenieria en computacion'], ], ['Repaso mate' , 'Actividad extracurricular' , 2, 'Matematica general','14/2/22','16/2/22'] , ['descanso', 'ocio', 2,'14/2/22','16/2/22']],
-            'martes':     [['Introduccion a la programacion' , 'curso' , 2, ['Ingenieria en computacion']],['Comunicacion escrita' , 'curso' , 4, ['Ingenieria en computacion']],],
-            'miercoles':  [['Ingles 1' , 'curso' , 4, ['Ingenieria en computacion']],],
-            'jueves':     [['Taller de programacion' , 'curso' , 4, ['Ingenieria en computacion']],],
-            'viernes':    [['Fundamentos de organizacion de computadoras' , 'curso' , 4, ['Ingenieria en computacion']],],
-            'sabado':     [],
-            'domingo':    [],
-            }
-                )
-
-estudiantes.insertar(estudiantes, estudiante (
-        'Estudiante 2', 'estudiante' , ['Ingenieria en produccion industrial'],  [2, 3, 4],  [],  [], 
-        'e2',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
-            {
-            'lunes':      {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
-            'martes':     {7: ["Introduccion a la programacion"], 8: ["Introduccion a la programacion"], 9: ["Comunicacion escrita"], 10:["Comunicacion escrita"], 11:["Comunicacion escrita"], 12:["Comunicacion escrita"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
-            'miercoles':  {7: [], 8: [], 9: ["Ingles 1"], 10:["Ingles 1"], 11:["Ingles 1"], 12:["Ingles 1"], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[] },
-            'jueves':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
-            'viernes':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
-            'sabado':     {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
-            'domingo':    {7: [], 8: [], 9: [], 10:[], 11:[], 12:[], 13:[], 14:[], 15:[], 16:[], 17:[], 18:[], 19:[], 20:[], 21:[], 22:[], 23:[], 24:[]},
-            },
-            dic_reporte))
-
-estudiantes.insertar(estudiantes,estudiante (
-        'Estudiante 3', 'estudiante' , [],  [],  [],  [], 
-        'e3',  hashlib.md5('12345'.encode('ascii')).hexdigest(),
-            dic_horario, dic_reporte))"""

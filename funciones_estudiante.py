@@ -4,9 +4,15 @@ from turtle import home
 from base_de_datos import estudiante
 from funciones import horas_horario, verificar_curso
 from tkinter import E, messagebox
+from cargar_en_archivos import cargar_archivos_estudiantes
+
+
 
 
 def matricular_carrera(carrera, usuario , carreras):
+    if usuario.carreras != []:
+        messagebox.showerror(message='Solo puede matricular una carrera')
+        return 0
     codigo = 0
     l = carreras()
     if l != False:
@@ -18,11 +24,16 @@ def matricular_carrera(carrera, usuario , carreras):
             if l.carrera == carrera:
                 codigo = l.codigo
         if codigo == 0:
-            messagebox.showerror(message='La carrera que intenta matricular no existe') 
+            messagebox.showerror(message='Elija una carrera') 
         elif codigo in usuario.carreras:
             messagebox.showerror(message='Ya ha matriculado esta carrera')
         else:
             usuario.carreras.append(codigo)
+            while usuario.ant != None:
+                usuario = usuario.ant
+            usuario.guardar_en_archivos()
+
+
             messagebox.showinfo(message='Carrera matriculada exitosamente')
             print(usuario.carreras)
     return ([usuario])
@@ -76,6 +87,9 @@ def matricular_curso(curso, usuario, cursos, carreras):
         else:
             insertar_en_horario(curso, usuario, cursos)
             usuario.cursos.append(codigo)
+            while usuario.ant != None:
+                usuario = usuario.ant
+            usuario.guardar_en_archivos()
             messagebox.showinfo(message='Curso matriculado exitosamente')
     else: messagebox.showerror(message='El curso que intenta matricular no existe') 
                          
@@ -92,6 +106,7 @@ def ingresar_actividad(usuario,estudiantes,actividad,dia,hora_i,hora_f,radioValu
         else:
             usuario.actividades[dia].append(['Actividad:', actividad, 'dia:', dia, 'Hora de inicio:', hora_i, 'Hora final:',hora_f, 'Curso relacionado', curso_r])
             print(usuario.actividades)
+            usuario.guardar_en_archivos()
             messagebox.showinfo(message='Actividad agregada exitosamente')
     elif radioValue == 2:
         if hora_i < hora_f:
@@ -99,9 +114,10 @@ def ingresar_actividad(usuario,estudiantes,actividad,dia,hora_i,hora_f,radioValu
         else:
             usuario.actividades[dia].append(['Actividad:', actividad, 'dia:', dia, 'Hora de inicio:', hora_i, 'Hora final:',hora_f])
             print(usuario.actividades)
+            while usuario.ant != None:
+                usuario = usuario.ant
+            usuario.guardar_en_archivos()
             messagebox.showinfo(message='Actividad agregada exitosamente')
-
-
 
 
 

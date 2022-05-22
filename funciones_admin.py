@@ -17,10 +17,15 @@ def agregar_curso(vname, vcredit, vday, vhi, vhf):
         
         while lista_cursos.sig != None:
             lista_cursos = lista_cursos.sig
+        codigo = lista_cursos.codigo + 1
+        while lista_cursos.ant != None:
+            lista_cursos = lista_cursos.ant
+                    
+        new = cursos(vname, vcredit, horas_lectivas, horario_lectivo, codigo)
         
+        lista_cursos.insertar(new)
+        lista_cursos.guardar_en_archivos()
         
-            
-        new = cursos(vname, vcredit, horas_lectivas, horario_lectivo, )
         
     except ValueError:
         messagebox.showerror(title='Error', message='Las horas deben ser números')
