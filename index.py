@@ -94,7 +94,6 @@ def crear_listbox_carreras():
     return listbox_carreras
 
 btn_ingresar_carrera = tk.Button(ventana_login,text='Matricular')
-x = crear_listbox_carreras
 btn_ingresar_carrera.configure(command= lambda: (funciones_estudiante.matricular_carrera(cb_carrera.get(), u, cargar_archivos_carreras),cb_carrera.set(''),crear_listbox_carreras()))
 btn_ingresar_carrera.pack_forget()
 
@@ -118,9 +117,46 @@ cb_curso['values'] =  cursos()
 cb_curso['state'] = 'readonly'
 cb_curso.pack_forget()
 
+
+
+listbox_curso = tk.Listbox(ventana_login)
+
+def crear_listbox_cursos(si):
+    if si == 'si':
+        lista = []
+        cursos = cargar_archivos_cursos()
+        
+        cursos_en_curso = u.cursos
+        for i in cursos_en_curso:
+            puntero = cursos
+            while puntero.sig != None:
+                if i == puntero.codigo:
+                    lista.append(puntero.curso)
+                puntero = puntero.sig
+            if puntero.sig == None:
+                if i == puntero.codigo:
+                    lista.append(puntero.curso)
+
+
+        contador = 1
+        for i in lista:
+            listbox_curso.insert(contador,i)
+            print(i)
+            contador =+ 1
+
+
+        listbox_curso.configure(height=6,selectmode='extended', width=35)
+        listbox_curso.pack()
+        return listbox_curso
+    elif si == 'no':
+        listbox_curso.pack_forget()
+
+
 btn_ingresar_curso = tk.Button(ventana_login,text='Matricular')
-btn_ingresar_curso.configure(command= lambda: (funciones_estudiante.matricular_curso(cb_curso.get(), u, cargar_archivos_cursos,cargar_archivos_carreras),cb_carrera.set('')))
+btn_ingresar_curso.configure(command= lambda: (listbox_curso.delete(0,END),funciones_estudiante.matricular_curso(cb_curso.get(), u, cargar_archivos_cursos,cargar_archivos_carreras),cb_carrera.set(''),crear_listbox_cursos('no'),crear_listbox_cursos('si')))
 btn_ingresar_curso.pack_forget()
+
+
 
 
 
@@ -167,43 +203,53 @@ radioValue = tk.IntVar()
 rdioOne = tk.Radiobutton(ventana_login, text='Si', variable=radioValue, value=1) 
 rdioTwo = tk.Radiobutton(ventana_login, text='No', variable=radioValue, value=2) 
 
-def cargar_cursos_estudiante():
-    return
-
 
 sv_cursos = tk .StringVar()
 cb_cursos = ttk.Combobox(ventana_login,  textvariable=sv_cursos)
-cb_cursos['values'] =  cargar_cursos_estudiante(u)
-cb_cursos['state'] = 'readonly'
-cb_cursos.pack_forget()
 
 def cargar_cursos_estudiante(usuario):
-    codigos = usuario.cursos
+    lista_cursos = []
+    curso = cargar_archivos_cursos()
+    if usuario.cursos == '':
+        return ''
+    for i in usuario.cursos:
+        puntero = curso
+        while puntero.sig != None:
+            if i == puntero.codigo:
+                lista_cursos.append(puntero.curso)
+            puntero = puntero.sig
+        if puntero.sig == None and i == puntero.codigo:
+            lista_cursos.append(puntero.curso)
+    return lista_cursos
 
-    carreras = cargar_archivos_cursos()
+def crear_cb(usuario):
+    if usuario != 'no':
+        lista = cargar_cursos_estudiante(usuario)
+        cb_cursos['values'] =  lista
+        cb_cursos['state'] = 'readonly'
+        cb_cursos.pack()
+    elif usuario == 'no':
+        cb_cursos.pack_forget()
 
-    return
+
 
 
 
 btn_ingresar_actividad = tk.Button(ventana_login,text = 'Registrar actividad')
-btn_ingresar_actividad.configure(command= lambda: funciones_estudiante.ingresar_actividad(u,cargar_archivos_estudiantes ,e_actividad.get(),cb_dia.get(),cb_hora_i.get(),cb_hora_f.get(),radioValue.get(),cb_cursos.get()))
+btn_ingresar_actividad.configure(command= lambda: (funciones_estudiante.ingresar_actividad(u,cargar_archivos_estudiantes ,e_actividad.get(),cb_dia.get(),cb_hora_i.get(),cb_hora_f.get(),radioValue.get(),cb_cursos.get())))
 btn_ingresar_actividad.pack_forget
 
 def si():
     x = radioValue.get()
     if x == 1:
-        lb_curso_r.pack()
-        cb_cursos.pack()
-        btn_ingresar_actividad.pack_forget()
+        crear_cb(u)
         btn_ingresar_actividad.pack()
         x = 0
     elif x == 2:
-        lb_curso_r.pack_forget()
-        cb_cursos.pack_forget()
+        crear_cb('no')
         cb_cursos.set('')
         btn_ingresar_actividad.pack_forget()
-        btn_ingresar_actividad.pack()
+
 
 
 
@@ -242,7 +288,7 @@ btn_matricular_carrera.configure(command= lambda:(show([cb_carrera,btn_ingresar_
 btn_matricular_carrera.pack_forget
 
 btn_matricular_curso = tk.Button(ventana_login,text = 'Matricular curso')
-btn_matricular_curso.configure(command= lambda:(show([cb_curso,btn_ingresar_curso]),btn_atras.pack(side=BOTTOM), hide([btn_matricular_carrera, btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado])))
+btn_matricular_curso.configure(command= lambda:(listbox_curso.delete(0,END),show([cb_curso,btn_ingresar_curso]),btn_atras.pack(side=BOTTOM),crear_listbox_cursos('si'),hide([btn_matricular_carrera, btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado])))
 btn_matricular_curso.pack_forget
 
 btn_registrar_actividad = tk.Button(ventana_login,text = 'Registrar actividad')
@@ -259,13 +305,13 @@ btn_determinar_estado.pack_forget
 
 #Boton para salir
 btn_log_out = tk.Button(ventana_login,text = 'Salir del usuario')
-btn_log_out.configure(command= lambda: [show([btn_login,btn_reg,btn_salir]), hide([btn_agregar_curso,btn_modificar_curso,btn_agregar_carrera,btn_modificar_carrera,btn_log_out,btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado, cb_carrera, btn_ingresar_carrera, cb_curso, btn_ingresar_curso,lb_actividad, e_actividad,rdioOne,rdioTwo, lb_dia,cb_dia,lb_hora_i,cb_hora_i,lb_hora_f,cb_hora_f,cb_cursos,btn_ingresar_actividad,listbox_carreras])])
+btn_log_out.configure(command= lambda: [show([btn_login,btn_reg,btn_salir]), hide([listbox_curso,lb_if,btn_agregar_curso,btn_modificar_curso,btn_agregar_carrera,btn_modificar_carrera,btn_log_out,btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado, cb_carrera, btn_ingresar_carrera, cb_curso, btn_ingresar_curso,lb_actividad, e_actividad,rdioOne,rdioTwo, lb_dia,cb_dia,lb_hora_i,cb_hora_i,lb_hora_f,cb_hora_f,cb_cursos,btn_ingresar_actividad,listbox_carreras,btn_atras,cb_cursos])])
 btn_log_out.pack_forget     
 
 #Login
 
 btn_atras = tk.Button(ventana_login,text = 'Regresar al menu')
-btn_atras.configure(command= lambda: (show([btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado,btn_log_out]), hide([cb_carrera,btn_ingresar_carrera,cb_curso,btn_ingresar_curso,listbox_carreras,lb_actividad,lb_dia,cb_dia,lb_hora_i,cb_hora_i,lb_hora_f,cb_hora_f,lb_if,rdioOne,rdioTwo,btn_ingresar_actividad,e_actividad])))
+btn_atras.configure(command= lambda: (show([btn_matricular_carrera,btn_matricular_curso,btn_registrar_actividad,btn_determinar_estado,btn_log_out]), hide([listbox_curso,cb_carrera,btn_ingresar_carrera,cb_curso,btn_ingresar_curso,listbox_carreras,lb_actividad,lb_dia,cb_dia,lb_hora_i,cb_hora_i,lb_hora_f,cb_hora_f,lb_if,rdioOne,rdioTwo,btn_ingresar_actividad,e_actividad,cb_cursos])))
 btn_modificar_carrera.pack_forget
 
 def ingresar(bl):
