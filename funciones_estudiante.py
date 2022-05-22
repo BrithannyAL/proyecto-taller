@@ -107,7 +107,6 @@ def ingresar_actividad(usuario,estudiantes,actividad,dia,hora_i,hora_f,radioValu
 
 
 
-
 def insertar_en_horario(curso_o_actividad, estudiante, curso_base):
     c = curso_base()
     while c.sig != None:
