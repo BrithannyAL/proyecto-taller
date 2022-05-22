@@ -1,5 +1,47 @@
-from base_de_datos import admin, estudiante
-from tkinter.messagebox import askyesno
+from base_de_datos import admin, estudiante, carreras, cursos
+from tkinter.messagebox import askyesno  
+
+
+def cargar_archivos_carreras():
+    global carreras
+    respuesta = None
+    try:
+        with open("carreras.dat", "tr") as lector:
+            lectura = eval(lector.readline()[:-1])
+            if lectura != '':
+                respuesta = carreras(lectura[0], lectura[1], lectura[2], lectura[3])
+            lectura = eval(lector.readline()[:-1])    
+            while (lectura != ''):
+                respuesta.insertar(carreras(lectura[0], lectura[1], lectura[2], lectura[3]))
+                lectura = eval(lector.readline()[:-1])      
+    except FileNotFoundError as error:
+        respuesta = askyesno(title="Error", message="No se encontró el archivo de datos ¿Desea crear un nuevo archivo de registros?")
+        if respuesta:
+            open("carreras.dat", "tw").close()
+    finally:
+        return respuesta
+
+def cargar_archivos_cursos():
+    global cursos
+    respuesta = None
+    try:
+        with open("cursos.dat", "tr") as lector:
+            lectura = eval(lector.readline()[:-1])
+            if lectura != '':
+                respuesta = cursos(lectura[0], lectura[1], lectura[2], lectura[3], lectura[4])
+            lectura = eval(lector.readline()[:-1])    
+            while (lectura != ''):
+                respuesta.insertar(cursos(lectura[0], lectura[1], lectura[2], lectura[3], lectura[4]))
+                lectura = eval(lector.readline()[:-1])      
+    except FileNotFoundError as error:
+        respuesta = askyesno(title="Error", message="No se encontró el archivo de datos ¿Desea crear un nuevo archivo de registros?")
+        if respuesta:
+            open("cursos.dat", "tw").close()
+    finally:
+        return respuesta
+    
+
+
 
 def cargar_archivos_admins():
     global admin
@@ -39,38 +81,3 @@ def cargar_archivos_estudiantes():
     finally:
         return respuesta
     
-def cargar_archivos_cursos():
-    respuesta = None
-    try:
-        with open("cursos.dat", "tr") as lector:
-            lectura = eval(lector.readline()[:-1])
-            if lectura != '':
-                respuesta = estudiante(lectura[0], lectura[1], lectura[2], lectura[3], lectura[4])
-            lectura = eval(lector.readline()[:-1])    
-            while (lectura != ''):
-                respuesta.insertar(estudiante(lectura[0], lectura[1], lectura[2], lectura[3], lectura[4]))
-                lectura = eval(lector.readline()[:-1])      
-    except FileNotFoundError as error:
-        respuesta = askyesno(title="Error", message="No se encontró el archivo de datos ¿Desea crear un nuevo archivo de registros?")
-        if respuesta:
-            open("cursos.dat", "tw").close()
-    finally:
-        return respuesta
-    
-def cargar_archivos_carreras():
-    respuesta = None
-    try:
-        with open("carreras.dat", "tr") as lector:
-            lectura = eval(lector.readline()[:-1])
-            if lectura != '':
-                respuesta = estudiante(lectura[0], lectura[1], lectura[2], lectura[3])
-            lectura = eval(lector.readline()[:-1])    
-            while (lectura != ''):
-                respuesta.insertar(estudiante(lectura[0], lectura[1], lectura[2], lectura[3]))
-                lectura = eval(lector.readline()[:-1])      
-    except FileNotFoundError as error:
-        respuesta = askyesno(title="Error", message="No se encontró el archivo de datos ¿Desea crear un nuevo archivo de registros?")
-        if respuesta:
-            open("carreras.dat", "tw").close()
-    finally:
-        return respuesta
