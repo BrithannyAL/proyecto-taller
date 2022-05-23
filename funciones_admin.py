@@ -98,7 +98,7 @@ def agregar_carrera(vname, vsem, cursos):
         messagebox.showerror(title='Error', message="Ha habido un error en el sistema")
 
 
-def modificar_carrera(vname, vsem, cursos):
+def modificar_carrera(original, vname, vsem, cursos):
     """
         Esta es la función que le permite a los administradores modificar una carrera existente dentro de la base de datos. Lo primero es presentarle al usuario una lista de carreras con su respectivo codigo para que el admnistrador pueda escoger el curso a modificar por medio de ellos. Lo sieguiente es que se le pregunta al admin si desea modificar el nombre, la cantidad de semestres y los cursos relacionados a esta carrera. Una vez se hayan contestado las preguntas, a partir de esta, se le tomará la información seleccionada al administrador y guardarla en un diccionario que se agregará en la base de datos. Para la modificaicón de los cursos, se llama a una función que devuelve los cursos impresos que están relacionados con esa carrera, para que el admin decida si quiere hacer el cambio. En el caso de que diga que si, lo llevamos a una función específica para que escoja los cursos que sea modificar. Una vez toda la información esté recolectada y guardada en el diccionario, se inserta en la base de datos, para que esta sea retornada en forma de tupla.
 
@@ -107,57 +107,21 @@ def modificar_carrera(vname, vsem, cursos):
         de la carrera.
         -cursos (tuple): la utilizamos para imprimir los cursos que puede elegir el admin para relacionarla con la
         carrera."""
-    pass
+    try: 
+        lista = cargar_archivos_carreras()
         
-
-
-def imprimir_codigos_cursos_en_carreras(codigo, lista):
-    """
-        Esta función nos permite imprimir los códigos de los cursos de una carrera en espefícico que está en la base de datos. Funciona con un ciclo que recorre la lista de carreras mientras la compara con una clave unica (la carrera escogida) hasta encontrala. Luego devuelve la lista de codigos de todos los cursos relacionados a ella.
-
-        Parámetros:
-        - codigo (int): este dato nos da el código de la carrera que queremos buscar para imprimir sus cursos
-        - lista (list): es base de datos en forma de lista que contiene todas las carreras, y es la que tenemos que
-        recorrer para comparar su codigo con el de nuestro interes."""
-    carrera = int
-    for item in lista:
-        if codigo == item['codigo']:
-            carrera = item['carrera']
-            break
-    print("""
-          Los cursos dentro de la carrera son:
-          {}""".format(lista[codigo - 1]['cursos']))
-
-
-def modificar_codigos_en_carreras():
-    """
-        Esta función permite modificar la lista de cursos que están relacionados a una carrera. Se crea una lista vacía que es donde se insertaran todos los nuevos cursos. Se le pide al usuario que digite la clave unica de cada curso de desee añadir a la lista de forma ilimitada, hasta que el usuario indique que ya ha terminado de agregar, en este caso, con digitando una x.
-        La función retorna la lista llena con las claves de los cursos."""
-    nuevos_cursos = []
-    salir = False
-    print("Presione x cuando haya terminado de agregar cursos.")
-    while salir == False:
-        nuevos_cursos.append(
-            input("Escriba los códigos de los cursos de la carrera: "))
-        for item in nuevos_cursos:
-            if item == "x":
-                del nuevos_cursos[-1]
-                salir = True
-    return nuevos_cursos
-
-
-def imprimir(num, lista):
-    """
-        Esta función nos imprime la lista que nosotros queramos, ya sean cursos o carreras (con el mismo formato), presenta las claves unicas y luego le nombre de los elementos de la lista que esamos imprimiento (nombre del curso o de la carrera). Esto lo hacemos con un ciclo que vaya recorriendo la lista o tupla y con forme se encuentre con los nuevos elementos, se vayan imprimiento.
-
-        Los parametros de esta función son:
-        - num (int) = este numero nos indiga cual es la lista que vamos a imprimir, se le envía 0 si queremos imprimir la lista de cursos o 1 si es la lista de carreras
-        - lista (list) = esta se la lista en cualquier forma que la pasemos, que vamos a imprimir para el usuario"""
-    if num == 0:
-        print("***** Lista de cursos *****")
-        for item in lista:
-            print("Código {}: {}".format(item['codigo'], item['curso']))
-    elif num == 1:
-        print("***** Lista de carreras *****")
-        for item in lista:
-            print("Código {}: {}".format(item['codigo'], item['carrera']))
+        while lista.sig != None:
+            if lista.carrera == original:
+                break
+            lista = lista.sig
+            
+        lista.carrera = vname
+        lista.semestres = vsem
+        lista.cursos = cursos.split()
+        
+        while lista.ant != None:
+            lista = lista.ant
+            
+        lista.guardar_en_archivos()
+    except:
+       messagebox.showerror(title='Error', message="Ha habido un error en el sistema")
