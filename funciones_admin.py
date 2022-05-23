@@ -1,5 +1,5 @@
-from base_de_datos import cursos
-from cargar_en_archivos import cargar_archivos_cursos
+from base_de_datos import cursos, carreras
+from cargar_en_archivos import cargar_archivos_cursos, cargar_archivos_carreras
 from tkinter import E, messagebox
 
 def agregar_curso(vname, vcredit, vday, vhi, vhf):
@@ -9,7 +9,6 @@ def agregar_curso(vname, vcredit, vday, vhi, vhf):
         Parámetros:
         - lista_cursos (list): Esta es la base de datos que contiene los cursos con todas las caracteristicas de los
         mismos."""
-    global HorasLectivasError
     try:    
         horario_lectivo = [vday, int(vhi), int(vhf)]
         horas_lectivas = int(vhf) - int(vhi)
@@ -72,7 +71,7 @@ def modificar_curso(original, vname, vcredit, vday, vhi, vhf):
         messagebox.showerror(title='Error en los datos', message='Las horas y los créditos deben ser números')  
 
 
-def agregar_carrera(lista_carrera, cursos):
+def agregar_carrera(vname, vsem, cursos):
     """
         Esta función le permite a los adminitradores agregar una nueva carrera en una base de datos. La función primero genera una clave unica para la nueva carrera (codigo). Se le pide al admin que ingrese el nombre y la cantidad de semestre de la carrera. El siguiente dato son los cursos que estarán relacionados en el plan de estudios de la carrera, por lo tanto, al admin, se le imprime una lista con los nombre de los cursos y sus respectivos códigos para que pueda agregarlos por medio de él. Esto último se hace con un ciclo while, de forma que el admin pueda ir agregando los codigos de los cursos que desee dentro de la carrera, y de forma ilimitada hasta que se le indique al app que ya ha acabado de agregar cursos (digitando una x). Luego tomamos todos los datos recolectados y los ordenamos dentro de un diccionario para que este pueda ser agregado a la base de datos de carreras y esta misma, pueda ser devuelta en forma de tupla.
 
@@ -80,29 +79,26 @@ def agregar_carrera(lista_carrera, cursos):
         - lista_carrera (list): esta es la base de datos en forma de lista al que agregaremos la nueva carrera.
         -cursos (tuple): la utilizamos para imprimir los cursos que puede elegir el admin para relacionarla con la
         carrera."""
-    salir = False
-    carrera_cursos = []
-    codigo = (lista_carrera[-1]['codigo']) + 1
-    carrera_name = input("Ingrese el nombre de la carrera que desea agregar: ")
-    carrera_semestres = input(
-        "Ingrese la cantidad de semestres de la carrera: ")
-    imprimir(0, cursos)
-    print("Presione x cuando haya terminado de agregar cursos.")
-    while salir == False:
-        carrera_cursos.append(
-            input("Ingrese los códigos de los cursos de dicha carrera: "))
-        for i in carrera_cursos:
-            if i == "x":
-                del carrera_cursos[-1]
-                salir = True
-    nueva_carrera = {'carrera': carrera_name, 'semestres': carrera_semestres,
-                     'cursos': carrera_cursos, 'codigo': codigo}
-    lista_carrera.append(nueva_carrera)
-    print(nueva_carrera)
-    return tuple(lista_carrera)
+    try:
+        lista = cargar_archivos_carreras()
+        
+        while lista.sig != None:
+            lista = lista.sig
+        codigo = int(lista.codigo) + 1
+        
+        cursos.split()
+        
+        new = carreras(vname, vsem, codigo, cursos)
+        lista.insertar(new)
+        
+        while lista.ant != None:
+            lista = lista.ant
+        lista.guardar_en_archivos()
+    except:
+        messagebox.showerror(title='Error', message="Ha habido un error en el sistema")
 
 
-def modificar_carrera(lista_carreras, cursos):
+def modificar_carrera(vname, vsem, cursos):
     """
         Esta es la función que le permite a los administradores modificar una carrera existente dentro de la base de datos. Lo primero es presentarle al usuario una lista de carreras con su respectivo codigo para que el admnistrador pueda escoger el curso a modificar por medio de ellos. Lo sieguiente es que se le pregunta al admin si desea modificar el nombre, la cantidad de semestres y los cursos relacionados a esta carrera. Una vez se hayan contestado las preguntas, a partir de esta, se le tomará la información seleccionada al administrador y guardarla en un diccionario que se agregará en la base de datos. Para la modificaicón de los cursos, se llama a una función que devuelve los cursos impresos que están relacionados con esa carrera, para que el admin decida si quiere hacer el cambio. En el caso de que diga que si, lo llevamos a una función específica para que escoja los cursos que sea modificar. Una vez toda la información esté recolectada y guardada en el diccionario, se inserta en la base de datos, para que esta sea retornada en forma de tupla.
 
@@ -111,32 +107,8 @@ def modificar_carrera(lista_carreras, cursos):
         de la carrera.
         -cursos (tuple): la utilizamos para imprimir los cursos que puede elegir el admin para relacionarla con la
         carrera."""
-    imprimir(1, lista_carreras)
-    carrera_a_modificar = int(
-        input("Escriba el código del curso que desea modificar: "))
-    name_carrera = input("""
-                         El título de la carrera es {}
-                         ¿Desea modificar el nombre de la carrera? (y/n) """
-                         .format(lista_carreras[carrera_a_modificar - 1]['carrera']))
-    seme_carrera = input("""
-                         La cantidad de semestres en la carrera son {}
-                         ¿Desea modificar la cantidad de semestres de la carrera? (y/n) """
-                         .format(lista_carreras[carrera_a_modificar - 1]['semestres']))
-    imprimir_codigos_cursos_en_carreras(carrera_a_modificar, lista_carreras)
-    curs_carrera = input(
-        "¿Desea modificar los cursos dentro de la carrera? (y/n) ")
-    if name_carrera == "y":
-        lista_carreras[carrera_a_modificar -
-                       1]['carrera'] = input("Escriba el nuevo nombre de la carrera: ")
-    if seme_carrera == "y":
-        lista_carreras[carrera_a_modificar - 1]['semestres'] = input(
-            "Escriba la cantidad de semestres de la carrera: ")
-    if curs_carrera == "y":
-        imprimir(0, cursos)
-        nuevos_cursos = modificar_codigos_en_carreras()
-        lista_carreras[carrera_a_modificar - 1]['cursos'] = nuevos_cursos
-    print(lista_carreras)
-    return tuple(lista_carreras)
+    pass
+        
 
 
 def imprimir_codigos_cursos_en_carreras(codigo, lista):

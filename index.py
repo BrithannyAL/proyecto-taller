@@ -9,7 +9,7 @@ import funciones_admin
 import funciones_estudiante
 import base_de_datos
 from cargar_en_archivos import cargar_archivos_admins, cargar_archivos_estudiantes, cargar_archivos_carreras, cargar_archivos_cursos
-from funciones import lista_cursos
+from funciones import lista_cursos, lista_carreras, lista_cursos_codigo
 #shutil.copy('txt.txt', 'base_de_datos.py')
 #msvcrt.getch()
 
@@ -364,6 +364,50 @@ def generar_ventana_modificar_curso():
     btn_volver_menu.configure(command=lambda: (hide([lb_nombre_curso, e_nombre_curso, lb_creditos_curso, e_creditos_curso, lb_horario_curso, cb_horario_curso, lb_hora_inicial, e_hora_inicial, lb_hora_final, e_hora_final, btn_guardar_curso, btn_volver_menu, cb_nombres_curso, lb_nombres_curso]), generar_menu_admin()))
     
     return(show([lb_nombres_curso, cb_nombres_curso, lb_nombre_curso, e_nombre_curso, lb_creditos_curso, e_creditos_curso, lb_horario_curso, cb_horario_curso, lb_hora_inicial, e_hora_inicial, lb_hora_final, e_hora_final, btn_guardar_curso, btn_volver_menu]))
+
+def generar_ventana_agregar_carrera():
+    sv_nombre_carrera = StringVar()
+    sv_semestres = StringVar()
+    sv_cusos = StringVar()
+    langs_var = tk.StringVar(value=lista_cursos_codigo())
+    
+    lb_nombre_carrera = tk.Label(ventana_login, text='Escriba el nombre de la carrera que desea agregar') 
+    e_nombre_carrera = ttk.Entry(ventana_login, textvariable=sv_nombre_carrera, width=40) 
+    
+    lb_semestres = tk.Label(ventana_login, text='Escriba la cantidad de semestres de la carrera') 
+    e_semestres = ttk.Entry(ventana_login, textvariable=sv_semestres, width=20) 
+    
+    lis_cusos = tk.Listbox(ventana_login)
+    lis_cusos.configure(listvariable=langs_var,height=6,selectmode='extended', width=35)
+    
+    lb_cursos = tk.Label(ventana_login, text='Escriba los codigos de los cursos que desea agregar separados espacios') 
+    e_cursos = ttk.Entry(ventana_login, textvariable=sv_cusos, width=20) 
+    
+    btn_guardar_carrera = tk.Button(ventana_login, text='Agregar carrera')
+    btn_guardar_carrera.configure(command=lambda:(hide([lb_nombre_carrera, e_nombre_carrera, lb_semestres, e_semestres, lis_cusos, lb_cursos, e_cursos, btn_guardar_carrera, btn_volver_menu]), funciones_admin.agregar_carrera(e_nombre_carrera.get(), e_semestres.get(), e_cursos.get()), generar_ventana_agregar_carrera()))
+    
+    btn_volver_menu = tk.Button(ventana_login, text='Volver al menú')
+    btn_volver_menu.configure(command=lambda: (hide([lb_nombre_carrera, e_nombre_carrera, lb_semestres, e_semestres, lis_cusos, lb_cursos, e_cursos, btn_guardar_carrera, btn_volver_menu]), generar_menu_admin()))
+    
+    return(show([lb_nombre_carrera, e_nombre_carrera, lb_semestres, e_semestres, lis_cusos, lb_cursos, e_cursos, btn_guardar_carrera, btn_volver_menu]))
+
+def generar_ventana_modificar_carrera():
+    sv_nombre_carrera = StringVar()
+    sv_semestres = StringVar()
+    
+    lb_nombre_carrera = tk.Label(ventana_login, text='Escriba el nuevo nombre de la carrera') 
+    e_nombre_carrera = ttk.Entry(ventana_login, textvariable=sv_nombre_carrera, width=40) 
+    
+    lb_semestres = tk.Label(ventana_login, text='Escriba la nueva cantidad de semestres de la carrera') 
+    e_semestres = ttk.Entry(ventana_login, textvariable=sv_semestres, width=20) 
+    
+    btn_guardar_carrera = tk.Button(ventana_login, text='modificar carrera')
+    btn_guardar_carrera.configure(command=lambda:(hide([lb_nombre_carrera, e_nombre_carrera, lb_semestres, e_semestres, btn_guardar_carrera, btn_volver_menu]), funciones_admin.modificar_carrera(e_nombre_carrera.get(), e_semestres.get()), generar_ventana_modificar_carrera()))
+    
+    btn_volver_menu = tk.Button(ventana_login, text='Volver al menú')
+    btn_volver_menu.configure(command=lambda: (hide([lb_nombre_carrera, e_nombre_carrera, lb_semestres, e_semestres, btn_guardar_carrera, btn_volver_menu]), generar_menu_admin()))
+    
+    return(show([lb_nombre_carrera, e_nombre_carrera, lb_semestres, e_semestres, btn_guardar_carrera, btn_volver_menu]))
     
 def generar_menu_admin():
     global btn_log_out
@@ -375,7 +419,7 @@ def generar_menu_admin():
     btn_modificar_curso.configure(command= lambda: (hide([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera, btn_log_out]), generar_ventana_modificar_curso()))
 
     btn_agregar_carrera = tk.Button(ventana_login,text = 'Agregar carrera')
-    btn_agregar_carrera.configure(command= lambda: print)
+    btn_agregar_carrera.configure(command= lambda: (hide([btn_agregar_curso, btn_modificar_curso, btn_agregar_carrera, btn_modificar_carrera, btn_log_out]), generar_ventana_agregar_carrera()))
 
     btn_modificar_carrera = tk.Button(ventana_login,text = 'Modificar carrera')
     btn_modificar_carrera.configure(command= lambda:print)

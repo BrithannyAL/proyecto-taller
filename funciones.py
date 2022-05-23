@@ -1,7 +1,7 @@
 #Se importan las librerías necesarias
 import getpass
 import time
-from cargar_en_archivos import cargar_archivos_cursos
+from cargar_en_archivos import cargar_archivos_cursos, cargar_archivos_carreras
 
 def horas_horario(usuario, estudiantes, dia):
     """
@@ -54,6 +54,26 @@ def lista_cursos():
     
     while lista.sig != None:
         lista_nombres.append(lista.curso)
+        lista = lista.sig
+    
+    return lista_nombres
+
+def lista_cursos_codigo():
+    lista = cargar_archivos_cursos()
+    lista_nombres = []
+    
+    while lista.sig != None:
+        lista_nombres.append('{}, {}'.format(lista.codigo, lista.curso))
+        lista = lista.sig
+    
+    return lista_nombres
+
+def lista_carreras():
+    lista = cargar_archivos_carreras()
+    lista_nombres = []
+    
+    while lista.sig != None:
+        lista_nombres.append(lista.carrera)
         lista = lista.sig
     
     return lista_nombres
