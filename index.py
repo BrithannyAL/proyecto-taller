@@ -405,7 +405,7 @@ def generar_ventana_modificar_carrera():
     lis_cusos = tk.Listbox(ventana_login)
     lis_cusos.configure(listvariable=langs_var,height=6,selectmode='extended', width=35)
     
-    lb_cursos = tk.Label(ventana_login, text='Escriba los codigos de los cursos que desea agregar separados espacios') 
+    lb_cursos = tk.Label(ventana_login, text='Escriba los codigos de los cursos que desea agregar separados por comas') 
     e_cursos = ttk.Entry(ventana_login, textvariable=sv_cusos, width=20) 
     
     btn_guardar_carrera = tk.Button(ventana_login, text='Modificar carrera')
