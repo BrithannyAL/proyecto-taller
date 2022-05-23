@@ -37,11 +37,7 @@ def mostrar_inicio():
     btn_reg.pack
     btn_salir.pack()
 
-def mostrar_menu_a():
-    btn_agregar_carrera.pack()
-    btn_modificar_carrera.pack()
-    btn_agregar_curso.pack()
-    btn_agregar_carrera.pack()
+
     
 
 def mostrar_menu_e():
@@ -50,9 +46,7 @@ def mostrar_menu_e():
     btn_registrar_actividad.pack()
     btn_determinar_estado.pack()
 
-def mostrar_mat_curso():
-    #cb_carrera.pack()
-    btn_agregar_carrera.pack()
+
 
 
 #Menu matricular carrera
@@ -380,7 +374,7 @@ def generar_ventana_agregar_carrera():
     lis_cusos = tk.Listbox(ventana_login)
     lis_cusos.configure(listvariable=langs_var,height=6,selectmode='extended', width=35)
     
-    lb_cursos = tk.Label(ventana_login, text='Escriba los codigos de los cursos que desea agregar separados espacios') 
+    lb_cursos = tk.Label(ventana_login, text='Escriba los codigos de los cursos que desea agregar separados por comas y un espacio') 
     e_cursos = ttk.Entry(ventana_login, textvariable=sv_cusos, width=20) 
     
     btn_guardar_carrera = tk.Button(ventana_login, text='Agregar carrera')
