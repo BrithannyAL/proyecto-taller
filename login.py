@@ -6,7 +6,7 @@ from base_de_datos import dic_horario
 from base_de_datos import estudiante, admin
 from cargar_en_archivos import cargar_archivos_admins, cargar_archivos_estudiantes
 from funciones_admin import agregar_curso, modificar_curso, agregar_carrera, modificar_carrera
-from funciones_estudiante import  matricular_carrera, matricular_curso, registro_actividades, aprobado_noAprobado, ver_horario
+from funciones_estudiante import  matricular_carrera, matricular_curso, ver_horario
 import hashlib
 
 
