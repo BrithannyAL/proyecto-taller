@@ -31,7 +31,7 @@ def matricular_carrera(carrera, usuario , carreras):
             usuario.carreras.append(codigo)
             while usuario.ant != None:
                 usuario = usuario.ant
-            #usuario.guardar_en_archivos()
+            usuario.guardar_en_archivos()
 
 
             messagebox.showinfo(message='Carrera matriculada exitosamente')
@@ -89,7 +89,7 @@ def matricular_curso(curso, usuario, cursos, carreras):
             usuario.cursos.append(codigo)
             while usuario.ant != None:
                 usuario = usuario.ant
-            #usuario.guardar_en_archivos()
+            usuario.guardar_en_archivos()
             messagebox.showinfo(message='Curso matriculado exitosamente')
     else: messagebox.showerror(message='El curso que intenta matricular no existe') 
                          
@@ -108,7 +108,7 @@ def ingresar_actividad(usuario,estudiantes,actividad,dia,hora_i,hora_f,radioValu
         else:
             usuario.actividades[dia].append(['Actividad:', actividad, 'dia:', dia, 'Hora de inicio:', hora_i, 'Hora final:',hora_f, 'Curso relacionado', curso_r])
             print(usuario.actividades)
-            #usuario.guardar_en_archivos()
+            usuario.guardar_en_archivos()
             messagebox.showinfo(message='Actividad agregada exitosamente')
     elif radioValue == 2:
         if int(hora_i) > int(hora_f):
@@ -120,7 +120,7 @@ def ingresar_actividad(usuario,estudiantes,actividad,dia,hora_i,hora_f,radioValu
             print(usuario.actividades)
             while usuario.ant != None:
                 usuario = usuario.ant
-            #usuario.guardar_en_archivos()
+            usuario.guardar_en_archivos()
             messagebox.showinfo(message='Actividad agregada exitosamente')
 
 
@@ -193,6 +193,9 @@ def aprobar(u,curso_aprobado):
             if curso_aprobado == puntero.curso:
                 codigo = puntero.codigo
             puntero = puntero.sig
+        if puntero.sig == None:
+            if curso_aprobado == puntero.curso:
+                codigo = puntero.codigo
         for i in cursos_en_curso:
             if i == codigo:
                 print(cursos_en_curso)
@@ -201,6 +204,9 @@ def aprobar(u,curso_aprobado):
                 u.aprobados.append(codigo)
                 print(u.cursos)
                 print(u.aprobados)
+                while usuario.ant != None:
+                    usuario = usuario.ant
+                usuario.guardar_en_archivos()                
                 messagebox.showinfo(message='Curso aprobado')
  
 
@@ -215,6 +221,9 @@ def reprobar(u,curso_reprobado):
             if curso_reprobado == puntero.curso:
                 codigo = puntero.codigo
             puntero = puntero.sig
+        if puntero.sig == None:
+            if curso_reprobado == puntero.curso:
+                codigo = puntero.codigo
         for i in cursos_en_curso:
             if i == codigo:
                 print(cursos_en_curso)
@@ -223,4 +232,7 @@ def reprobar(u,curso_reprobado):
                 u.reprobados.append(codigo)
                 print(u.cursos)
                 print(u.reprobados)
+                while usuario.ant != None:
+                    usuario = usuario.ant
+                usuario.guardar_en_archivos()
                 messagebox.showinfo(message='Curso reprobado')
