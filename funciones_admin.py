@@ -9,6 +9,7 @@ def agregar_curso(vname, vcredit, vday, vhi, vhf):
         Parámetros:
         - lista_cursos (list): Esta es la base de datos que contiene los cursos con todas las caracteristicas de los
         mismos."""
+    global HorasLectivasError
     try:    
         horario_lectivo = [vday, int(vhi), int(vhf)]
         horas_lectivas = int(vhf) - int(vhi)
@@ -20,18 +21,27 @@ def agregar_curso(vname, vcredit, vday, vhi, vhf):
         codigo = lista_cursos.codigo + 1
         while lista_cursos.ant != None:
             lista_cursos = lista_cursos.ant
-                    
-        new = cursos(vname, vcredit, horas_lectivas, horario_lectivo, codigo)
-        
-        lista_cursos.insertar(new)
-        lista_cursos.guardar_en_archivos()
-        
-        
+            
+        if horas_lectivas > int(vcredit):
+            messagebox.showerror(title='Error en los datos', message='El curso vale {} creditos, no puede matricular más de {} horas'.format(vcredit, vcredit))
+        else:        
+            new = cursos(vname, vcredit, horas_lectivas, horario_lectivo, codigo)
+            lista_cursos.insertar(new)
+            lista_cursos.guardar_en_archivos()
+            
     except ValueError:
-        messagebox.showerror(title='Error', message='Las horas deben ser números')
+        messagebox.showerror(title='Error en los datos', message='Las horas y los créditos deben ser números')
         
+def mostrar_cursos(vcurso):
+    lista_cursos = cargar_archivos_cursos()
+    
+    while lista_cursos != None and lista_cursos.curso == vcurso:
+        lista_cursos = lista_cursos.sig
+    
+    return[lista_cursos.curso, lista_cursos.creditos, lista_cursos.horario_de_clases[0], lista_cursos.horario_de_clases[1], lista_cursos.horario_de_clases[2]]
         
-    print('estoy entrando a la función')
+    
+        
 
 
 def modificar_curso(lista_cursos):

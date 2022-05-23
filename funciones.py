@@ -1,6 +1,7 @@
 #Se importan las librerías necesarias
 import getpass
 import time
+from cargar_en_archivos import cargar_archivos_cursos
 
 def horas_horario(usuario, estudiantes, dia):
     """
@@ -32,7 +33,6 @@ def horas_horario(usuario, estudiantes, dia):
         #print('La cantidad de horas del ', dia, ' es: ', contador)
         return contador
 
-
 def verificar_curso(usuario, carreras, cursos, estudiantes, r_curso):
     """
         Esta función nos permite saber si un curso está dentro de la lista de cursos en las que el estudiante está matriculado. Todas las verificaciones para obtener la información se hacen con condicionales y los ciclos for se usan para recorrer las listas."""
@@ -47,4 +47,13 @@ def verificar_curso(usuario, carreras, cursos, estudiantes, r_curso):
                     else:
                         return False
             else: print("Este curso no existe")
-
+            
+def lista_cursos():
+    lista = cargar_archivos_cursos()
+    lista_nombres = []
+    
+    while lista.sig != None:
+        lista_nombres.append(lista.curso)
+        lista = lista.sig
+    
+    return lista_nombres
