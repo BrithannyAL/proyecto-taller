@@ -13,5 +13,5 @@
 ['Matematica para administracion', 3, 3, ['martes', 14, 15], 13]
 ['Dibijo tecnico', 2, 3, ['miercoles', 19, 19], 14]
 ['Quimica basica', 2, 3, ['martes', 9, 12], 15]
-['Introduccion a la ingenieria', 3, 3, ['martes', 13, 14], 16]
+['Introduccion a la ingenieria', '3', 3, ['viernes', '8', '10'], 16]
 ['Calculo diferencial e integral', 4, 3, ['miercoles', 18, 19], 17]

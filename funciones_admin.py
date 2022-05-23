@@ -44,32 +44,32 @@ def mostrar_cursos(vcurso):
         
 
 
-def modificar_curso(lista_cursos):
+def modificar_curso(original, vname, vcredit, vday, vhi, vhf):
     """
         Esta función le permite a los administradores modificar las caracteriticas de un curso ya existente en la  base de datos. Para eso lo primero que hacemos es imprimir la lista de cursos para que el admin pueda leerlos y escoger por medio de la clave única (código) el curso que modificará. Una vez haya escogido el curso, se le pregunta se desea cambiar el nombre del curso y/o la cantidad de horas de las clases. A partir de estas respuestas, se le presentarán al admin espacios para que pueda escribir el nuevo nombre del curso y la nueva cantidad de horas de clases. Estás respuestas se recolectan y reasignan sobre los campos en donde se almacenaba la vieja información. Luego la información es retornada como una tupla.
 
         Parámetros:
         - lista_cursos (list): Es la base de datos en forma de lista que contiene los cursos con toda su información"""
-    imprimir(0, lista_cursos)
-    curso_a_modificar = int(
-        input("Escriba el código del curso que desea modificar: "))
-    nombre_curso = input("""
-                         El título del curso es {}
-                         ¿Desea modificar el nombre del curso? (y/n) """
-                         .format(lista_cursos[curso_a_modificar - 1]['curso']))
-    horas_lectivas = input("""
-                           La cantidad de horas del curso es {}
-                           ¿Desea modificar la cantidad de horas que imparte el curso? (y/n) """
-                           .format(lista_cursos[curso_a_modificar - 1]['horas_lectivas']))
-    if nombre_curso == "y":
-        lista_cursos[curso_a_modificar -
-                     1]['curso'] = input("Nuevo título para el curso: ")
-    if horas_lectivas == "y":
-        lista_cursos[curso_a_modificar -
-                     1]['horas_lectivas'] = input("Nuevo horas lectivas para el curso: ")
-    print("""El curso ha sido modificado: {}""".format(
-        lista_cursos[curso_a_modificar - 1]))
-    return(tuple(lista_cursos))
+    try: 
+        lista = cargar_archivos_cursos()
+        
+        while lista.sig != None:
+            if lista.curso == original:
+                break
+            lista = lista.sig
+            
+        lista.curso = vname
+        lista.creditos = vcredit
+        lista.horario_de_clases[0] = vday
+        lista.horario_de_clases[1] = vhi
+        lista.horario_de_clases[2] = vhf  
+        
+        while lista.ant != None:
+            lista = lista.ant
+            
+        lista.guardar_en_archivos()
+    except ValueError:
+        messagebox.showerror(title='Error en los datos', message='Las horas y los créditos deben ser números')  
 
 
 def agregar_carrera(lista_carrera, cursos):

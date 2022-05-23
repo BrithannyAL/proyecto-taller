@@ -300,44 +300,43 @@ def generar_ventana_agregar_curso():
     
     return(show([lb_nombre_curso, e_nombre_curso, lb_creditos_curso, e_creditos_curso, lb_horario_curso, cb_horario_curso, lb_hora_inicial, e_hora_inicial, lb_hora_final, e_hora_final, btn_guardar_curso, btn_volver_menu]))
 
+
 def generar_ventana_modificar_curso():
-        sv_nombre_curso = StringVar()
-        sv_creditos_curso = StringVar()
-        sv_horario_curso = StringVar()
-        sv_inicial_horario = StringVar()
-        sv_final_horario = StringVar()
+    sv_nombre_curso = StringVar()
+    sv_creditos_curso = StringVar()
+    sv_horario_curso = StringVar()
+    sv_inicial_horario = StringVar()
+    sv_final_horario = StringVar()
     
-        lb_nombres_curso = tk.Label(ventana_login, text='Elija el curso que sea modificar') 
-        
-        cb_nombres_curso = ttk.Combobox(ventana_login, textvariable=sv_nombre_curso)
-        cb_nombres_curso['values'] =  lista_cursos()
-        cb_nombres_curso['state'] = 'readonly'
-        lista = cb_nombres_curso.bind("<<ComboboxSelected>>", funciones_admin.mostrar_cursos(cb_nombres_curso.get()))
-        
-        lb_nombre_curso = tk.Label(ventana_login, text='Escriba el nuevo nombre del curso') 
-        e_nombre_curso = ttk.Entry(ventana_login, textvariable=lista[0], width=40) 
-        
-        lb_creditos_curso = tk.Label(ventana_login, text='Escriba la nueva cantidad de créditos del curso') 
-        e_creditos_curso = ttk.Entry(ventana_login, textvariable=sv_creditos_curso, width=20) 
-        
-        lb_horario_curso = tk.Label(ventana_login, text='Elija el nuevo horario lectivo del curso')     
-        cb_horario_curso = ttk.Combobox(ventana_login,  textvariable=sv_cbdia)
-        cb_horario_curso['values'] =  'lunes','martes','miercoles','jueves','viernes','sabado','domingo'
-        cb_horario_curso['state'] = 'readonly'
-        
-        lb_hora_inicial = tk.Label(ventana_login, text='Hora inicial, de 7 a 24')
-        e_hora_inicial = ttk.Entry(ventana_login, textvariable=sv_inicial_horario) 
-        
-        lb_hora_final = tk.Label(ventana_login, text='Hora final, de 7 a 24')
-        e_hora_final = ttk.Entry(ventana_login, textvariable=sv_final_horario) 
-        
-        btn_guardar_curso = tk.Button(ventana_login, text='Agregar curso')
-        btn_guardar_curso.configure(command=lambda:(funciones_admin.agregar_curso(e_nombre_curso.get(), e_creditos_curso.get(), cb_horario_curso.get(), e_hora_inicial.get(), e_hora_final.get()), generar_ventana_agregar_curso()))
-        
-        btn_volver_menu = tk.Button(ventana_login, text='Volver al menú')
-        btn_volver_menu.configure(command=lambda: (hide([lb_nombre_curso, e_nombre_curso, lb_creditos_curso, e_creditos_curso, lb_horario_curso, cb_horario_curso, lb_hora_inicial, e_hora_inicial, lb_hora_final, e_hora_final, btn_guardar_curso, btn_volver_menu]), generar_menu_admin()))
-        
-        return(show([lb_nombres_curso, cb_nombres_curso, lb_nombre_curso, e_nombre_curso, lb_creditos_curso, e_creditos_curso, lb_horario_curso, cb_horario_curso, lb_hora_inicial, e_hora_inicial, lb_hora_final, e_hora_final, btn_guardar_curso, btn_volver_menu]))
+    lb_nombres_curso = tk.Label(ventana_login, text='Elija el curso que sea modificar') 
+    cb_nombres_curso = ttk.Combobox(ventana_login, textvariable=sv_nombre_curso)
+    cb_nombres_curso['values'] =  lista_cursos()
+    cb_nombres_curso['state'] = 'readonly'
+    
+    lb_nombre_curso = tk.Label(ventana_login, text='Escriba el nuevo nombre del curso') 
+    e_nombre_curso = ttk.Entry(ventana_login, textvariable=sv_nombre_curso, width=40) 
+    
+    lb_creditos_curso = tk.Label(ventana_login, text='Escriba la nueva cantidad de créditos del curso') 
+    e_creditos_curso = ttk.Entry(ventana_login, textvariable=sv_creditos_curso, width=20) 
+    
+    lb_horario_curso = tk.Label(ventana_login, text='Elija el nuevo horario lectivo del curso')     
+    cb_horario_curso = ttk.Combobox(ventana_login,  textvariable=sv_horario_curso)
+    cb_horario_curso['values'] =  'lunes','martes','miercoles','jueves','viernes','sabado','domingo'
+    cb_horario_curso['state'] = 'readonly'
+    
+    lb_hora_inicial = tk.Label(ventana_login, text='Hora inicial, de 7 a 24')
+    e_hora_inicial = ttk.Entry(ventana_login, textvariable=sv_inicial_horario) 
+    
+    lb_hora_final = tk.Label(ventana_login, text='Hora final, de 7 a 24')
+    e_hora_final = ttk.Entry(ventana_login, textvariable=sv_final_horario) 
+    
+    btn_guardar_curso = tk.Button(ventana_login, text='Modificar curso')
+    btn_guardar_curso.configure(command=lambda:(funciones_admin.modificar_curso(cb_nombres_curso.get(), e_nombre_curso.get(), e_creditos_curso.get(), cb_horario_curso.get(), e_hora_inicial.get(), e_hora_final.get()), hide([lb_nombre_curso, e_nombre_curso, lb_creditos_curso, e_creditos_curso, lb_horario_curso, cb_horario_curso, lb_hora_inicial, e_hora_inicial, lb_hora_final, e_hora_final, btn_guardar_curso, btn_volver_menu, cb_nombres_curso, lb_nombres_curso]), generar_ventana_modificar_curso()))
+    
+    btn_volver_menu = tk.Button(ventana_login, text='Volver al menú')
+    btn_volver_menu.configure(command=lambda: (hide([lb_nombre_curso, e_nombre_curso, lb_creditos_curso, e_creditos_curso, lb_horario_curso, cb_horario_curso, lb_hora_inicial, e_hora_inicial, lb_hora_final, e_hora_final, btn_guardar_curso, btn_volver_menu, cb_nombres_curso, lb_nombres_curso]), generar_menu_admin()))
+    
+    return(show([lb_nombres_curso, cb_nombres_curso, lb_nombre_curso, e_nombre_curso, lb_creditos_curso, e_creditos_curso, lb_horario_curso, cb_horario_curso, lb_hora_inicial, e_hora_inicial, lb_hora_final, e_hora_final, btn_guardar_curso, btn_volver_menu]))
     
 def generar_menu_admin():
     global btn_log_out
